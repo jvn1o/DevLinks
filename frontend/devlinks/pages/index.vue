@@ -1,5 +1,5 @@
 <script>
-import Category from "~/components/filter/Category.vue";
+import Category from "~/components/filter/Filter.vue";
 
 export default {
 name: "index.vue",
