@@ -6,7 +6,7 @@
   <div class="container p-3 border rounded">
     <div class="d-flex justify-content-between align-items-center">
       <h5>Filter</h5>
-      <button class="btn btn-outline-secondary btn-sm">
+      <button class="btn btn-sm">
         <i class="bi bi-arrow-up"></i>
       </button>
     </div>
@@ -25,7 +25,7 @@
             <label class="form-check-label" for="category1">Algorithm & Data Structures</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="category2" checked>
+            <input class="form-check-input" type="checkbox" id="category2">
             <label class="form-check-label" for="category2">API & Documentation</label>
           </div>
           <div class="form-check">
@@ -33,7 +33,7 @@
             <label class="form-check-label" for="category3">Cloud & DevOps</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="category4" checked>
+            <input class="form-check-input" type="checkbox" id="category4">
             <label class="form-check-label" for="category4">Testing & QA</label>
           </div>
           <div class="form-check">
