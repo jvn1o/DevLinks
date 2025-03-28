@@ -1,3 +1,8 @@
+<script setup lang="ts">
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import 'bootstrap-icons/font/bootstrap-icons.css';
+</script>
+
 <template>
   <div>
     <NuxtLayout>
@@ -5,6 +10,3 @@
     </NuxtLayout>
   </div>
 </template>
-
-<script setup lang="ts">
-</script>
