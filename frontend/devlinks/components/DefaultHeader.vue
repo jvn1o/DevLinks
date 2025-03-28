@@ -5,7 +5,7 @@ const router = useRouter();
 
 // 클릭 이벤트 예제
 const goToProfile = () => {
-  router.push('/profile');
+  router.push('/login');
 };
 </script>
 
