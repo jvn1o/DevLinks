@@ -4,12 +4,13 @@
 
 <template>
   <div class="container p-3 border rounded">
-    <div class="d-flex justify-content-between align-items-center">
-      <h5>Filter</h5>
-      <button class="btn btn-sm">
-        <i class="bi bi-arrow-up"></i>
-      </button>
-    </div>
+
+<!--    <div class="d-flex justify-content-between align-items-center">-->
+<!--      <h5>Filter</h5>-->
+<!--      <button class="btn btn-sm">-->
+<!--        <i class="bi bi-arrow-up"></i>-->
+<!--      </button>-->
+<!--    </div>-->
 
     <div class="row mt-3">
       <!-- Category 필터 -->
