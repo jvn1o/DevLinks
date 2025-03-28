@@ -2,15 +2,17 @@
 import Category from "~/components/filter/Filter.vue";
 
 export default {
-name: "index.vue",
+  name: "index.vue",
   components: {Category}
 }
 </script>
 
 <template>
   <main>
-    <Category></Category>
-    <div>안녕~</div>
+    <div class="pt-4">
+      <Category></Category>
+      <div>안녕~</div>
+    </div>
   </main>
 </template>
 
