@@ -1,29 +1,15 @@
 <script>
+import Category from "~/components/filter/Category.vue";
+
 export default {
-name: "index.vue"
+name: "index.vue",
+  components: {Category}
 }
 </script>
 
 <template>
   <main>
-    <h1>Hello World!</h1>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
-    <div>안녕~</div>
+    <Category></Category>
     <div>안녕~</div>
   </main>
 </template>
