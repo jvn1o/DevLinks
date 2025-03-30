@@ -1,5 +1,9 @@
 <script>
 import Category from "~/components/filter/Filter.vue";
+import { ref } from 'vue';
+
+const selectedFilters = ref([]);
+
 
 export default {
   name: "index.vue",
@@ -11,7 +15,15 @@ export default {
   <main>
     <div class="pt-4">
       <Category></Category>
-      <div>안녕~</div>
+      <div>
+        <div>Results</div>
+
+        <!-- 선택된 필터 표시 -->
+        <div class="container border rounded">
+
+        </div>
+      </div>
+
     </div>
   </main>
 </template>
