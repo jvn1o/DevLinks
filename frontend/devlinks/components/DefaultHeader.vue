@@ -4,10 +4,23 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- 우측 아이콘 (북마크, 프로필) -->
+    <div class="d-flex align-items-center">
+      <NuxtLink to="/login">
+        <img src="/assets/image/icon/profile.svg" alt="Profile" width="32" height="32" class="rounded-circle" />
+      </NuxtLink>
+      <NuxtLink to="/mypage/bookmark" class="me-3">
+        <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24" />
+      </NuxtLink>
+      <NuxtLink to="/mypage/bookmark" class="me-3">
+        <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24" />
+      </NuxtLink>
+    </div>
+
     <div class="container">
       <!-- 로고 (홈 이동) -->
       <NuxtLink to="/" class="navbar-brand">
-        <img src="/logo.png" alt="Logo" width="40" height="40" />
+        <img src="/assets/image/DevLinks.svg" alt="Logo" width="40" height="40" />
       </NuxtLink>
 
       <!-- 네비게이션 메뉴 -->
@@ -19,16 +32,6 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
             </NuxtLink>
           </li>
         </ul>
-      </div>
-
-      <!-- 우측 아이콘 (북마크, 프로필) -->
-      <div class="d-flex align-items-center">
-        <NuxtLink to="/mypage/bookmark" class="me-3">
-          <img src="/bookmark-icon.png" alt="Bookmark" width="24" height="24" />
-        </NuxtLink>
-        <NuxtLink to="/login">
-          <img src="/profile-icon.png" alt="Profile" width="32" height="32" class="rounded-circle" />
-        </NuxtLink>
       </div>
     </div>
   </nav>
