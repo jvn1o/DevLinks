@@ -1,29 +1,37 @@
 <script setup>
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
-// 클릭 이벤트 예제
-const goToProfile = () => {
-  router.push('/login');
-};
+const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & DevOps", "Testing & QA", "UI / UX"];
 </script>
 
 <template>
-  <header class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom bg-white">
-    <!-- 로고 -->
-    <NuxtLink to="/" class="d-flex align-items-center text-decoration-none">
-      <img src="/assets/image/DevLinks.svg" alt="DevLinks" height="30">
-    </NuxtLink>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- 로고 (홈 이동) -->
+      <NuxtLink to="/" class="navbar-brand">
+        <img src="/logo.png" alt="Logo" width="40" height="40" />
+      </NuxtLink>
 
-    <!-- 우측 아이콘 & 버튼 -->
-    <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-outline-primary btn-sm">Write a Post</button>
-      <i class="bi bi-bookmark fs-5"></i>
-      <i class="bi bi-gear fs-5"></i>
-      <img src="/assets/image/DevLinks.svg" alt="Profile" class="rounded-circle" width="32" height="32" @click="goToProfile">
+      <!-- 네비게이션 메뉴 -->
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
+            <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+              {{ tab }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 우측 아이콘 (북마크, 프로필) -->
+      <div class="d-flex align-items-center">
+        <NuxtLink to="/mypage/bookmark" class="me-3">
+          <img src="/bookmark-icon.png" alt="Bookmark" width="24" height="24" />
+        </NuxtLink>
+        <NuxtLink to="/login">
+          <img src="/profile-icon.png" alt="Profile" width="32" height="32" class="rounded-circle" />
+        </NuxtLink>
+      </div>
     </div>
-  </header>
+  </nav>
 </template>
 
 <style scoped>
