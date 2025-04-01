@@ -1,5 +1,5 @@
 <script>
-import Category from "~/components/filter/Filter.vue";
+import Filter from "~/components/filter/Filter.vue";
 import { ref } from 'vue';
 
 const selectedFilters = ref([]);
@@ -7,7 +7,7 @@ const selectedFilters = ref([]);
 
 export default {
   name: "index.vue",
-  components: {Category}
+  components: {Filter}
 }
 </script>
 
