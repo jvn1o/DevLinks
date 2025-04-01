@@ -4,23 +4,25 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- 우측 아이콘 (북마크, 프로필) -->
-    <div class="d-flex align-items-center">
-      <NuxtLink to="/login">
-        <img src="/assets/image/icon/profile.svg" alt="Profile" width="32" height="32" class="rounded-circle" />
-      </NuxtLink>
-      <NuxtLink to="/mypage/bookmark" class="me-3">
-        <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24" />
-      </NuxtLink>
-      <NuxtLink to="/mypage/bookmark" class="me-3">
-        <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24" />
-      </NuxtLink>
+    <div class="w-137">
+      <!-- 우측 아이콘 (북마크, 프로필) -->
+      <div class="d-flex align-items-center">
+        <NuxtLink to="/login">
+          <img src="/assets/image/icon/profile.svg" alt="Profile" width="32" height="32" class="rounded-circle"/>
+        </NuxtLink>
+        <NuxtLink to="/mypage/bookmark" class="me-3">
+          <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24"/>
+        </NuxtLink>
+        <NuxtLink to="/mypage/bookmark" class="me-3">
+          <img src="/assets/image/icon/bookmark.svg" alt="Bookmark" width="24" height="24"/>
+        </NuxtLink>
+      </div>
     </div>
 
     <div class="container">
       <!-- 로고 (홈 이동) -->
       <NuxtLink to="/" class="navbar-brand">
-        <img src="/assets/image/DevLinks.svg" alt="Logo" width="40" height="40" />
+        <img src="/assets/image/DevLinks.svg" alt="Logo" width="40" height="40"/>
       </NuxtLink>
 
       <!-- 네비게이션 메뉴 -->
@@ -34,12 +36,30 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
         </ul>
       </div>
     </div>
+
+    <!-- 로고 (홈 이동) -->
+    <NuxtLink to="/" class="navbar-brand">
+      <img src="/assets/image/DevLinks.svg" alt="Logo" width="40" height="40"/>
+    </NuxtLink>
   </nav>
 </template>
 
 <style scoped>
-/* Bootstrap 사용 시 최소한의 스타일 조정 */
-.bi {
+.navbar-nav .nav-link {
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+.navbar-brand img {
+  cursor: pointer;
+}
+
+.d-flex img {
   cursor: pointer;
 }
 </style>
