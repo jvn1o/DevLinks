@@ -14,7 +14,7 @@ export default {
 <template>
   <main>
     <div class="pt-4">
-      <Category></Category>
+      <Filter></Filter>
       <div>
         <div>Results</div>
 
