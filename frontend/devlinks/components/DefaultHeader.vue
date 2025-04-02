@@ -41,9 +41,11 @@ onUnmounted(() => {
 
     <div class="container p-0 w-max-content">
       <!-- 로고 (홈 이동) -->
-      <NuxtLink to="/" class="navbar-brand">
-        <img src="/assets/image/DevLinks.svg" alt="Logo" width="32" height="32"/>
-      </NuxtLink>
+      <div class="d-flex p-0">
+        <NuxtLink to="/" class="navbar-brand">
+          <img src="/assets/image/DevLinks.svg" alt="Logo" width="32" height="32"/>
+        </NuxtLink>
+      </div>
 
       <!-- 네비게이션 메뉴 -->
       <div v-if="screenWidth > 390" class="collapse navbar-collapse">
