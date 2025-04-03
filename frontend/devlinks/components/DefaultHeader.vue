@@ -1,25 +1,10 @@
 <script setup>
 const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & DevOps", "Testing & QA", "UI / UX"];
-const screenWidth = ref(0); // 초기값을 0으로 설정
 
-const updateScreenWidth = () => {
-  if (typeof window !== "undefined") {
-    screenWidth.value = window.innerWidth;
-  }
-};
-
-onMounted(() => {
-  updateScreenWidth(); // 컴포넌트 마운트 후 window.innerWidth 설정
-  window.addEventListener("resize", updateScreenWidth);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", updateScreenWidth);
-});
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+  <nav class="navbar navbar-expand-xl navbar-light bg-light p-0">
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div class="d-flex justify-content-center align-items-center p-2">
       <div class="w-32 h-32 p-1">
@@ -39,16 +24,22 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="container p-0 w-max-content">
-      <!-- 로고 (홈 이동) -->
-      <div class="d-flex p-0">
-        <NuxtLink to="/" class="navbar-brand">
-          <img src="/assets/image/DevLinks.svg" alt="Logo" width="32" height="32"/>
-        </NuxtLink>
-      </div>
+    <!-- 로고 (홈 이동) -->
+    <div class="d-flex p-0">
+      <NuxtLink to="/" class="navbar-brand">
+        <img src="/assets/image/DevLinks.svg" alt="Logo" width="32" height="32"/>
+      </NuxtLink>
+    </div>
 
-      <!-- 네비게이션 메뉴 -->
-      <div v-if="screenWidth > 390" class="collapse navbar-collapse">
+    <!--  네비게이션 탭  -->
+    <div class="container-fluid">
+      <!-- width가 줄어들 때 햄버거 버튼 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- width가 넓을 때 네비게이션 메뉴 -->
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
             <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
@@ -59,7 +50,8 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- 로고 (홈 이동) -->
+
+    <!-- 글 작성 -->
     <NuxtLink to="/" class="navbar-brand">
       <img src="/assets/image/icon/write.svg" alt="Logo" width="90" height="20"/>
     </NuxtLink>
@@ -67,6 +59,12 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.navbar {
+  border-bottom: 1px solid #CED3D9;
+  box-shadow: 0px 2px 4px rgba(206, 211, 217, 0.2); /* 부드러운 그림자 효과 */
+  flex-wrap: nowrap;
+}
+
 .navbar-nav .nav-link {
   font-weight: 100;
   color: #333;
