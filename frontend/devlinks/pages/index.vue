@@ -56,15 +56,15 @@ export default {
 
 <template>
   <main>
-    <div class="container mt-4">
-      
+    <div class="container mt-4 p-1">
+
       <!-- 제목 + 필터 -->
-      <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-3 p-2">
         <!-- 제목 -->
         <div class="h2 mb-0">Algorithm & Data Structures</div>
 
         <!-- 필터 -->
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-end">
           <label for="filter" class="me-2 fs-5">Filter by:</label>
 
           <!-- 필터 드롭다운 -->
