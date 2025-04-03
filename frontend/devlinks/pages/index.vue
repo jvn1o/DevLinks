@@ -58,12 +58,12 @@ export default {
   <main>
     <div class="container mt-4">
       <!-- 제목 -->
-      <h2 class="mb-3">Algorithm & Data Structures</h2>
+      <span class="h2 mb-3">Algorithm & Data Structures</span>
 
       <!-- 필터 -->
-      <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex justify-content-end align-items-center mb-3">
         <div class="d-flex align-items-center">
-          <label for="filter" class="me-2">Filter by:</label>
+          <label for="filter" class="me-2 fs-5">Filter by:</label>
 
           <!-- 필터 드롭다운 -->
           <div class="custom-dropdown me-3">
