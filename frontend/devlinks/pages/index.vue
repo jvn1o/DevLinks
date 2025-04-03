@@ -13,6 +13,20 @@ export default {
     const currentPage = ref(1);
     const itemsPerPage = 8;
 
+    // 선택된 필터 라벨
+    const filterLabel = computed(() => {
+      return selectedFilter.value === "newest" ? "Newest" :
+          selectedFilter.value === "popular" ? "Popular" :
+              "Alphabetical";
+    });
+
+    // 선택된 가격 라벨
+    const priceLabel = computed(() => {
+      return selectedPrice.value === "all" ? "Free + Paid" :
+          selectedPrice.value === "free" ? "Free" :
+              "Paid";
+    });
+
     // 필터링 로직
     const filteredItems = computed(() => {
       return items.value.filter((item) => {
@@ -37,16 +51,23 @@ export default {
       <h2 class="mb-3">Algorithm & Data Structures</h2>
 
       <!-- 필터 -->
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <div></div>
-        <div>
-          <label for="filter" class="me-2">Filter by:</label>
-          <select v-model="selectedFilter" class="form-select d-inline w-auto">
+      <div class="d-flex align-items-center">
+        <label for="filter" class="me-2">Filter by:</label>
+
+        <!-- 필터 드롭다운 -->
+        <div class="custom-dropdown me-3" @click="toggleFilterDropdown">
+          <span>{{ filterLabel }}</span>
+          <select v-model="selectedFilter">
             <option value="newest">newest</option>
             <option value="popular">popular</option>
             <option value="alphabetical">alphabetical</option>
           </select>
-          <select v-model="selectedPrice" class="form-select d-inline w-auto ms-2">
+        </div>
+
+        <!-- 가격 필터 드롭다운 -->
+        <div class="custom-dropdown" @click="togglePriceDropdown">
+          <span>{{ priceLabel }}</span>
+          <select v-model="selectedPrice">
             <option value="all">free + paid</option>
             <option value="free">free</option>
             <option value="paid">paid</option>
@@ -87,12 +108,45 @@ export default {
 </template>
 
 <style scoped>
+
 .card {
   border-radius: 10px;
   overflow: hidden;
 }
+
 .card img {
   height: 150px;
   object-fit: cover;
+}
+
+/* 공통 스타일 */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-right: 20px;
+  font-weight: 500;
+}
+
+/* 화살표 스타일 추가 */
+.custom-dropdown::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+}
+
+/* select 숨기기 */
+.custom-dropdown select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
 }
 </style>
