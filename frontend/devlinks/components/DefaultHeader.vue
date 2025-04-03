@@ -34,7 +34,7 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
     <!--  네비게이션 탭  -->
     <div class="container-fluid">
       <!-- width가 줄어들 때 햄버거 버튼 -->
-      <button class="navbar-toggler" style="padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" style="border: none; padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
