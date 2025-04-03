@@ -14,7 +14,7 @@ export default {
     const itemsPerPage = 8;
 
     // 선택된 필터 라벨
-    const filterLabel = computed(() => {
+    const sortLabel = computed(() => {
       return selectedFilter.value === "newest" ? "Newest" :
           selectedFilter.value === "popular" ? "Popular" :
               "Alphabetical";
@@ -39,7 +39,17 @@ export default {
     // 전체 페이지 수 계산
     const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage));
 
-    return { items, selectedFilter, selectedPrice, currentPage, itemsPerPage, filteredItems, totalPages };
+    return {
+      items,
+      selectedFilter,
+      selectedPrice,
+      currentPage,
+      itemsPerPage,
+      filteredItems,
+      totalPages,
+      sortLabel,
+      priceLabel
+    };
   }
 }
 </script>
@@ -51,29 +61,32 @@ export default {
       <h2 class="mb-3">Algorithm & Data Structures</h2>
 
       <!-- 필터 -->
-      <div class="d-flex align-items-center">
-        <label for="filter" class="me-2">Filter by:</label>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center">
+          <label for="filter" class="me-2">Filter by:</label>
 
-        <!-- 필터 드롭다운 -->
-        <div class="custom-dropdown me-3" @click="toggleFilterDropdown">
-          <span>{{ filterLabel }}</span>
-          <select v-model="selectedFilter">
-            <option value="newest">newest</option>
-            <option value="popular">popular</option>
-            <option value="alphabetical">alphabetical</option>
-          </select>
-        </div>
+          <!-- 필터 드롭다운 -->
+          <div class="custom-dropdown me-3">
+            <select v-model="selectedFilter">
+              <option value="newest">Newest</option>
+              <option value="popular">Popular</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+            <span>{{ sortLabel }}</span>
+          </div>
 
-        <!-- 가격 필터 드롭다운 -->
-        <div class="custom-dropdown" @click="togglePriceDropdown">
-          <span>{{ priceLabel }}</span>
-          <select v-model="selectedPrice">
-            <option value="all">free + paid</option>
-            <option value="free">free</option>
-            <option value="paid">paid</option>
-          </select>
+          <!-- 가격 필터 드롭다운 -->
+          <div class="custom-dropdown">
+            <select v-model="selectedPrice">
+              <option value="all">Free + Paid</option>
+              <option value="free">Free</option>
+              <option value="paid">Paid</option>
+            </select>
+            <span>{{ priceLabel }}</span>
+          </div>
         </div>
       </div>
+
 
       <!-- 카드 리스트 -->
       <div class="row">
