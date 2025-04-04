@@ -1,59 +1,3 @@
-<script>
-import { ref, computed } from 'vue';
-
-export default {
-  name: "index.vue",
-  setup() {
-    const items = ref([
-      { title: "Notion", category: "Docs", image: "/assets/image/notion.png", price: "Free", rating: "14870" },
-      { title: "Figma", category: "UI & UX", image: "/assets/image/figma.png", price: "Free", rating: "9980" }
-    ]);
-    const selectedFilter = ref("newest");
-    const selectedPrice = ref("all");
-    const currentPage = ref(1);
-    const itemsPerPage = 8;
-
-    // 선택된 필터 라벨
-    const sortLabel = computed(() => {
-      return selectedFilter.value === "newest" ? "Newest" :
-          selectedFilter.value === "popular" ? "Popular" :
-              "Alphabetical";
-    });
-
-    // 선택된 가격 라벨
-    const priceLabel = computed(() => {
-      return selectedPrice.value === "all" ? "Free + Paid" :
-          selectedPrice.value === "free" ? "Free" :
-              "Paid";
-    });
-
-    // 필터링 로직
-    const filteredItems = computed(() => {
-      return items.value.filter((item) => {
-        if (selectedPrice.value === "free") return item.price === "Free";
-        if (selectedPrice.value === "paid") return item.price !== "Free";
-        return true;
-      }).slice((currentPage.value - 1) * itemsPerPage, currentPage.value * itemsPerPage);
-    });
-
-    // 전체 페이지 수 계산
-    const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage));
-
-    return {
-      items,
-      selectedFilter,
-      selectedPrice,
-      currentPage,
-      itemsPerPage,
-      filteredItems,
-      totalPages,
-      sortLabel,
-      priceLabel
-    };
-  }
-}
-</script>
-
 <template>
   <main>
     <div class="container mt-4 p-1">
@@ -121,6 +65,63 @@ export default {
     </div>
   </main>
 </template>
+
+<script>
+import { ref, computed } from 'vue';
+
+export default {
+  name: "index.vue",
+  setup() {
+    const items = ref([
+      { title: "Notion", category: "Algorithm & Data Structures,\n" +
+            "  UI / UX", image: "/assets/image/notion.png", price: "Free", rating: "14870" },
+      { title: "Figma", category: "UI & UX", image: "/assets/image/figma.png", price: "Free", rating: "9980" }
+    ]);
+    const selectedFilter = ref("newest");
+    const selectedPrice = ref("all");
+    const currentPage = ref(1);
+    const itemsPerPage = 8;
+
+    // 선택된 필터 라벨
+    const sortLabel = computed(() => {
+      return selectedFilter.value === "newest" ? "Newest" :
+          selectedFilter.value === "popular" ? "Popular" :
+              "Alphabetical";
+    });
+
+    // 선택된 가격 라벨
+    const priceLabel = computed(() => {
+      return selectedPrice.value === "all" ? "Free + Paid" :
+          selectedPrice.value === "free" ? "Free" :
+              "Paid";
+    });
+
+    // 필터링 로직
+    const filteredItems = computed(() => {
+      return items.value.filter((item) => {
+        if (selectedPrice.value === "free") return item.price === "Free";
+        if (selectedPrice.value === "paid") return item.price !== "Free";
+        return true;
+      }).slice((currentPage.value - 1) * itemsPerPage, currentPage.value * itemsPerPage);
+    });
+
+    // 전체 페이지 수 계산
+    const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage));
+
+    return {
+      items,
+      selectedFilter,
+      selectedPrice,
+      currentPage,
+      itemsPerPage,
+      filteredItems,
+      totalPages,
+      sortLabel,
+      priceLabel
+    };
+  }
+}
+</script>
 
 <style scoped>
 
