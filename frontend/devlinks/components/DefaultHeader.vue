@@ -1,8 +1,3 @@
-<script setup>
-const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & DevOps", "Testing & QA", "UI / UX"];
-
-</script>
-
 <template>
   <nav class="navbar navbar-expand-xl navbar-light bg-light p-0">
     <!-- 우측 아이콘 (북마크, 프로필) -->
@@ -57,6 +52,16 @@ const tabs = ["Algorithm & Data Structures", "API & Documentation", "Cloud & Dev
     </NuxtLink>
   </nav>
 </template>
+
+<script setup>
+const tabs = [
+  "Algorithm & Data Structures",
+  "API & Documentation",
+  "Cloud & DevOps",
+  "Testing & QA",
+  "UI / UX"
+];
+</script>
 
 <style scoped>
 .navbar {
