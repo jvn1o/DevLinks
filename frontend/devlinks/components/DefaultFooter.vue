@@ -4,16 +4,6 @@
 
     <div class="container">
       <div class="row">
-        <!-- Language Selector -->
-        <div class="col-md-4">
-          <div class="language-selector n-icon n-deco">
-            <select name="language" id="language" class="form-select">
-              <option value="Korean">Korean</option>
-              <option value="English">English</option>
-            </select>
-          </div>
-        </div>
-
         <!-- Customer Center Links -->
         <div class="col-md-4">
           <nav>
@@ -28,22 +18,14 @@
           </nav>
         </div>
 
-        <!-- Business Information -->
-        <div class="col-md-4">
-          <p class="line-height:2">
-            사업자 등록번호: 000-00-00000<br />
-            대표: 김준성<br />
-            개인정보 관리 책임자: 김준성<br />
-            대표번호: 010-8824-3171<br />
-            이메일: junok0987@naver.com<br />
-            주소: 경기도 고양시 덕양구 화중로 32-9<br />
-            운영시간: (월~금) 오전 9:00 ~ 오후 6:00
-          </p>
-
-          <p class="line-height:1.5">
-            Haru Seoul은 통신판매중개자로서 거래당사자가 아니며 호스트가 등록한
-            상품정보 및 거래에 대해 Haru Seoul은 일체의 책임을 지지 않습니다.
-          </p>
+        <!-- Language Selector -->
+        <div class="col-md-4 w-auto">
+          <div class="language-selector n-icon n-deco">
+            <select name="language" id="language" class="form-select">
+              <option value="Korean">Korean</option>
+              <option value="English">English</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
