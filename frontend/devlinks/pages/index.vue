@@ -40,7 +40,7 @@
           <div class="card">
             <img :src="item.image" class="card-img-top" :alt="item.title">
             <div class="card-body">
-              <h5 class="card-title">{{ item.title }}</h5>
+              <h5 class="card-title fs-6">{{ item.title }}</h5>
               <p class="card-text text-muted">{{ item.category }}</p>
               <p class="text-warning" v-if="item.rating">⭐ ({{ item.rating }})</p>
               <p class="fw-bold" :class="{'text-success': item.price === 'Free', 'text-primary': item.price !== 'Free'}">
