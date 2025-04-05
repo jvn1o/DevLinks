@@ -3,13 +3,13 @@
     <div class="container mt-4 p-1">
 
       <!-- 제목 + 필터 -->
-      <div class="d-flex justify-content-between align-items-center mb-3 p-2">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3 p-2">
         <!-- 제목 -->
         <div class="h2 mb-0">Algorithm & Data Structures</div>
 
         <!-- 필터 -->
         <div class="d-flex align-items-end">
-          <label for="filter" class="me-2 fs-5">Filter by:</label>
+          <label for="filter" class="me-2 fs-6">Filter by:</label>
 
           <!-- 필터 드롭다운 -->
           <div class="custom-dropdown me-3">
@@ -73,9 +73,62 @@ export default {
   name: "index.vue",
   setup() {
     const items = ref([
-      { title: "Notion", category: "Algorithm & Data Structures,\n" +
-            "  UI / UX", image: "/assets/image/notion.png", price: "Free", rating: "14870" },
-      { title: "Figma", category: "UI & UX", image: "/assets/image/figma.png", price: "Free", rating: "9980" }
+      {
+        title: "Notion",
+        category: "Algorithm & Data Structures,\n" + "  UI / UX",
+        image: "/assets/image/notion.png",
+        price: "Free",
+        rating: "14870"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
+      {
+        title: "Figma",
+        category: "UI & UX",
+        image: "/assets/image/figma.png",
+        price: "Free",
+        rating: "9980"
+      },
     ]);
     const selectedFilter = ref("newest");
     const selectedPrice = ref("all");
