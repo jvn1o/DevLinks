@@ -22,15 +22,15 @@
     <!-- 로고 (홈 이동) -->
     <div class="d-flex p-0">
       <NuxtLink to="/" class="navbar-brand">
-        <img src="/assets/image/DevLinks.svg" alt="Logo" width="32" height="32"/>
+        <img src="/assets/image/DevLinks.svg" alt="Logo" width="28" height="28"/>
       </NuxtLink>
     </div>
 
     <!--  네비게이션 탭  -->
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <!-- width가 줄어들 때 햄버거 버튼 -->
       <button class="navbar-toggler custom-toggler" style="border: none; padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+        <img src="/assets/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
       </button>
 
       <!-- width가 넓을 때 네비게이션 메뉴 -->
