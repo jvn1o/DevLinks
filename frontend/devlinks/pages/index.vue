@@ -36,23 +36,39 @@
 
       <!-- 카드 리스트 -->
       <div class="row">
-        <div v-for="(item, index) in filteredItems" :key="index" class="col-md-3 col-sm-6 mb-4">
-          <div class="card">
-            <img :src="item.image" class="card-img-top" :alt="item.title">
-            <div class="card-body">
-              <h5 class="card-title fs-6">{{ item.title }}</h5>
-              <p class="card-text text-muted">{{ item.category }}</p>
+        <div
+            v-for="(item, index) in filteredItems"
+            :key="index"
+            class="col-md-3 col-sm-6 mb-4"
+        >
+          <div class="card h-100">
+            <div class="card-img-wrapper">
+              <img :src="item.image" class="card-img-top" :alt="item.title" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5
+                  class="card-title fs-6 text-truncate"
+                  :title="item.title"
+              >{{ item.title }}</h5>
+              <p class="card-text text-muted text-truncate">{{ item.category }}</p>
               <p class="text-warning" v-if="item.rating">⭐ ({{ item.rating }})</p>
-              <p class="fw-bold" :class="{'text-success': item.price === 'Free', 'text-primary': item.price !== 'Free'}">
+              <p
+                  class="fw-bold mt-auto"
+                  :class="{
+            'text-success': item.price === 'Free',
+            'text-primary': item.price !== 'Free',
+          }"
+              >
                 {{ item.price }}
               </p>
-              <button class="btn btn-outline-primary btn-sm">
+              <button class="btn btn-sm">
                 <i class="bi bi-bookmark"></i>
               </button>
             </div>
           </div>
         </div>
       </div>
+
 
       <!-- 페이지네이션 -->
       <nav>

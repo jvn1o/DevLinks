@@ -30,7 +30,7 @@
     <div class="container-fluid p-0">
       <!-- width가 줄어들 때 햄버거 버튼 -->
       <button class="navbar-toggler custom-toggler" style="border: none; padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <img src="/assets/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
+        <img src="/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
       </button>
 
       <!-- width가 넓을 때 네비게이션 메뉴 -->
