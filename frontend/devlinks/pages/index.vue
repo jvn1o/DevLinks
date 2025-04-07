@@ -50,8 +50,12 @@
                   class="card-title fs-6 text-truncate"
                   :title="item.title"
               >{{ item.title }}</h5>
-              <p class="card-text text-muted text-truncate">{{ item.category }}</p>
-              <p class="text-warning" v-if="item.rating"><span class="bi bi-bookmark"></span> ({{ item.rating }})</p>
+              <p class="card-text text-muted text-truncate">
+                {{ item.category }}
+              </p>
+              <p class="text-warning" v-if="item.rating">
+                <span class="bi bi-bookmark"></span> ({{ item.rating }})
+              </p>
               <p
                   class="fw-bold mt-auto"
                   :class="{
@@ -82,114 +86,52 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from 'vue';
 
-export default {
-  name: "index.vue",
-  setup() {
-    const items = ref([
-      {
-        title: "Notion",
-        category: "Algorithm & Data Structures,\n" + "  UI / UX",
-        image: "/assets/image/notion.png",
-        price: "Free",
-        rating: "14870"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-      {
-        title: "Figma",
-        category: "UI & UX",
-        image: "/assets/image/figma.png",
-        price: "Free",
-        rating: "9980"
-      },
-    ]);
-    const selectedFilter = ref("newest");
-    const selectedPrice = ref("all");
-    const currentPage = ref(1);
-    const itemsPerPage = 8;
+// 필터 상태
+const selectedFilter = ref("newest");
+const selectedPrice = ref("all");
+const currentPage = ref(1);
+const itemsPerPage = 8;
 
-    // 선택된 필터 라벨
-    const sortLabel = computed(() => {
-      return selectedFilter.value === "newest" ? "Newest" :
-          selectedFilter.value === "popular" ? "Popular" :
-              "Alphabetical";
-    });
+// API에서 데이터 불러오기
+const { data: items } = await useFetch('/api/resources'); // 백엔드 API 주소
 
-    // 선택된 가격 라벨
-    const priceLabel = computed(() => {
-      return selectedPrice.value === "all" ? "Free + Paid" :
-          selectedPrice.value === "free" ? "Free" :
-              "Paid";
-    });
+// 정렬 라벨
+const sortLabel = computed(() => {
+  return selectedFilter.value === "newest" ? "Newest" :
+      selectedFilter.value === "popular" ? "Popular" : "Alphabetical";
+});
 
-    // 필터링 로직
-    const filteredItems = computed(() => {
-      return items.value.filter((item) => {
-        if (selectedPrice.value === "free") return item.price === "Free";
-        if (selectedPrice.value === "paid") return item.price !== "Free";
-        return true;
-      }).slice((currentPage.value - 1) * itemsPerPage, currentPage.value * itemsPerPage);
-    });
+// 가격 라벨
+const priceLabel = computed(() => {
+  return selectedPrice.value === "all" ? "Free + Paid" :
+      selectedPrice.value === "free" ? "Free" : "Paid";
+});
 
-    // 전체 페이지 수 계산
-    const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage));
+// 필터링 및 페이지네이션
+const filteredItems = computed(() => {
+  if (!items.value) return [];
 
-    return {
-      items,
-      selectedFilter,
-      selectedPrice,
-      currentPage,
-      itemsPerPage,
-      filteredItems,
-      totalPages,
-      sortLabel,
-      priceLabel
-    };
-  }
-}
+  const filtered = items.value.filter(item => {
+    if (selectedPrice.value === 'free') return item.price === 'Free';
+    if (selectedPrice.value === 'paid') return item.price === 'Paid';
+    return true;
+  });
+
+  return filtered.slice((currentPage.value - 1) * itemsPerPage, currentPage.value * itemsPerPage);
+});
+
+const totalPages = computed(() => {
+  if (!items.value) return 1;
+  const filtered = items.value.filter(item => {
+    if (selectedPrice.value === 'free') return item.price === 'Free';
+    if (selectedPrice.value === 'paid') return item.price === 'Paid';
+    return true;
+  });
+  return Math.ceil(filtered.length / itemsPerPage);
+});
 </script>
 
 <style scoped>
