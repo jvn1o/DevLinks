@@ -3,7 +3,7 @@
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div class="d-flex justify-content-center align-items-center p-2">
       <div class="w-32 h-32 p-1">
-        <NuxtLink to="/login">
+        <NuxtLink to="/signin">
           <img src="/assets/image/icon/profile.svg" alt="Profile" width="32" height="32" class="rounded-circle"/>
         </NuxtLink>
       </div>
