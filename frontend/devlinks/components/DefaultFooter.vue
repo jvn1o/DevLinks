@@ -1,5 +1,5 @@
 <template>
-  <footer class="n-footer bg-light py-4">
+  <footer class="n-footer bg-light py-4 mt-5">
     <h1 class="d-none">footer</h1>
 
     <div class="container">
