@@ -55,8 +55,8 @@
               <p
                   class="fw-bold mt-auto"
                   :class="{
-            'text-success': item.price === 'Free',
-            'text-primary': item.price !== 'Free',
+            'text-danger': item.price !== 'Free',
+            'text-primary': item.price === 'Free',
           }"
               >
                 {{ item.price }}
