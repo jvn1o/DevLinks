@@ -51,7 +51,7 @@
                   :title="item.title"
               >{{ item.title }}</h5>
               <p class="card-text text-muted text-truncate">{{ item.category }}</p>
-              <p class="text-warning" v-if="item.rating">⭐ ({{ item.rating }})</p>
+              <p class="text-warning" v-if="item.rating"><span class="bi bi-bookmark"></span> ({{ item.rating }})</p>
               <p
                   class="fw-bold mt-auto"
                   :class="{

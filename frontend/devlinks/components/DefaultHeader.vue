@@ -33,7 +33,7 @@
         <img src="/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
       </button>
 
-      <!-- width가 넓을 때 네비게이션 메뉴 -->
+      <!-- width가 넓을 때 네비게이션 탭 -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
