@@ -49,8 +49,8 @@
 }
 
 .language-selector select {
+  background-image: none; /* 일부 브라우저 화살표 제거 */
   border: none;
-  outline: none; /* 선택 시 파란 테두리 제거 */
   box-shadow: none; /* 일부 브라우저에서 남는 그림자 제거 */
   background-color: transparent; /* 필요 시 배경 제거 */
 }
