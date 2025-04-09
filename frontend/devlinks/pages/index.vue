@@ -12,23 +12,27 @@
           <label for="filter" class="me-2 fs-6">Filter by:</label>
 
           <!-- 필터 드롭다운 -->
-          <div class="custom-dropdown me-3">
+          <div class="custom-dropdown" @click="toggle = !toggle">
             <span>{{ sortLabel }}</span>
-            <select v-model="selectedFilter">
-              <option value="newest">Newest</option>
-              <option value="popular">Popular</option>
-              <option value="alphabetical">Alphabetical</option>
-            </select>
+            <span class="arrow">▼</span>
+
+            <ul v-if="toggle" class="dropdown-list">
+              <li @click="select('newest')">Newest</li>
+              <li @click="select('popular')">Popular</li>
+              <li @click="select('alphabetical')">Alphabetical</li>
+            </ul>
           </div>
 
           <!-- 가격 필터 드롭다운 -->
           <div class="custom-dropdown">
             <span>{{ priceLabel }}</span>
-            <select v-model="selectedPrice">
-              <option value="all">Free + Paid</option>
-              <option value="free">Free</option>
-              <option value="paid">Paid</option>
-            </select>
+            <div class="dropdown-trigger">
+              <select v-model="selectedPrice">
+                <option value="all">Free + Paid</option>
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -146,34 +150,48 @@ const totalPages = computed(() => {
   object-fit: cover;
 }
 
-/* 공통 스타일 */
 .custom-dropdown {
   position: relative;
-  display: inline-block;
-  cursor: pointer;
-  padding-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 500;
 }
 
-/* 화살표 스타일 추가 */
-.custom-dropdown::after {
-  content: "▼";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  color: #333;
+/* 화살표만 클릭 영역으로 지정 */
+.dropdown-trigger {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
 }
 
-/* select 숨기기 */
-.custom-dropdown select {
+/* 화살표 아이콘처럼 보이게 */
+.dropdown-trigger::after {
+  content: "▼";
+  font-size: 12px;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* select는 투명하게 덮어서 화살표만 클릭 가능하게 */
+.dropdown-trigger select {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  pointer-events: auto;
+  cursor: pointer;
+  z-index: 1;
+
+  /* 추가: 선택 리스트가 너무 오른쪽에 뜨는 것 방지 */
+  text-align-last: left; /* 드롭다운 옵션 정렬 */
+  padding-right: 20px;   /* 오른쪽 공간 확보 */
 }
+
 </style>
