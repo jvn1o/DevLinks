@@ -7,7 +7,7 @@
         <!-- Customer Center Links -->
         <div class="col-md-4">
           <nav>
-            <h5 class="fw-bold">Customer Center</h5>
+            <h5 class="fw-bold" style="color: #007bff;">Customer Center</h5>
             <ul class="list-unstyled">
               <li><a href="" class="text-decoration-none">Notice</a></li>
               <li><a href="" class="text-decoration-none">Q&A</a></li>
