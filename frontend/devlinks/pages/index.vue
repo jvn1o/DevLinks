@@ -13,22 +13,22 @@
 
           <!-- 필터 드롭다운 -->
           <div class="custom-dropdown me-3">
+            <span>{{ sortLabel }}</span>
             <select v-model="selectedFilter">
               <option value="newest">Newest</option>
               <option value="popular">Popular</option>
               <option value="alphabetical">Alphabetical</option>
             </select>
-            <span>{{ sortLabel }}</span>
           </div>
 
           <!-- 가격 필터 드롭다운 -->
           <div class="custom-dropdown">
+            <span>{{ priceLabel }}</span>
             <select v-model="selectedPrice">
               <option value="all">Free + Paid</option>
               <option value="free">Free</option>
               <option value="paid">Paid</option>
             </select>
-            <span>{{ priceLabel }}</span>
           </div>
         </div>
       </div>
