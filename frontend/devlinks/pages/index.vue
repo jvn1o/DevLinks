@@ -9,7 +9,7 @@
 
         <!-- 필터 -->
         <div class="d-flex align-items-end">
-          <label for="filter" class="me-2 fs-6">Filter by:</label>
+          <label for="filter" class="me-2 fs-6">Filter by :</label>
 
           <!-- 필터 드롭다운 -->
           <div class="custom-dropdown me-3">
