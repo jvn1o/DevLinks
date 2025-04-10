@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main-content">
     <div class="container mt-4 p-1">
 
       <!-- 제목 + 필터 -->
@@ -135,6 +135,12 @@ const totalPages = computed(() => {
 </script>
 
 <style scoped>
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 .card {
   border-radius: 10px;
