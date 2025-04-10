@@ -28,6 +28,7 @@
 
     <!--  네비게이션 탭  -->
     <div class="container-fluid p-0">
+
       <!-- width가 줄어들 때 햄버거 버튼 -->
       <button class="navbar-toggler custom-toggler" style="border: none; padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <img src="/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
@@ -87,5 +88,11 @@ const tabs = [
 
 .d-flex img {
   cursor: pointer;
+}
+
+/* 햄버거 버튼 클릭 시 테두리 제거 */
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>
