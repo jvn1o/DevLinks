@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-xl navbar-light bg-light p-0">
     <!-- 우측 아이콘 (북마크, 프로필) -->
-    <div class="d-flex justify-content-center align-items-center p-2">
+    <div class="d-flex justify-content-center align-items-center p-2" style="border-right: 1px solid #CED3D9 !important;">
       <div class="w-32 h-32 p-1">
         <NuxtLink to="/signin">
           <img src="/assets/image/icon/profile.svg" alt="Profile" width="32" height="32" class="rounded-circle"/>
