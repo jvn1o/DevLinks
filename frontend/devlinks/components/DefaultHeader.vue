@@ -20,7 +20,7 @@
     </div>
 
     <!-- 로고 (홈 이동) -->
-    <div class="d-flex p-0">
+    <div class="d-flex ps-3 h-100" style="border-right: 1px solid #CED3D9 !important; height: 64px;">
       <NuxtLink to="/" class="navbar-brand">
         <img src="/assets/image/DevLinks.svg" alt="Logo" width="28" height="28"/>
       </NuxtLink>
