@@ -1,9 +1,9 @@
 <template>
   <main class="main-content">
     <div class="container mt-4 p-1">
-
       <!-- 제목 + 필터 -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3 p-2">
+      <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3 p-2">
         <!-- 제목 -->
         <div class="h2 mb-0">Algorithm & Data Structures</div>
 
@@ -43,7 +43,7 @@
         >
           <div class="card h-100">
             <div class="card-img-wrapper">
-              <img :src="item.image" class="card-img-top" :alt="item.title" />
+              <img :src="item.image" class="card-img-top" :alt="item.title"/>
             </div>
             <div class="card-body d-flex flex-column">
               <h5
@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import {ref, computed} from 'vue';
 
 // 필터 상태
 const selectedFilter = ref("newest");
@@ -96,7 +96,7 @@ const currentPage = ref(1);
 const itemsPerPage = 8;
 
 // API에서 데이터 불러오기
-const { data: items } = await useFetch('/api/resources'); // 백엔드 API 주소
+const {data: items} = await useFetch('/api/resources'); // 백엔드 API 주소
 
 // 정렬 라벨
 const sortLabel = computed(() => {
@@ -136,10 +136,15 @@ const totalPages = computed(() => {
 
 <style scoped>
 .main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 전체 화면 기준 최소 높이 확보 */
+}
+
+.container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 .card {
@@ -159,6 +164,7 @@ const totalPages = computed(() => {
   cursor: pointer;
   padding-right: 20px;
   font-weight: 500;
+
 }
 
 /* 화살표 스타일 추가 */
@@ -181,5 +187,9 @@ const totalPages = computed(() => {
   height: 100%;
   opacity: 0;
   pointer-events: auto;
+}
+
+.row {
+  flex-grow: 1; /* 카드 리스트가 남는 공간을 차지하게 함 */
 }
 </style>
