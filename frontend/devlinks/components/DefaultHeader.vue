@@ -30,8 +30,13 @@
     <!--  네비게이션 탭  -->
     <div class="container-fluid p-0">
 
-      <!-- width가 줄어들 때 햄버거 버튼 -->
-      <button class="navbar-toggler custom-toggler ps-3" style="border: none; padding: 4px 6px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <!-- 햄버거 버튼 -->
+      <button
+          class="navbar-toggler custom-toggler ps-3"
+          style="border: none; padding: 4px 6px;"
+          type="button"
+          @click="toggleSidebar"
+      >
         <img src="/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
       </button>
 
@@ -46,6 +51,33 @@
         </ul>
       </div>
     </div>
+
+
+    <!-- 사이드바 -->
+    <aside
+        class="sidebar bg-white shadow position-fixed top-0 start-0 h-100 p-3"
+        :class="{ 'show': isSidebarOpen }"
+    >
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="m-0">메뉴</h5>
+        <button class="btn-close" @click="toggleSidebar"></button>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item" v-for="(tab, index) in tabs" :key="index">
+          <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+            {{ tab }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </aside>
+
+
+    <!-- 오버레이 배경 -->
+    <div
+        class="sidebar-overlay"
+        v-if="isSidebarOpen"
+        @click="toggleSidebar"
+    ></div>
 
 
     <!-- 글 작성 -->
