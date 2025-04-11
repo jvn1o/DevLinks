@@ -88,6 +88,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const tabs = [
   "Algorithm & Data Structures",
   "API & Documentation",
@@ -95,6 +97,11 @@ const tabs = [
   "Testing & QA",
   "UI / UX"
 ];
+
+const isSidebarOpen = ref(false)
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
 </script>
 
 <style scoped>
