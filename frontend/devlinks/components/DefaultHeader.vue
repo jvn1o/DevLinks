@@ -135,4 +135,26 @@ const toggleSidebar = () => {
   outline: none;
   box-shadow: none;
 }
+
+/* 사이드바 위치 및 애니메이션 */
+.sidebar {
+  width: 260px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050; /* modal보다 낮고 dropdown보다 높게 */
+}
+.sidebar.show {
+  transform: translateX(0);
+}
+
+/* 배경 어둡게 처리 */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1040;
+}
 </style>
