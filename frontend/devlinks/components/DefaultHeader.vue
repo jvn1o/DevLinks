@@ -63,7 +63,7 @@
         <button class="btn-close" @click="toggleSidebar"></button>
       </div>
       <ul class="nav flex-column">
-        <li class="nav-item" v-for="(tab, index) in tabs" :key="index">
+        <li class="nav-item p-2" v-for="(tab, index) in tabs" :key="index">
           <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
             {{ tab }}
           </NuxtLink>
@@ -138,13 +138,20 @@ const toggleSidebar = () => {
 
 /* 사이드바 위치 및 애니메이션 */
 .sidebar {
-  width: 50%;
+  width: 60%;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1050; /* modal보다 낮고 dropdown보다 높게 */
 }
 .sidebar.show {
   transform: translateX(0);
+}
+
+/* 사이드바 내 네비게이션 항목 텍스트 크기 */
+.sidebar .nav-link {
+  display: inline;
+  font-size: 1.4rem; /* 18px 정도 */
+  font-weight: 500;
 }
 
 /* 배경 어둡게 처리 */
