@@ -59,7 +59,7 @@
         :class="{ 'show': isSidebarOpen }"
     >
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h5 class="m-0">메뉴</h5>
+        <h5 class="m-3">Category</h5>
         <button class="btn-close" @click="toggleSidebar"></button>
       </div>
       <ul class="nav flex-column">
@@ -138,7 +138,7 @@ const toggleSidebar = () => {
 
 /* 사이드바 위치 및 애니메이션 */
 .sidebar {
-  width: 260px;
+  width: 50%;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1050; /* modal보다 낮고 dropdown보다 높게 */
