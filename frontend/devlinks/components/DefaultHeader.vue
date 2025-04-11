@@ -36,7 +36,7 @@
       </button>
 
       <!-- width가 넓을 때 네비게이션 탭 -->
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse ps-2" id="navbarNav">
         <ul class="navbar-nav">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
             <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
