@@ -20,11 +20,12 @@
     </div>
 
     <!-- 로고 (홈 이동) -->
-    <div class="d-flex ps-3 h-100" style="border-right: 1px solid #CED3D9 !important; height: 64px;">
-      <NuxtLink to="/" class="navbar-brand">
-        <img src="/assets/image/DevLinks.svg" alt="Logo" width="28" height="28"/>
+    <div class="d-flex align-items-stretch ps-3 border-end" style="height: 56px;">
+      <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
+        <img src="/assets/image/DevLinks.svg" alt="Logo" width="28" height="32" />
       </NuxtLink>
     </div>
+
 
     <!--  네비게이션 탭  -->
     <div class="container-fluid p-0">
