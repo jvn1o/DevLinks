@@ -44,7 +44,7 @@
       <div class="collapse navbar-collapse ps-2" id="navbarNav">
         <ul class="navbar-nav">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
-            <NuxtLink :to="`/category/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+            <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
               {{ tab }}
             </NuxtLink>
           </li>
@@ -64,7 +64,7 @@
       </div>
       <ul class="nav flex-column">
         <li class="nav-item p-2" v-for="(tab, index) in tabs" :key="index">
-          <NuxtLink :to="`/category/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+          <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
             {{ tab }}
           </NuxtLink>
         </li>
@@ -89,6 +89,17 @@
 
 <script setup>
 import { ref } from 'vue'
+
+// ✅ 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
+const slugify = (text) => {
+  return text
+      .toLowerCase()
+      .replace(/ & /g, '-')   // 의미 보존 (예: API & Docs → api-and-docs)
+      .replace(/ \/ /g, '-')      // 슬래시 제거 (예: UI / UX → ui-ux)
+      .replace(/[^\w\-]+/g, '-')  // 나머지 특수문자 제거
+      .replace(/\-\-+/g, '-')     // 연속된 하이픈 정리
+      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
+}
 
 const tabs = [
   "Algorithm & Data Structures",
