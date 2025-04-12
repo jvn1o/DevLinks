@@ -44,7 +44,7 @@
       <div class="collapse navbar-collapse ps-2" id="navbarNav">
         <ul class="navbar-nav">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
-            <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+            <NuxtLink :to="`/category/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
               {{ tab }}
             </NuxtLink>
           </li>
@@ -64,7 +64,7 @@
       </div>
       <ul class="nav flex-column">
         <li class="nav-item p-2" v-for="(tab, index) in tabs" :key="index">
-          <NuxtLink :to="`/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
+          <NuxtLink :to="`/category/${tab.toLowerCase().replace(/ /g, '-')}`" class="nav-link">
             {{ tab }}
           </NuxtLink>
         </li>
