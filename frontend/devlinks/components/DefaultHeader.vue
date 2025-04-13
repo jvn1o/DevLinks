@@ -42,7 +42,7 @@
       </button>
 
       <!-- 네비게이션 탭: 항상 렌더링되게, 조건부 렌더링 X -->
-      <div class="ps-2">
+      <div v-if="!isMobileDevice" class="ps-2">
         <ul class="navbar-nav d-flex flex-row">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item px-2">
             <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
@@ -56,36 +56,13 @@
 
 
     <!-- 사이드바 -->
-    <aside
+    <Sidebar
         v-if="isMobileDevice"
-        class="sidebar bg-white shadow position-fixed top-0 start-0 h-100 p-3"
-        :class="{ 'show': isSidebarOpen }"
-    >
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h5 class="m-3">Category</h5>
-        <button class="btn-close" @click="toggleSidebar"></button>
-      </div>
-      <ul class="nav flex-column">
-        <li class="nav-item p-2" v-for="(tab, index) in tabs" :key="index">
-          <NuxtLink
-              :to="`/category/${slugify(tab)}`"
-              class="nav-link"
-              @click="toggleSidebar"
-          >
-          {{ tab }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </aside>
-
-
-    <!-- 오버레이 배경 -->
-    <div
-        v-if="isSidebarOpen && isMobileDevice"
-        class="sidebar-overlay"
-        @click="toggleSidebar"
-    ></div>
-
+        :isSidebarOpen="isSidebarOpen"
+        :toggleSidebar="toggleSidebar"
+        :tabs="tabs"
+        :slugify="slugify"
+    />
 
     <!-- 글 작성 -->
     <NuxtLink to="/" class="ms-auto navbar-brand">
@@ -97,9 +74,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
+import Sidebar from './Sidebar.vue'
 
 const { width } = useWindowSize()
-const isMobileDevice = computed(() => width.value < 768)
+const isMobileDevice = computed(() => width.value < 1100)
 
 // ✅ 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
 const slugify = (text) => {
@@ -158,32 +136,4 @@ const toggleSidebar = () => {
   box-shadow: none;
 }
 
-/* 사이드바 위치 및 애니메이션 */
-.sidebar {
-  width: 60%;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1050; /* modal보다 낮고 dropdown보다 높게 */
-}
-.sidebar.show {
-  transform: translateX(0);
-}
-
-/* 사이드바 내 네비게이션 항목 텍스트 크기 */
-.sidebar .nav-link {
-  display: inline;
-  font-size: 1.4rem; /* 18px 정도 */
-  font-weight: 500;
-}
-
-/* 배경 어둡게 처리 */
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1040;
-}
 </style>
