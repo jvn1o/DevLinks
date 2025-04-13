@@ -48,9 +48,9 @@
           </ul>
         </div>
 
-        <!-- Newsletter + Language -->
+        <!-- DarkMode + Language -->
         <div class="col-md-3 mb-4">
-          <h5 class="fw-bold text-primary">Theme</h5>
+          <h6 class="fw-bold text-primary">Theme</h6>
           <!-- 다크 모드 토글 버튼 -->
           <div class="toggle-wrapper mt-4">
             <label class="switch w-25">
@@ -139,30 +139,32 @@ onMounted(() => {
 <style scoped>
 .n-footer-dark {
   background-color: #212529;
-  color: white;
+  color: #e9ecef;
 }
 
-.n-footer-light {
-  background-color: #f8f9fa;
-  color: black;
+/* 링크 색상 - 상태에 따라 */
+.n-footer-dark a {
+  color: #adb5bd;
 }
 
-.n-footer a {
-  color: #007bff;
-}
-
-.n-footer a:hover {
-  color: #0056b3;
+.n-footer-dark a:hover {
+  color: #ffffff;
   text-decoration: underline;
 }
 
+/* 셀렉트 박스 (언어 선택) */
 select.form-select {
-  background-color: #fff;
-  border: 1px solid #ced4da;
   font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
-/* 다크 모드 토글 스위치 스타일 */
+.n-footer-dark select.form-select {
+  background-color: #343a40;
+  color: #e9ecef;
+  border: 1px solid #495057;
+}
+
+/* 다크 모드 토글 스위치 */
 .toggle-wrapper {
   position: relative;
 }
@@ -209,14 +211,16 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(38px);
+  transform: translateX(26px);
 }
 
+/* 아이콘 위치 및 색상 */
 .slider i {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  pointer-events: none;
 }
 
 .slider i.bi-sun {
@@ -227,5 +231,18 @@ input:checked + .slider:before {
 .slider i.bi-moon {
   left: 9px;
   color: #f1c40f;
+}
+
+/* 다크모드에서 muted 텍스트도 밝게 */
+.n-footer-dark .text-muted {
+  color: #adb5bd !important;
+}
+
+.n-footer-light .text-muted {
+  color: #6c757d !important;
+}
+
+.n-footer-dark img {
+  filter: brightness(0) invert(1);
 }
 </style>
