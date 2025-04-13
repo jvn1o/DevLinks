@@ -1,5 +1,11 @@
 <template>
-  <nav class="navbar navbar-light bg-light p-0 w-auto">
+  <nav
+      :class="{
+      'navbar-dark bg-dark': darkMode,
+      'navbar-light bg-light': !darkMode
+    }"
+      class="navbar p-0 w-auto"
+  >
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div class="d-flex justify-content-center align-items-center p-2" style="border-right: 1px solid #CED3D9 !important;">
       <div class="w-32 h-32 p-1">
@@ -26,8 +32,7 @@
       </NuxtLink>
     </div>
 
-
-    <!--  네비게이션 탭  -->
+    <!-- 네비게이션 탭 -->
     <div class="container-fluid p-0">
 
       <!-- 햄버거 버튼: 모바일일 때만 표시 -->
@@ -45,7 +50,7 @@
       <div v-if="!isMobileDevice" class="ps-2">
         <ul class="navbar-nav d-flex flex-row">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item px-2">
-            <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
+            <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link fw-bold text-primary">
               {{ tab }}
             </NuxtLink>
           </li>
@@ -53,7 +58,6 @@
       </div>
 
     </div>
-
 
     <!-- 사이드바 -->
     <Sidebar
@@ -75,6 +79,11 @@
 import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import Sidebar from './Sidebar.vue'
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  darkMode: Boolean,
+});
 
 const { width } = useWindowSize()
 const isMobileDevice = computed(() => width.value < 1100)
@@ -84,7 +93,7 @@ const slugify = (text) => {
   return text
       .toLowerCase()
       .replace(/ & /g, '-')   // 의미 보존 (예: API & Docs → api-and-docs)
-      .replace(/ \/ /g, '-')      // 슬래시 제거 (예: UI / UX → ui-ux)
+      .replace(/ \/ /g, '-')   // 슬래시 제거 (예: UI / UX → ui-ux)
       .replace(/[^\w\-]+/g, '-')  // 나머지 특수문자 제거
       .replace(/\-\-+/g, '-')     // 연속된 하이픈 정리
       .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
@@ -105,6 +114,14 @@ const toggleSidebar = () => {
 </script>
 
 <style scoped>
+.navbar-dark {
+  background-color: #343a40 !important;
+}
+
+.navbar-light {
+  background-color: #f8f9fa !important;
+}
+
 .navbar {
   border-bottom: 1px solid #CED3D9;
   box-shadow: 0px 2px 4px rgba(206, 211, 217, 0.2); /* 부드러운 그림자 효과 */

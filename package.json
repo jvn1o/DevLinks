@@ -1,5 +1,10 @@
 {
   "dependencies": {
     "@vueuse/core": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "typescript": "^5.8.3"
   }
 }
