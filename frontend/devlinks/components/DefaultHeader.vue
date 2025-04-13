@@ -1,7 +1,10 @@
 <template>
   <nav :class="['navbar p-0 w-auto', { 'navbar-dark': darkMode }]">
     <!-- 우측 아이콘 (북마크, 프로필) -->
-    <div class="d-flex justify-content-center align-items-center p-2" :style="{'border-right': darkMode ? '1px solid #495057' : '1px solid #CED3D9'}">
+    <div
+        class="d-flex justify-content-center align-items-center p-2 border-end"
+        :style="{'border-color': darkMode ? '#495057' : '#CED3D9'}"
+    >
       <div class="w-32 h-32 p-1">
         <NuxtLink to="/signin">
           <img
@@ -10,7 +13,6 @@
               width="32"
               height="32"
               class="rounded-circle"
-              :class="{'icon-dark': darkMode}"
           />
         </NuxtLink>
       </div>
@@ -39,14 +41,16 @@
     </div>
 
     <!-- 로고 (홈 이동) -->
-    <div class="d-flex align-items-stretch ps-3 border-end" :style="{'height': '56px', 'border-color': darkMode ? '#495057' : '#CED3D9'}">
+    <div
+        class="d-flex align-items-stretch ps-3 border-end"
+        :style="{'height': '56px', 'border-color': darkMode ? '#495057' : '#CED3D9'}"
+    >
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img
             src="/assets/image/DevLinks.svg"
             alt="Logo"
             width="28"
             height="32"
-            :class="{'icon-dark': darkMode}"
         />
       </NuxtLink>
     </div>
@@ -179,8 +183,8 @@ const toggleSidebar = () => {
   box-shadow: none;
 }
 
-/* 아이콘 색상 조정: SVG 색상 반전 */
+/* 다크모드일 때 아이콘 색상 반전 */
 .icon-dark {
-  filter: brightness(0) invert(1);
+  filter: invert(1);
 }
 </style>
