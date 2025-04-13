@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-xl navbar-light bg-light p-0 w-auto">
+  <nav class="navbar navbar-light bg-light p-0 w-auto">
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div class="d-flex justify-content-center align-items-center p-2" style="border-right: 1px solid #CED3D9 !important;">
       <div class="w-32 h-32 p-1">
@@ -30,8 +30,9 @@
     <!--  네비게이션 탭  -->
     <div class="container-fluid p-0">
 
-      <!-- 햄버거 버튼 -->
+      <!-- 햄버거 버튼: 모바일일 때만 표시 -->
       <button
+          v-if="isMobileDevice"
           class="navbar-toggler custom-toggler ps-3"
           style="border: none; padding: 4px 6px;"
           type="button"
@@ -40,21 +41,23 @@
         <img src="/image/icon/hamburger.svg" alt="Menu" width="32" height="32" />
       </button>
 
-      <!-- width가 넓을 때 네비게이션 탭 -->
-      <div class="collapse navbar-collapse ps-2" id="navbarNav">
-        <ul class="navbar-nav">
-          <li v-for="(tab, index) in tabs" :key="index" class="nav-item">
+      <!-- 네비게이션 탭: 항상 렌더링되게, 조건부 렌더링 X -->
+      <div class="ps-2">
+        <ul class="navbar-nav d-flex flex-row">
+          <li v-for="(tab, index) in tabs" :key="index" class="nav-item px-2">
             <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
               {{ tab }}
             </NuxtLink>
           </li>
         </ul>
       </div>
+
     </div>
 
 
     <!-- 사이드바 -->
     <aside
+        v-if="isMobileDevice"
         class="sidebar bg-white shadow position-fixed top-0 start-0 h-100 p-3"
         :class="{ 'show': isSidebarOpen }"
     >
@@ -64,8 +67,12 @@
       </div>
       <ul class="nav flex-column">
         <li class="nav-item p-2" v-for="(tab, index) in tabs" :key="index">
-          <NuxtLink :to="`/category/${slugify(tab)}`" class="nav-link">
-            {{ tab }}
+          <NuxtLink
+              :to="`/category/${slugify(tab)}`"
+              class="nav-link"
+              @click="toggleSidebar"
+          >
+          {{ tab }}
           </NuxtLink>
         </li>
       </ul>
@@ -74,21 +81,25 @@
 
     <!-- 오버레이 배경 -->
     <div
+        v-if="isSidebarOpen && isMobileDevice"
         class="sidebar-overlay"
-        v-if="isSidebarOpen"
         @click="toggleSidebar"
     ></div>
 
 
     <!-- 글 작성 -->
-    <NuxtLink to="/" class="navbar-brand">
+    <NuxtLink to="/" class="ms-auto navbar-brand">
       <img src="/assets/image/icon/write.svg" alt="Logo" width="90" height="20"/>
     </NuxtLink>
   </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+const isMobileDevice = computed(() => width.value < 768)
 
 // ✅ 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
 const slugify = (text) => {
