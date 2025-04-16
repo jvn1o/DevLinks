@@ -42,10 +42,4 @@ watch(darkMode, (newVal) => {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* HTML 태그에 붙는 dark-mode 클래스 활용 (전역으로 쓰일 수 있음) */
-.dark-mode {
-  background-color: #121212;
-  color: white;
-}
 </style>

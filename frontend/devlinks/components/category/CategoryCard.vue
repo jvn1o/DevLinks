@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  item: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div class="card h-100">
     <div class="card-img-wrapper">
@@ -28,15 +37,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  item: {
-    type: Object,
-    required: true,
-  },
-});
-</script>
 
 <style scoped>
 .card-img-wrapper img {

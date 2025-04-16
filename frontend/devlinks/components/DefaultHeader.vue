@@ -1,5 +1,45 @@
+<script setup>
+import { ref, computed } from 'vue'
+import { useWindowSize } from '@vueuse/core'
+import Sidebar from './Sidebar.vue'
+
+// 다크모드 상태를 props로 전달받음
+const props = defineProps({
+  darkMode: Boolean,
+})
+
+const emit = defineEmits(['update:darkMode'])
+
+const { width } = useWindowSize()
+const isMobileDevice = computed(() => width.value < 1193.75)
+
+// 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
+const slugify = (text) => {
+  return text
+      .toLowerCase()
+      .replace(/ & /g, '-')   // 의미 보존 (예: API & Docs → api-and-docs)
+      .replace(/ \/ /g, '-')   // 슬래시 제거 (예: UI / UX → ui-ux)
+      .replace(/[^\w\-]+/g, '-')  // 나머지 특수문자 제거
+      .replace(/\-\-+/g, '-')     // 연속된 하이픈 정리
+      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
+}
+
+const tabs = [
+  "Algorithm & Data Structures",
+  "API & Documentation",
+  "Cloud & DevOps",
+  "Testing & QA",
+  "UI / UX"
+];
+
+const isSidebarOpen = ref(false)
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+</script>
+
 <template>
-  <nav :class="['navbar p-0 w-auto', { 'bg-dark': darkMode, 'navbar-dark': darkMode }]">
+  <nav :class="['navbar p-0 w-auto', { 'navbar-dark bg-dark': darkMode }]">
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div
         class="d-flex justify-content-center align-items-center p-2 border-end"
@@ -100,46 +140,6 @@
     </NuxtLink>
   </nav>
 </template>
-
-<script setup>
-import { ref, computed } from 'vue'
-import { useWindowSize } from '@vueuse/core'
-import Sidebar from './Sidebar.vue'
-
-// 다크모드 상태를 props로 전달받음
-const props = defineProps({
-  darkMode: Boolean,
-})
-
-const emit = defineEmits(['update:darkMode'])
-
-const { width } = useWindowSize()
-const isMobileDevice = computed(() => width.value < 1193.75)
-
-// 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
-const slugify = (text) => {
-  return text
-      .toLowerCase()
-      .replace(/ & /g, '-')   // 의미 보존 (예: API & Docs → api-and-docs)
-      .replace(/ \/ /g, '-')   // 슬래시 제거 (예: UI / UX → ui-ux)
-      .replace(/[^\w\-]+/g, '-')  // 나머지 특수문자 제거
-      .replace(/\-\-+/g, '-')     // 연속된 하이픈 정리
-      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
-}
-
-const tabs = [
-  "Algorithm & Data Structures",
-  "API & Documentation",
-  "Cloud & DevOps",
-  "Testing & QA",
-  "UI / UX"
-];
-
-const isSidebarOpen = ref(false)
-const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value
-}
-</script>
 
 <style scoped>
 /* 기본 네비게이션 스타일 */
