@@ -1,5 +1,5 @@
 <template>
-  <nav :class="['navbar p-0 w-auto', { 'navbar-dark': darkMode }]">
+  <nav :class="['navbar p-0 w-auto', { 'bg-dark': darkMode, 'navbar-dark': darkMode }]">
     <!-- 우측 아이콘 (북마크, 프로필) -->
     <div
         class="d-flex justify-content-center align-items-center p-2 border-end"
@@ -61,6 +61,7 @@
       <button
           v-if="isMobileDevice"
           class="navbar-toggler custom-toggler ps-3"
+          :class="{'icon-dark': darkMode}"
           :style="{'border': 'none', 'padding': '4px 6px'}"
           type="button"
           @click="toggleSidebar"
@@ -75,7 +76,6 @@
             <NuxtLink
                 :to="`/category/${slugify(tab)}`"
                 class="nav-link fw-bold text-primary"
-                :class="{'text-light': darkMode}"
             >
               {{ tab }}
             </NuxtLink>
@@ -91,6 +91,7 @@
         :toggleSidebar="toggleSidebar"
         :tabs="tabs"
         :slugify="slugify"
+        :darkMode="darkMode"
     />
 
     <!-- 글 작성 -->
@@ -104,15 +105,16 @@
 import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import Sidebar from './Sidebar.vue'
-import { defineProps } from 'vue';
 
 // 다크모드 상태를 props로 전달받음
 const props = defineProps({
   darkMode: Boolean,
 })
 
+const emit = defineEmits(['update:darkMode'])
+
 const { width } = useWindowSize()
-const isMobileDevice = computed(() => width.value < 1176)
+const isMobileDevice = computed(() => width.value < 1193.75)
 
 // 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
 const slugify = (text) => {
@@ -154,24 +156,6 @@ const toggleSidebar = () => {
   padding-right: 15px;
 }
 
-/* 라이트모드 전용 텍스트 색 */
-.navbar-light .nav-link {
-  color: #333 !important;
-}
-
-.navbar-light .nav-link:hover {
-  color: #007bff !important;
-}
-
-/* 다크모드 전용 텍스트 색 */
-.navbar-dark .nav-link {
-  color: #e9ecef !important;
-}
-
-.navbar-dark .nav-link:hover {
-  color: #ffffff !important;
-}
-
 .navbar-brand img,
 .d-flex img {
   cursor: pointer;
@@ -185,6 +169,6 @@ const toggleSidebar = () => {
 
 /* 다크모드일 때 아이콘 색상 반전 */
 .icon-dark {
-  filter: invert(1);
+  filter: brightness(0) invert(1);
 }
 </style>
