@@ -1,7 +1,11 @@
 <template>
   <aside
-      class="sidebar bg-white shadow position-fixed top-0 start-0 h-100 p-3"
-      :class="{ 'show': isSidebarOpen }"
+      class="sidebar p-3 position-fixed top-0 start-0 h-100"
+      :class="{
+        'bg-white': !darkMode,
+        'bg-dark': darkMode,
+        'show': isSidebarOpen
+      }"
   >
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div class="d-flex align-items-center mb-3 p-4">
@@ -29,7 +33,8 @@ defineProps({
   isSidebarOpen: Boolean,
   toggleSidebar: Function,
   tabs: Array,
-  slugify: Function
+  slugify: Function,
+  darkMode: Boolean,
 })
 </script>
 

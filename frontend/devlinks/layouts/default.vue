@@ -1,42 +1,38 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import Header from '~/components/DefaultHeader.vue';
-import Footer from '~/components/DefaultFooter.vue';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import { ref, onMounted } from 'vue'
+import Header from '~/components/DefaultHeader.vue'
+import Footer from '~/components/DefaultFooter.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
-const darkMode = ref(false);
+const darkMode = ref(false)
 
-// onMounted 훅을 사용하여 클라이언트에서만 접근
+// 클라이언트에서만 localStorage 접근
 onMounted(() => {
-  if (typeof window !== 'undefined') { // process.client를 사용하지 않고 window 객체로 확인
-    darkMode.value = localStorage.getItem('darkMode') === 'true';
-    // 다크 모드 상태에 따라 documentElement 클래스 추가
-    document.documentElement.classList.toggle('dark-mode', darkMode.value);
+  if (typeof window !== 'undefined') {
+    darkMode.value = localStorage.getItem('darkMode') === 'true'
+    document.documentElement.classList.toggle('dark-mode', darkMode.value)
   }
-});
+})
 
-const toggleDarkMode = (newMode: boolean) => {
-  darkMode.value = newMode;
-
-  if (typeof window !== 'undefined') { // 클라이언트에서만 실행
-    localStorage.setItem('darkMode', String(newMode));
-    // 다크 모드 상태 변경 시 documentElement 클래스 추가
-    document.documentElement.classList.toggle('dark-mode', newMode);
+// 다크모드 상태가 바뀔 때마다 html 클래스와 localStorage에 반영
+watch(darkMode, (newVal) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('darkMode', String(newVal))
+    document.documentElement.classList.toggle('dark-mode', newVal)
   }
-};
+})
 </script>
 
 <template>
-  <div :class="{ 'dark-mode': darkMode }" class="layout-root">
-    <!-- default header -->
-    <Header :darkMode="darkMode" @update:darkMode="toggleDarkMode" />
+  <div :class="{ 'bg-dark text-white': darkMode }" class="layout-root">
+    <!-- Header & Footer에 v-model로 다크모드 상태 양방향 바인딩 -->
+    <Header v-model:darkMode="darkMode" />
 
     <!-- 페이지 콘텐츠 -->
     <slot />
 
-    <!-- default footer -->
-    <Footer :darkMode="darkMode" @update:darkMode="toggleDarkMode" />
+    <Footer v-model:darkMode="darkMode" />
   </div>
 </template>
 
@@ -47,8 +43,9 @@ const toggleDarkMode = (newMode: boolean) => {
   min-height: 100vh;
 }
 
+/* HTML 태그에 붙는 dark-mode 클래스 활용 (전역으로 쓰일 수 있음) */
 .dark-mode {
-  background-color: #121212; /* 다크 배경 */
-  color: white; /* 다크 텍스트 색 */
+  background-color: #121212;
+  color: white;
 }
 </style>
