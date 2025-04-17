@@ -1,4 +1,4 @@
-package com.jvn1o.devlinks.anonymous.link.controller;
+package com.jvn1o.devlinks.anonymous.link.dto;
 
 @Data
 @Builder
