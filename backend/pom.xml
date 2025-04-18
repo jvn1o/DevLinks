@@ -8,11 +8,11 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.m2j2</groupId>
+	<groupId>com.jvn1o</groupId>
 	<artifactId>DevLinks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HaruSeoul</name>
-	<description>HaruSeoul</description>
+	<name>DevLinks</name>
+	<description>DevLinks</description>
 	<url/>
 	<licenses>
 		<license/>
