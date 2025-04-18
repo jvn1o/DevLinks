@@ -40,8 +40,9 @@ const toggleSidebar = () => {
 
 <template>
   <nav :class="['navbar p-0 w-auto', { 'navbar-dark bg-dark': darkMode }]">
-    <!-- 우측 아이콘 (북마크, 프로필) -->
+    <!-- 아이콘 (프로필, 북마크, 알람) -->
     <div
+        v-if="!isMobileDevice"
         class="d-flex justify-content-center align-items-center p-2 border-end"
         :style="{'border-color': darkMode ? '#495057' : '#CED3D9'}"
     >
@@ -61,8 +62,8 @@ const toggleSidebar = () => {
           <img
               src="/assets/image/icon/bookmark.svg"
               alt="Bookmark"
-              width="32"
-              height="32"
+              width="30"
+              height="30"
               :class="{'icon-dark': darkMode}"
           />
         </NuxtLink>
@@ -72,8 +73,8 @@ const toggleSidebar = () => {
           <img
               src="/assets/image/icon/alarm.svg"
               alt="Alarm"
-              width="32"
-              height="32"
+              width="30"
+              height="30"
               :class="{'icon-dark': darkMode}"
           />
         </NuxtLink>
