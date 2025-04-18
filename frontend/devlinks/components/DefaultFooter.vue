@@ -142,6 +142,10 @@ watch(
 </script>
 
 <style scoped>
+a {
+  color: black;
+}
+
 .toggle-wrapper {
   position: relative;
 }
@@ -235,7 +239,7 @@ input:checked + .slider:before {
 }
 
 .n-footer-dark .text-muted {
-  color: #adb5bd;
+  color: #adb5bd !important;
 }
 
 .n-footer-dark img {
