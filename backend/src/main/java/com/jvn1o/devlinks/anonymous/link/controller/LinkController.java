@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/anonymous/links")
+@RequestMapping("/links")
 @RequiredArgsConstructor
 public class LinkController {
 
