@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
-    안녕하세요용~
+  <div class="p-5">
+     ↑ 소개
   </div>
 </template>
