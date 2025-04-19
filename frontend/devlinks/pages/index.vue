@@ -7,11 +7,22 @@
     <nav class="tab-bar">
       <div class="tab">
         Algorithm & Data Structures
+
         효율적인 문제 해결을 위한 알고리즘과 자료구조에 대한 정보와 예제를 제공합니다.
         (예: 정렬, 탐색, 그래프, 트리 등)
       </div>
-      <div class="tab">API & 문서</div>
-      <div class="tab">클라우드</div>
+      <div class="tab">
+        API & Documentation
+
+        다양한 외부 API 사용법과 문서화 가이드를 확인할 수 있습니다.
+        (REST API, Swagger, OpenAPI 문서 작성 등)
+      </div>
+      <div class="tab">
+        Cloud & DevOps
+
+        클라우드 환경 설정부터 CI/CD 파이프라인 구축까지, 인프라 자동화에 대한 내용을 다룹니다.
+        (AWS, Docker, Kubernetes, GitHub Actions 등)
+      </div>
       <div class="tab">테스트</div>
       <div class="tab">UI/UX</div>
     </nav>
