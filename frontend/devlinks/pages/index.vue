@@ -5,7 +5,11 @@
 
     <!-- 가상의 상단 탭들 (UI용) -->
     <nav class="tab-bar">
-      <div class="tab">알고리즘</div>
+      <div class="tab">
+        Algorithm & Data Structures
+        효율적인 문제 해결을 위한 알고리즘과 자료구조에 대한 정보와 예제를 제공합니다.
+        (예: 정렬, 탐색, 그래프, 트리 등)
+      </div>
       <div class="tab">API & 문서</div>
       <div class="tab">클라우드</div>
       <div class="tab">테스트</div>
