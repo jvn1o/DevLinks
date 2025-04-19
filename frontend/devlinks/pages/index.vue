@@ -23,8 +23,18 @@
         클라우드 환경 설정부터 CI/CD 파이프라인 구축까지, 인프라 자동화에 대한 내용을 다룹니다.
         (AWS, Docker, Kubernetes, GitHub Actions 등)
       </div>
-      <div class="tab">테스트</div>
-      <div class="tab">UI/UX</div>
+      <div class="tab">
+        Testing & QA
+
+        코드 테스트 방법과 품질 보증(QA) 관련 자료를 모았습니다.
+        (단위 테스트, 통합 테스트, 테스트 자동화 도구 등)
+      </div>
+      <div class="tab">
+        UI / UX
+
+        사용자 경험을 향상시키기 위한 UI 설계 및 디자인 시스템, 접근성 관련 정보를 제공합니다.
+        (디자인 패턴, 피그마, 사용자 흐름 분석 등)
+      </div>
     </nav>
 
     <!-- 각 탭 설명 툴팁 -->
