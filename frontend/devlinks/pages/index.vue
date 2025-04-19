@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="p-5">
-     ↑ 소개
+  <div class="bg-black w-100 h-100">
+    ㅇ
   </div>
 </template>
