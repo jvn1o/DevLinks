@@ -61,7 +61,7 @@
 .tab-bar {
   display: flex;
   justify-content: flex-start;
-  gap: 100px;
+  gap: 10px;
   padding: 0 100px;
   margin-bottom: 60px;
 }
