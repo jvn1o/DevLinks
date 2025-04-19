@@ -57,7 +57,7 @@ const getStyle = (index) => {
 .tab-bar {
   display: flex;
   justify-content: flex-start;
-  gap: 60px;
+  gap: 100px;
   padding: 0 100px;
   margin-bottom: 60px;
 }
