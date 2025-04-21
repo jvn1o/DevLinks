@@ -2,24 +2,29 @@
   <div class="container py-5">
 
     <!-- 소개 영역 -->
-    <div class="bg-light rounded-4 p-5 mb-5 shadow-sm border text-center">
-      <h2 class="fw-bold mb-3 intro-title-responsive">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-10 col-lg-8 col-xl-7">
+        <div class="bg-light responsive-padding rounded-4 mb-5 shadow-sm border text-center">
+          <h2 class="fw-bold mb-3 intro-title-responsive">
         <span class="text-gradient align-content-center">
           <img
               src="/assets/image/DevLinks.svg"
               alt="Logo"
               width="36"
               height="36"
+              class="logo-responsive"
           />
           DevLinks
         </span> 에 오신 것을 환영합니다!
-      </h2>
-      <p class="text-muted intro-text-responsive mb-2">
-        개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
-      </p>
-      <p class="text-secondary intro-text-responsive">
-        분야별로 정리된 링크들을 통해 더 똑똑한 개발을 시작하세요!
-      </p>
+          </h2>
+          <p class="text-muted intro-text-responsive mb-2">
+            개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
+          </p>
+          <p class="text-secondary intro-text-responsive">
+            분야별로 정리된 링크들을 통해 더 똑똑한 개발을 시작하세요!
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- 카드 목록 -->
@@ -119,6 +124,15 @@
 
 <style scoped>
 
+.responsive-padding {
+  padding: 3rem;
+}
+
+.logo-responsive {
+  width: 36px;
+  height: 36px;
+}
+
 .text-gradient {
   background: linear-gradient(to right, #007cf0, #00dfd8);
   -webkit-background-clip: text;
@@ -135,17 +149,26 @@
 }
 
 @media (max-width: 576px) {
-  .card-title-responsive {
-    font-size: 1.05rem;
+
+  .responsive-padding {
+    padding: 1.25rem;
   }
-  .card-text-responsive {
-    font-size: 0.65rem;
+  .logo-responsive {
+    width: 18px;
+    height: 18px;
   }
+
   .intro-title-responsive {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
   }
   .intro-text-responsive {
-    font-size: 0.5rem;
+    font-size: 0.65rem;
+  }
+  .card-title-responsive {
+    font-size: 0.9rem;
+  }
+  .card-text-responsive {
+    font-size: 0.75rem;
   }
 }
 </style>
