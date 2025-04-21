@@ -61,9 +61,9 @@ defineProps({
 }
 
 .custom-close {
-  width: 24px;
-  height: 24px;
-  background-size: 24px 24px;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
 }
 
 .custom-close:focus {
@@ -77,7 +77,12 @@ defineProps({
 
 @media (max-width: 576px) {
   .sidebar .nav-link {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  .custom-close {
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
   }
 }
 </style>
