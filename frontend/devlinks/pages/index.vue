@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5">
+  <div class="container py-5 my-4">
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
