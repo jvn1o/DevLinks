@@ -3,7 +3,7 @@
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-10 col-md-10 col-lg-9 col-xl-9">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
         <div class="bg-light responsive-padding rounded-4 mb-5 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive">
         <span class="text-gradient align-content-center">
@@ -29,7 +29,7 @@
 
     <!-- 카드 목록 -->
     <div class="row mb-4 justify-content-start">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body">
             <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
@@ -47,7 +47,7 @@
     </div>
 
     <div class="row mb-4 justify-content-end">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body">
             <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
@@ -65,7 +65,7 @@
     </div>
 
     <div class="row mb-4 justify-content-start">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body">
             <NuxtLink :to="`/category/cloud-devops`" class="nav-link">
@@ -83,7 +83,7 @@
     </div>
 
     <div class="row mb-4 justify-content-end">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body">
             <NuxtLink :to="`/category/testing-qa`" class="nav-link">
@@ -101,7 +101,7 @@
     </div>
 
     <div class="row mb-4 justify-content-start">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card ms-md-auto">
           <div class="card-body">
             <NuxtLink :to="`/category/ui-ux`" class="nav-link">
