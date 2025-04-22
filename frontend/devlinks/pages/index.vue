@@ -4,7 +4,7 @@
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
       <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-        <div class="bg-light responsive-padding rounded-4 mb-5 shadow-sm border text-center">
+        <div class="bg-custom responsive-padding rounded-4 mb-5 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive">
         <span class="text-gradient d-inline-flex align-items-center gap-2">
           <img
@@ -141,6 +141,10 @@
   background: linear-gradient(to right, #007cf0, #00dfd8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.bg-custom {
+  background: #f8f9fa;
 }
 
 .hover-card {
