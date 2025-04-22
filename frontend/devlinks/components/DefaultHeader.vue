@@ -143,6 +143,7 @@ const toggleSidebar = () => {
 </template>
 
 <style scoped>
+
 /* 기본 네비게이션 스타일 */
 .navbar {
   box-shadow: 0px 2px 4px rgba(206, 211, 217, 0.2);
@@ -155,6 +156,10 @@ const toggleSidebar = () => {
   font-weight: 100;
   transition: color 0.3s;
   padding-right: 15px;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
 }
 
 .navbar-brand img,
