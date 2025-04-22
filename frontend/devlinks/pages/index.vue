@@ -28,10 +28,10 @@
     </div>
 
     <!-- 카드 목록 -->
-    <div class="row mb-4 justify-content-start">
+    <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
-          <div class="card-body">
+          <div class="card-body py-4 px-4">
             <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Algorithm & Data Structures
@@ -46,10 +46,10 @@
       </div>
     </div>
 
-    <div class="row mb-4 justify-content-end">
+    <div class="row mb-5 justify-content-end">
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
-          <div class="card-body">
+          <div class="card-body py-4 px-4">
             <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 API & Documentation
@@ -64,10 +64,10 @@
       </div>
     </div>
 
-    <div class="row mb-4 justify-content-start">
+    <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
-          <div class="card-body">
+          <div class="card-body py-4 px-4">
             <NuxtLink :to="`/category/cloud-devops`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Cloud & DevOps
@@ -82,10 +82,10 @@
       </div>
     </div>
 
-    <div class="row mb-4 justify-content-end">
+    <div class="row mb-5 justify-content-end">
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
-          <div class="card-body">
+          <div class="card-body py-4 px-4">
             <NuxtLink :to="`/category/testing-qa`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Testing & QA
@@ -100,10 +100,10 @@
       </div>
     </div>
 
-    <div class="row mb-4 justify-content-start">
+    <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card ms-md-auto">
-          <div class="card-body">
+          <div class="card-body py-4 px-4">
             <NuxtLink :to="`/category/ui-ux`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 UI / UX
@@ -148,8 +148,11 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 576px) {
+.hover-card:hover h5 {
+  color: #0d6efd !important;
+}
 
+@media (max-width: 576px) {
   .responsive-padding {
     padding: 1.25rem;
   }
