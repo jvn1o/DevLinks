@@ -6,7 +6,7 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
         <div class="bg-light responsive-padding rounded-4 mb-5 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive">
-        <span class="text-gradient align-content-center">
+        <span class="text-gradient d-inline-flex align-items-center gap-2">
           <img
               src="/assets/image/DevLinks.svg"
               alt="Logo"
@@ -15,7 +15,7 @@
               class="logo-responsive"
           />
           DevLinks
-        </span> 에 오신 것을 환영합니다!
+        </span>
           </h2>
           <p class="text-muted intro-text-responsive mb-2">
             개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
@@ -124,8 +124,12 @@
 
 <style scoped>
 
+.card {
+  background-color: #f8f9fa; /* 연한 회색 */
+}
+
 .responsive-padding {
-  padding: 3rem;
+  padding: 2.5rem;
 }
 
 .logo-responsive {
@@ -146,10 +150,11 @@
 .hover-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
+  border: 1px solid #495057;
 
-.hover-card:hover h5 {
-  color: #0d6efd !important;
+  h5 {
+    color: #0d6efd !important;
+  }
 }
 
 @media (max-width: 576px) {
