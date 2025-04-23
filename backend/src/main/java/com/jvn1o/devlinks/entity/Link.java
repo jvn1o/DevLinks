@@ -2,6 +2,7 @@ package com.jvn1o.devlinks.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.jvn1o.devlinks.common.enums.PriceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.time.LocalTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -30,31 +30,21 @@ public class Link {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "detail", length = 6000)
-    private String detail;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    private Category category;
 
     @ColumnDefault("current_timestamp()")
     @Column(name = "reg_date")
     @CreationTimestamp
     private Instant regDate;
 
-    @Column(name = "end_time")
-    private LocalTime endTime;
-
     @Column(name = "status")
     private String status;
 
     @Column(name = "price")
-    private Integer price;
-
-    @Column(name = "group_size_max")
-    private Integer groupSizeMax;
-
-    @Column(name = "group_size_min")
-    private Integer groupSizeMin;
-
-    @Column(name = "rating")
-    private Float rating;
+    private PriceType priceType;
 
     @ColumnDefault("current_timestamp()")
     @Column(name = "update_date")
@@ -64,48 +54,13 @@ public class Link {
     @Column(name = "language")
     private String language;
 
-    @Column(name = "start_time")
-    private LocalTime startTime;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reg_member_id")
-    @JsonBackReference
-    private Member member;
-
-    @OneToMany(mappedBy = "program",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
     @JsonManagedReference
     private List<Image> images;
 
-    @OneToMany(mappedBy = "program",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
     @JsonManagedReference
     private List<Review> reviews;
-
-    @OneToMany(mappedBy = "program", cascade = CascadeType.REMOVE)
-    @JsonManagedReference
-    private List<CategoryProgram> categoryPrograms;
-
-    @OneToMany(mappedBy = "program", cascade = CascadeType.REMOVE)
-    @JsonManagedReference
-    private List<PublishedProgram> publishedPrograms;
-
-    @OneToMany(mappedBy = "program",cascade = CascadeType.REMOVE)
-    @JsonManagedReference
-    private List<Route> routes;
-
-    @Column(name = "inclusion")
-    private String inclusion;
-
-    @Column(name = "exclusion")
-    private String exclusion;
-
-    @Column(name = "packing_list")
-    private String packingList;
-
-    @Column(name = "caution")
-    private String caution;
-
-    @Column(name = "requirement")
-    private String requirement;
 
     @Column(name = "delete_date")
     private Instant deleteDate;
