@@ -12,7 +12,7 @@ public class DefaultMemberLinkService implements MemberLinkService {
     MemberLinkRepository memberLinkRepository;
 
     @Override
-    public List<MemberLinkListDto> getList(Long userId) {
+    public List<MemberLinkListDto> getMemberLinkList(Long userId) {
         return List.of();
     }
 }

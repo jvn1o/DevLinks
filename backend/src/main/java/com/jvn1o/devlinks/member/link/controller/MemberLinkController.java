@@ -2,6 +2,7 @@ package com.jvn1o.devlinks.member.link.controller;
 
 import com.jvn1o.devlinks.member.link.dto.MemberLinkListDto;
 import com.jvn1o.devlinks.member.link.service.MemberLinkService;
+import com.jvn1o.devlinks.security.principal.UserPrincipal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class MemberLinkController {
     private final MemberLinkService memberLinkService;
 
     @GetMapping
-    public ResponseEntity<List<MemberLinkListDto>> getUserLinks(@AuthenticationPrincipal UserPrincipal user) {
-        return ResponseEntity.ok(memberLinkService.getUserLinks(user.getId()));
+    public ResponseEntity<List<MemberLinkListDto>> getMemberLinkList(@AuthenticationPrincipal UserPrincipal user) {
+        return ResponseEntity.ok(memberLinkService.getMemberLinkList(user.getId()));
     }
 }

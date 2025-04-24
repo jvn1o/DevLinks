@@ -10,8 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.Instant;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,11 +27,11 @@ public class Member {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "user_id", nullable = false)
-    private String userId;
+    @Column(name = "member_id", nullable = false)
+    private String memberId;
 
-    @Column(name = "user_pwd", nullable = false)
-    private String userPwd;
+    @Column(name = "member_pwd", nullable = false)
+    private String memberPwd;
 
     @ColumnDefault("current_timestamp()")
     @Column(name = "reg_date", nullable = false)
