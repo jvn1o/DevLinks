@@ -35,8 +35,7 @@ public class Link {
     @JsonBackReference
     private Category category;
 
-    @ColumnDefault("current_timestamp()")
-    @Column(name = "reg_date")
+    @Column(name = "reg_date", updatable = false)
     @CreationTimestamp
     private Instant regDate;
 
@@ -46,7 +45,6 @@ public class Link {
     @Column(name = "price")
     private PriceType priceType;
 
-    @ColumnDefault("current_timestamp()")
     @Column(name = "update_date")
     @UpdateTimestamp
     private Instant updateDate;
@@ -64,4 +62,12 @@ public class Link {
 
     @Column(name = "delete_date")
     private Instant deleteDate;
+
+    // regDate 최초 생성 이후 수정되지 않도록 처리하는 메서드
+    @PrePersist
+    public void prePersist() {
+        if (this.regDate == null) {
+            this.regDate = Instant.now();
+        }
+    }
 }
