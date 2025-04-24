@@ -1,9 +1,9 @@
-package com.jvn1o.devlinks.anonymous.link.dto;
+package com.jvn1o.devlinks.member.link.dto;
 
 import com.jvn1o.devlinks.common.enums.PriceType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LinkListDto {
+public class MemberLinkListDto {
     private Long id;
     private String thumbnail;
     private String title;

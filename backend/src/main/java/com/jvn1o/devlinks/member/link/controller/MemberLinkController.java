@@ -1,7 +1,7 @@
-package com.jvn1o.devlinks.user.link.controller;
+package com.jvn1o.devlinks.member.link.controller;
 
-import com.jvn1o.devlinks.user.link.dto.LinkListDto;
-import com.jvn1o.devlinks.user.link.service.LinkService;
+import com.jvn1o.devlinks.member.link.dto.MemberLinkListDto;
+import com.jvn1o.devlinks.member.link.service.MemberLinkService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +14,12 @@ import java.util.List;
 @RestController("userLinkController")
 @RequestMapping("/user/links")
 @RequiredArgsConstructor
-public class LinkController {
+public class MemberLinkController {
 
-    private final LinkService linkService;
+    private final MemberLinkService memberLinkService;
 
     @GetMapping
-    public ResponseEntity<List<LinkListDto>> getUserLinks(@AuthenticationPrincipal UserPrincipal user) {
-        return ResponseEntity.ok(linkService.getUserLinks(user.getId()));
+    public ResponseEntity<List<MemberLinkListDto>> getUserLinks(@AuthenticationPrincipal UserPrincipal user) {
+        return ResponseEntity.ok(memberLinkService.getUserLinks(user.getId()));
     }
 }
