@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -48,9 +47,6 @@ public class Member {
 
     @Column(name = "email", nullable = false)
     private String email;
-
-    @Column(name = "status")
-    private String status;
 
     @Column(name = "profile_img_src")
     private String profileImgSrc;
