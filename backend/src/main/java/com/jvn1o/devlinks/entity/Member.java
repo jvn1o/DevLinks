@@ -21,11 +21,11 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nickname", nullable = false)
-    private String nickname;
-
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "nickname", nullable = false)
+    private String nickname;
 
     @Column(name = "member_id", nullable = false)
     private String memberId;
@@ -33,21 +33,27 @@ public class Member {
     @Column(name = "member_pwd", nullable = false)
     private String memberPwd;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @ColumnDefault("current_timestamp()")
     @Column(name = "reg_date", nullable = false)
     @CreationTimestamp
     private Instant regDate;
 
-    @ColumnDefault("current_timestamp()")
-    @Column(name = "update_date")
-    @UpdateTimestamp
-    private Instant updateDate;
-
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name = "country")
+    private String country;
 
     @Column(name = "profile_img_src")
     private String profileImgSrc;
+
+    @OneToMany(mappedBy = "member")
+    @JsonManagedReference
+    private List<Bookmark> bookmarks;
+
+    @OneToMany(mappedBy = "member")
+    @JsonManagedReference
+    private List<Sns> sns;
 
     @OneToMany(mappedBy = "member")
     @JsonManagedReference

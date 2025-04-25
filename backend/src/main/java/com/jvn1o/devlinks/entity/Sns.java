@@ -1,5 +1,6 @@
 package com.jvn1o.devlinks.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,8 +11,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "category")
-public class Category {
+@Table(name = "sns")
+public class Sns {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +20,14 @@ public class Category {
     @JsonManagedReference
     private Long id;
 
-    @Column(name = "slug", unique = true)
-    private String slug;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reg_member_id")
+    @JsonBackReference
+    private Member member;
+
+    @Column(name ="type")
+    private String type;
+
+    @Column(name ="url")
+    private String url;
 }
