@@ -21,10 +21,11 @@ public class LinkController {
 
     @GetMapping("/links")
     public ResponseEntity<List<MemberLinkListDto>> getLinksBySortAndPrice(
+            @PathVariable("slug") String slug,
             @RequestParam PriceType price,
             @RequestParam String sort
     ) {
-        List<MemberLinkListDto> result = linkService.findBySortAndPrice(sort, price);
+        List<MemberLinkListDto> result = linkService.findBySortAndPrice(slug, sort, price);
         return ResponseEntity.ok(result);
     }
 }

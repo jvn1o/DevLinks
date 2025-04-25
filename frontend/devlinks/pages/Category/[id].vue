@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import CategoryCard from '~/components/category/CategoryCard.vue';
 
 const route = useRoute();
-const categoryId = route.params.id; // URL에서 category id 가져오기
+const categorySlug = route.params.id; // URL에서 category id 가져오기
 
 const selectedFilter = ref('newest');
 const selectedPrice = ref('all');
@@ -12,7 +12,7 @@ const currentPage = ref(1);
 const itemsPerPage = 8;
 
 // 예: /api/resources?category=Algorithm-And-Data-Structures
-const { data: items } = await useFetch(() => `/api/resources?category=${categoryId}`);
+const { data: items } = await useFetch(() => `/api/resources?category=${categorySlug}`);
 
 const sortLabel = computed(() =>
     selectedFilter.value === 'newest'
