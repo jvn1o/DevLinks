@@ -17,13 +17,13 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "`order`", nullable = false)
-    private Integer order;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "link_id", nullable = false)
     @JsonBackReference
     private Link link;
+
+    @Column(name = "`order`", nullable = false)
+    private Integer order;
 
     @Column(name = "src", nullable = false)
     private String src;
