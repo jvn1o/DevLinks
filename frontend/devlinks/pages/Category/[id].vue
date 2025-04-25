@@ -11,7 +11,7 @@ const selectedPrice = ref('all');
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
-// 예: /api/resources?category=Algorithm-And-Data-Structures
+// ex) /api/resources?category=Algorithm-And-Data-Structures
 const { data: items } = await useFetch(() => `/api/resources?category=${categorySlug}`);
 
 const sortLabel = computed(() =>
@@ -19,7 +19,7 @@ const sortLabel = computed(() =>
         ? 'Newest'
         : selectedFilter.value === 'popular'
             ? 'Popular'
-            : 'Alphabetical'
+            : ''
 );
 
 const priceLabel = computed(() =>

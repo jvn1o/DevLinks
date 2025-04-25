@@ -1,8 +1,13 @@
 package com.jvn1o.devlinks.repository;
 
+import com.jvn1o.devlinks.common.enums.PriceType;
 import com.jvn1o.devlinks.entity.Link;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface LinkRepository extends JpaRepository<Link, Long> {
@@ -11,7 +16,7 @@ public interface LinkRepository extends JpaRepository<Link, Long> {
     @Query(
             "SELECT l " +
             "FROM Link l " +
-            "WHERE l.category.name = :slug " +
+            "WHERE l.category.slug = :slug " +
             "AND (:price IS NULL OR l.priceType = :price)"
     )
     List<Link> findByCategorySlugAndPrice(
