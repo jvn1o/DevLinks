@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface LinkService {
     // 정렬과 가격에 따른 Link List 조회
-    List<MemberLinkListDto> findBySortAndPrice(String sort, PriceType price);
+    List<MemberLinkListDto> findBySortAndPrice(String slug, String sort, PriceType price);
 }

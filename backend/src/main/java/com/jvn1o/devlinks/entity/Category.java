@@ -19,6 +19,6 @@ public class Category {
     @JsonManagedReference
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "slug", unique = true)
+    private String slug;
 }
