@@ -1,14 +1,11 @@
 package com.jvn1o.devlinks.anonymous.link.controller;
 
+import com.jvn1o.devlinks.anonymous.link.dto.LinkListDto;
 import com.jvn1o.devlinks.anonymous.link.service.LinkService;
 import com.jvn1o.devlinks.common.enums.PriceType;
-import com.jvn1o.devlinks.member.link.dto.MemberLinkListDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,12 +17,12 @@ public class LinkController {
     private final LinkService linkService;
 
     @GetMapping("/links")
-    public ResponseEntity<List<MemberLinkListDto>> getLinksBySortAndPrice(
+    public ResponseEntity<List<LinkListDto>> getLinksBySortAndPrice(
             @PathVariable("slug") String slug,
             @RequestParam PriceType price,
             @RequestParam String sort
     ) {
-        List<MemberLinkListDto> result = linkService.findBySortAndPrice(slug, sort, price);
+        List<LinkListDto> result = linkService.findBySortAndPrice(slug, sort, price);
         return ResponseEntity.ok(result);
     }
 }

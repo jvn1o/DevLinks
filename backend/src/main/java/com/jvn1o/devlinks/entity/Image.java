@@ -2,10 +2,10 @@ package com.jvn1o.devlinks.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

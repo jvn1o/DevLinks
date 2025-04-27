@@ -1,6 +1,7 @@
 package com.jvn1o.devlinks.anonymous.link.service;
 
 import com.jvn1o.devlinks.common.enums.PriceType;
+import com.jvn1o.devlinks.entity.Image;
 import com.jvn1o.devlinks.entity.Link;
 import com.jvn1o.devlinks.repository.LinkRepository;
 import com.jvn1o.devlinks.anonymous.link.dto.LinkListDto;
@@ -24,30 +25,43 @@ public class DefaultLinkService implements LinkService {
 
         // 정렬
         links.sort((a, b) -> {
-            switch (sort) {
-                    // 최신순으로 정렬 (등록일 기준)
-                case "newest":
-                    return b.getRegDate().compareTo(a.getRegDate());
+            int aBookmarkCount = a.getBookmarks() != null ? a.getBookmarks().size() : 0;
+            int bBookmarkCount = b.getBookmarks() != null ? b.getBookmarks().size() : 0;
+
+            return switch (sort) {
+                // 최신순으로 정렬 (등록일 기준)
+                case "newest" -> b.getRegDate().compareTo(a.getRegDate());
                     /* 인기순 정렬 (리뷰 개수 기준)
                        b.getReviews().size()가 a.getReviews().size()보다 크면 음수를 반환하고, b가 a보다 먼저 옴
                     */
-                case "popular":
-                    return Integer.compare(b.getReviews().size(), a.getReviews().size());
-                default:
-                    return 0;
-            }
+                case "popular" -> Integer.compare(bBookmarkCount, aBookmarkCount);
+                default -> 0;
+            };
         });
 
         // DTO로 변환하여 반환
         return links.stream()
-                .map(link -> LinkListDto.builder()
-                        .id(link.getId())
-                        .thumbnail(link.getImages() != null && !link.getImages().isEmpty() ? link.getImages().get(0).getUrl() : null)  // 썸네일 이미지 URL
-                        .title(link.getTitle())
-                        .categories(link.getCategory() != null ? List.of(link.getCategory().getSlug()) : null)  // 카테고리 이름
-                        .price(link.getPriceType())  // 가격 타입
-                        .bookmarkCount(link.getBookmarkCount())  // 북마크 수
-                        .build())
+                .map(link -> {
+                    int bookmarkCount = link.getBookmarks() != null ? link.getBookmarks().size() : 0;
+
+                    String thumbnail = null;
+                    if (link.getImages() != null && !link.getImages().isEmpty()) {
+                        thumbnail = link.getImages().stream()
+                                .filter(image -> image.getOrder() == 1)
+                                .findFirst()
+                                .map(Image::getSrc)
+                                .orElse(null);
+                    }
+
+                    return LinkListDto.builder()
+                            .id(link.getId())
+                            .thumbnail(thumbnail)
+                            .title(link.getTitle())
+                            .categories(link.getCategory() != null ? List.of(link.getCategory().getSlug()) : null) // 카테고리 이름
+                            .price(link.getPriceType()) // 가격 타입
+                            .bookmarkCount(bookmarkCount) // 북마크에 link 해당하는 개수
+                            .build();
+                })
                 .collect(Collectors.toList());
     }
 }
