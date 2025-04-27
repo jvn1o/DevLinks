@@ -25,14 +25,14 @@ public class Link {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     @JsonBackReference
     private Category category;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "detail")
+    @Column(name = "detail", nullable = false)
     private String detail;
 
     @Column(name = "reg_date", updatable = false)
@@ -43,29 +43,27 @@ public class Link {
     @UpdateTimestamp
     private Instant updateDate;
 
-    @Column(name = "language")
+    @Column(name = "language", nullable = false)
     private String language;
 
-    @Column(name = "price")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "price", nullable = false)
     private PriceType priceType;
 
-    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "link", cascade = CascadeType.REMOVE)
+    @JsonManagedReference(value = "link-bookmark")
     private List<Bookmark> bookmarks;
 
-    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "link", cascade = CascadeType.REMOVE)
+    @JsonManagedReference(value = "link-image")
     private List<Image> images;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    @JsonBackReference(value = "member-link")
+    private Member member;
 
 //    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
 //    @JsonManagedReference
 //    private List<Review> reviews;
-
-    // regDate 최초 생성 이후 수정되지 않도록 처리하는 메서드
-    @PrePersist
-    public void prePersist() {
-        if (this.regDate == null) {
-            this.regDate = Instant.now();
-        }
-    }
 }

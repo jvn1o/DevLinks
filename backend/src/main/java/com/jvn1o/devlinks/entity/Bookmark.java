@@ -15,15 +15,15 @@ public class Bookmark {
     @EmbeddedId
     private BookmarkId id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("linkId")
     @JoinColumn(name = "link_id")
-    @JsonBackReference
+    @JsonBackReference(value = "link-bookmark")
     private Link link;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("memberId")
     @JoinColumn(name = "member_id")
-    @JsonBackReference
+    @JsonBackReference(value = "member-bookmark")
     private Member member;
-
-
 }
