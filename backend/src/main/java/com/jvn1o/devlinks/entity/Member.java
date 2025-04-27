@@ -57,9 +57,7 @@ public class Member {
     private List<Sns> sns;
 
     @OneToMany(mappedBy = "member")
-    @JsonManagedReference
     private List<Link> links;
-
 
 //    @OneToMany(mappedBy = "member")
 //    @JsonManagedReference

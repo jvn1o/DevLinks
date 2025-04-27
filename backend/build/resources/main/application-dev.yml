@@ -34,7 +34,7 @@ server:
 file:
   upload-dir: ./uploads
 
-haruSeoul:
+devlinks:
   jwt:
     secret: ${SPRING_JWT_SECRET_KEY}
 
