@@ -57,9 +57,9 @@ public class Link {
     @JsonManagedReference
     private List<Image> images;
 
-    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
-    @JsonManagedReference
-    private List<Review> reviews;
+//    @OneToMany(mappedBy = "link",cascade = CascadeType.REMOVE)
+//    @JsonManagedReference
+//    private List<Review> reviews;
 
     // regDate 최초 생성 이후 수정되지 않도록 처리하는 메서드
     @PrePersist

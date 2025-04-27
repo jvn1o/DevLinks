@@ -9,6 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -58,7 +60,8 @@ public class Member {
     @JsonManagedReference
     private List<Link> links;
 
-    @OneToMany(mappedBy = "member")
-    @JsonManagedReference
-    private List<Review> reviews;
+
+//    @OneToMany(mappedBy = "member")
+//    @JsonManagedReference
+//    private List<Review> reviews;
 }
