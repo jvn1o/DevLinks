@@ -1,33 +1,47 @@
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+plugins {
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.5'  // ★ 버전 명시
+    id 'java'
+}
+
+group = 'com.devlinks'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'  // Thymeleaf Starter
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'  // Thymeleaf Layout Dialect
+    implementation 'org.springframework.boot:spring-boot-starter'  // 기본 Starter
+    implementation 'org.springframework.boot:spring-boot-starter-web'  // 웹용 Starter
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA용 Starter
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'  // Web Services Starter
+    implementation 'org.springframework.boot:spring-boot-starter-security'  // 보안 Starter
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11:21.9.0.0'  // 오라클 JDBC 드라이버 (버전 주의)
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'  // MariaDB JDBC 드라이버
 
-    runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.modelmapper:modelmapper:3.2.1'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-    implementation 'org.springframework.boot:spring-boot-starter-web-services'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
+    compileOnly 'org.projectlombok:lombok'  // Lombok
+    annotationProcessor 'org.projectlombok:lombok'  // Lombok annotation processor
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'  // Spring Boot 설정 프로세서
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
-    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'  // MyBatis Starter
+    implementation 'org.modelmapper:modelmapper:3.2.1'  // ModelMapper
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'  // Thymeleaf Spring Security 통합
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'  // JWT API
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'  // JWT Impl
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'  // JWT Jackson
+
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'  // Jackson JSR310 (LocalDateTime 등)
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Spring Boot 테스트
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'  // MyBatis 테스트
+    testImplementation 'org.springframework.security:spring-security-test'  // Spring Security 테스트
+}
+
+test {
+    useJUnitPlatform()
 }
