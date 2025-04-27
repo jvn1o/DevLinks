@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: DevLinks  # 앱 이름
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:jvn1orcl
+    username: jvn1orcl
+    password: 19990610
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # DDL 자동 업데이트
+    show-sql: true  # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # SQL 포맷팅
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 500MB
+      max-request-size: 1024MB
+
+  web:
+    resources:
+      static-locations: file:./uploads/
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+file:
+  upload-dir: ./uploads
+
+haruSeoul:
+  jwt:
+    secret: ${SPRING_JWT_SECRET_KEY}
+

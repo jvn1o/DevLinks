@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: DevLinks
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+server:
+  port: 8080
