@@ -5,7 +5,7 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521:jvn1orcl
-    username: jvn1orcl
+    username: C##JVN1ORCL
     password: 19990610
 
   jpa:
