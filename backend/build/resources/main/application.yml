@@ -3,8 +3,8 @@ spring:
     active: dev #dev #prod
     include: secret #민감정보 secret파일
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/jvn1orcl  # 오라클 DB 주소
-    username: jvn1orcl  # 오라클 DB 사용자 이름
+    url: jdbc:oracle:thin:@localhost:1521:jvn1orcl  # 오라클 DB 주소
+    username: C##JVN1ORCL  # 오라클 DB 사용자 이름
     password: 19990610  # 오라클 DB 비밀번호
     driver-class-name: oracle.jdbc.OracleDriver  # 오라클 JDBC 드라이버
   jpa:
