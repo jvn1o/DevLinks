@@ -143,10 +143,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.bg-custom {
-  background: #f8f9fa;
-}
-
 .hover-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
