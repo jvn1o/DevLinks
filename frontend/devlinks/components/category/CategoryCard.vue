@@ -5,6 +5,12 @@ defineProps({
     required: true,
   },
 });
+
+const isBookmarked = ref(false)
+
+const toggleBookmark = () => {
+  isBookmarked.value = !isBookmarked.value
+}
 </script>
 
 <template>
@@ -23,8 +29,16 @@ defineProps({
           <p class="card-text text-muted text-truncate mb-0">
             {{ item.category }}
           </p>
-          <button class="bookmark-btn btn p-0 ms-2 flex-shrink-0">
-            <i class="bi bi-bookmark"></i>
+          <button class="bookmark-btn btn p-0 ms-2 flex-shrink-0"
+                  @click.stop.prevent="toggleBookmark"
+          >
+          <!--    의도치 않은 페이지 이동을 막기 위해 stop.prevent    -->
+            <i
+                :class="[
+                'bi',
+                isBookmarked ? 'bi-bookmark-fill text-warning' : 'bi-bookmark'
+              ]"
+            ></i>
           </button>
         </div>
       </div>

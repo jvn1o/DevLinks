@@ -39,7 +39,7 @@ watch([selectedFilter, selectedPrice, currentPage], () => {
       { id: 8, title: 'DevOps Pipeline', category: 'Cloud & DevOps', price: 'Paid', bookmarkCount: 48, image: img }
     ]"
         :key="item.id"
-        class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-4"
+        class="col-lg-3 col-md-4 col-sm-6 mb-4"
     >
       <CategoryCard :item="item" />
     </div>
