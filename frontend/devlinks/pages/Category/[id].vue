@@ -29,14 +29,14 @@ watch([selectedFilter, selectedPrice, currentPage], () => {
 <!--    v-for="item in items"-->
     <div
         v-for="item in [
-      { id: 1, title: 'Learn Algorithms', category: 'Algorithm & Data Structures', price: 'Free & Paid', rating: 4.5, image: img },
-      { id: 2, title: 'API Basics', category: 'API & Documentation', price: 'Paid', rating: 4.0, image: img },
-      { id: 3, title: 'Cloud Fundamentals', category: 'Cloud & DevOps', price: 'Free', rating: 3.5, image: img },
-      { id: 4, title: 'Testing Tips', category: 'Testing & QA', price: 'Paid', rating: 5.0, image: img },
-      { id: 5, title: 'UI Design Basics', category: 'UI / UX', price: 'Free', rating: 4.7, image: img },
-      { id: 6, title: 'Data Structures', category: 'Algorithm & Data Structures', price: 'Paid', rating: 4.2, image: img },
-      { id: 7, title: 'Advanced APIs', category: 'API & Documentation', price: 'Free', rating: 3.9, image: img },
-      { id: 8, title: 'DevOps Pipeline', category: 'Cloud & DevOps', price: 'Paid', rating: 4.8, image: img }
+      { id: 1, title: 'Learn Algorithms', category: 'Algorithm & Data Structures', price: 'Free & Paid', bookmarkCount: 45, image: img },
+      { id: 2, title: 'API Basics', category: 'API & Documentation', price: 'Paid', bookmarkCount: 40, image: img },
+      { id: 3, title: 'Cloud Fundamentals', category: 'Cloud & DevOps', price: 'Free', bookmarkCount: 35, image: img },
+      { id: 4, title: 'Testing Tips', category: 'Testing & QA', price: 'Paid', bookmarkCount: 50, image: img },
+      { id: 5, title: 'UI Design Basics', category: 'UI / UX', price: 'Free', bookmarkCount: 47, image: img },
+      { id: 6, title: 'Data Structures', category: 'Algorithm & Data Structures', price: 'Paid', bookmarkCount: 42, image: img },
+      { id: 7, title: 'Advanced APIs', category: 'API & Documentation', price: 'Free', bookmarkCount: 39, image: img },
+      { id: 8, title: 'DevOps Pipeline', category: 'Cloud & DevOps', price: 'Paid', bookmarkCount: 48, image: img }
     ]"
         :key="item.id"
         class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-4"

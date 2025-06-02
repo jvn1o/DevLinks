@@ -40,8 +40,8 @@ defineProps({
         </div>
       </div>
       <div class="d-flex justify-content-between mt-2">
-        <div v-if="item.rating">
-          <span class="bi bi-bookmark text-warning"></span> ({{ item.rating }})
+        <div v-if="item.bookmarkCount">
+          <span class="bi bi-bookmark text-warning"></span> ({{ item.bookmarkCount }})
         </div>
         <div
             class="fw-bold mt-auto"
