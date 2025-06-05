@@ -1,10 +1,72 @@
+<script setup>
+import { ref } from 'vue';
+import { jwtDecode } from "jwt-decode";
+
+const userId = ref('');
+const userPwd = ref('');
+const route = useRoute();
+const userDetails = useUserDetails();
+// const rememberMe = ref(false);
+
+const signInHandler = async () => {
+  console.log("로그인 버튼 작동 중");
+
+  try {
+    let response = await useDataFetch("auth/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: {
+        userId: userId.value,
+        userPwd: userPwd.value
+      }
+    });
+
+    // 응답받은 토큰을 jwt 디코딩을 통하여 사용자 정보를 추출
+    let userInfo = jwtDecode(response.token);
+
+    // 디코딩한 정보를 userDetails.login 으로 전역 저장
+    userDetails.login({
+      id: userInfo.id,
+      userId: userInfo.userId,
+      username: userInfo.name,
+      birth: userInfo.birth,
+      email: userInfo.email,
+      profileImgSrc: userInfo.profileImgSrc,
+      token: response.token
+    });
+
+    // 로그인 전 접근하려던 returnURL로 이동
+    console.log('조각난 리턴url: ', route.query);
+    let originalReturnURL = route.query.returnURL;
+    Object.entries(route.query)
+        .filter(([key]) => key !== 'returnURL')
+        .forEach(([key, value]) => {
+          originalReturnURL += `&${key}=${value}`;
+        });
+    console.log('originalReturnUrl: ', originalReturnURL);
+
+    return navigateTo(originalReturnURL);
+
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      alert("존재하지 않는 아이디입니다.");
+    } else {
+      console.error("로그인 중 오류 발생:", error);
+      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+    }
+  }
+};
+</script>
+
 <template>
   <main class="container mt-5">
     <div class="text-center mb-4">
-      <h2>Welcome</h2>
+      <h2>Login</h2>
     </div>
 
-    <form @submit.prevent="signinHandler" class="mx-auto" style="max-width: 400px;">
+    <form @submit.prevent="signInHandler" class="mx-auto" style="max-width: 400px;">
       <!-- ID -->
       <div class="mb-3">
         <label for="id" class="form-label">ID</label>
@@ -43,62 +105,3 @@
     </form>
   </main>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-// import { jwtDecode } from "jwt-decode";
-
-const userId = ref('');
-const userPwd = ref('');
-const route = useRoute();
-const userDetails = useUserDetails();
-// const rememberMe = ref(false);
-
-const signinHandler = async () => {
-  console.log("로그인 버튼 작동 중");
-
-  try {
-    let response = await useDataFetch("auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: {
-        userId: userId.value,
-        userPwd: userPwd.value
-      }
-    });
-
-    let userInfo = jwtDecode(response.token);
-    userDetails.login({
-      id: userInfo.id,
-      userId: userInfo.userId,
-      username: userInfo.name,
-      birth: userInfo.birth,
-      email: userInfo.email,
-      profileImgSrc: userInfo.profileImgSrc,
-      token: response.token
-    });
-
-    // 리턴 URL 복원
-    console.log('조각난 리턴url: ', route.query);
-    let originalReturnURL = route.query.returnURL;
-    Object.entries(route.query)
-        .filter(([key]) => key !== 'returnURL')
-        .forEach(([key, value]) => {
-          originalReturnURL += `&${key}=${value}`;
-        });
-    console.log('originalReturnUrl: ', originalReturnURL);
-
-    return navigateTo(originalReturnURL);
-
-  } catch (error) {
-    if (error.response && error.response.status === 401) {
-      alert("존재하지 않는 아이디입니다.");
-    } else {
-      console.error("로그인 중 오류 발생:", error);
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
-    }
-  }
-};
-</script>

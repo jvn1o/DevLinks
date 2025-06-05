@@ -1,16 +1,21 @@
 <script setup>
+import { ref } from 'vue'
+import Toast from '@/components/Toast.vue'
+
+const isBookmarked = ref(false)
+const toastMessage = ref('')
+
+const toggleBookmark = () => {
+  isBookmarked.value = !isBookmarked.value
+  toastMessage.value = isBookmarked.value ? 'Bookmark added!' : 'Bookmark removed!'
+}
+
 defineProps({
   item: {
     type: Object,
     required: true,
   },
 });
-
-const isBookmarked = ref(false)
-
-const toggleBookmark = () => {
-  isBookmarked.value = !isBookmarked.value
-}
 </script>
 
 <template>
@@ -20,17 +25,21 @@ const toggleBookmark = () => {
     <div class="card-img-wrapper">
       <img :src="item.image" class="card-img-top" :alt="item.title"/>
     </div>
+
     <div class="card-body d-flex flex-column">
       <div class="d-flex flex-column">
+
         <h5 class="card-title fs-6 text-truncate fw-bold" :title="item.title">
           {{ item.title }}
         </h5>
+
         <div class="d-flex justify-content-between align-items-center">
           <p class="card-text text-muted text-truncate mb-0">
             {{ item.category }}
           </p>
           <button class="bookmark-btn btn p-0 ms-2 flex-shrink-0"
                   @click.stop.prevent="toggleBookmark"
+                  style="border: none !important;"
           >
           <!--    의도치 않은 페이지 이동을 막기 위해 stop.prevent    -->
             <i
@@ -40,27 +49,36 @@ const toggleBookmark = () => {
               ]"
             ></i>
           </button>
+
         </div>
+
       </div>
+
       <div class="d-flex justify-content-between mt-2">
         <div v-if="item.bookmarkCount">
-          <span class="bi bi-bookmark text-warning"></span> ({{ item.bookmarkCount }})
-          <span class="bi bi-eye"></span> {{ item.viewCount }}
+          <span class="bi bi-bookmark-fill text-warning"></span>({{ item.bookmarkCount || 0 }})
+          <span class="bi bi-eye"></span>({{ item.viewCount || 0 }})
         </div>
+
         <div
             class="fw-bold mt-auto"
             :class="{
-            'text-danger': item.price !== 'Free'
+            'text-danger': item.price !== 'Free',
+            'text-info': item.price === 'Free'
           }"
         >
           {{ item.price }}
         </div>
       </div>
+
     </div>
   </NuxtLink>
+
+  <Toast :message="toastMessage" />
 </template>
 
 <style scoped>
+
 .card-img-wrapper img {
   height: 225px;
   object-fit: cover;
