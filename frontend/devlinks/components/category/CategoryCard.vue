@@ -1,21 +1,43 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import Toast from '@/components/Toast.vue'
+import useUserDetails from '@/composables/useUserDetails'
+import useBookmarks from '@/composables/useBookmarks'
 
-const isBookmarked = ref(false)
-const toastMessage = ref('')
-
-const toggleBookmark = () => {
-  isBookmarked.value = !isBookmarked.value
-  toastMessage.value = isBookmarked.value ? 'Bookmark added!' : 'Bookmark removed!'
-}
-
-defineProps({
+const props = defineProps({
   item: {
     type: Object,
     required: true,
   },
-});
+})
+
+const router = useRouter()
+const route = useRoute()
+
+const isBookmarked = ref(false)
+const toastMessage = ref('')
+
+const { userId, isAnonymous } = useUserDetails()
+const { toggleBookmark: toggleBookmarkAPI } = useBookmarks()
+
+const toggleBookmark = async () => {
+  // 비로그인 유저가 북마크 버튼을 누르면 로그인 이후
+  if (isAnonymous()) {
+    const currentPath = route.fullPath
+    router.push(`/login?redirect=${encodeURIComponent(currentPath)}`)
+    return
+  }
+
+  try {
+    isBookmarked.value = !isBookmarked.value
+    await toggleBookmarkAPI(userId.value, props.item.id)
+    toastMessage.value = isBookmarked.value ? 'Bookmark added!' : 'Bookmark removed!'
+  } catch (e) {
+    isBookmarked.value = !isBookmarked.value // 실패 시 원래대로 롤백
+    toastMessage.value = 'Failed to update bookmark.'
+  }
+}
 </script>
 
 <template>

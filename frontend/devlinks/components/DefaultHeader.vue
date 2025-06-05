@@ -2,16 +2,25 @@
 import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import Sidebar from './Sidebar.vue'
+import useUserDetails from '@/composables/useUserDetails'
+import defaultProfileImg from 'assets/image/icon/default_profile.svg'
 
 // 다크모드 상태를 props로 전달받음
-const props = defineProps({
-  darkMode: Boolean,
-})
-
+const props = defineProps({darkMode: Boolean,})
 const emit = defineEmits(['update:darkMode'])
 
 const { width } = useWindowSize()
 const isMobileDevice = computed(() => width.value < 1193.75)
+
+// user 상태 가져오기
+const {
+  isAnonymous,
+  profileImgSrc,
+} = useUserDetails()
+
+const resolvedProfileImg = computed(() =>
+    isAnonymous() || !profileImgSrc ? defaultProfileImg : profileImgSrc
+)
 
 // 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
 const slugify = (text) => {
@@ -46,10 +55,11 @@ const toggleSidebar = () => {
         class="d-flex justify-content-center align-items-center p-2 border-end"
         :style="{'border-color': darkMode ? '#495057' : '#CED3D9'}"
     >
+      <!--  프로필 사진-->
       <div class="w-32 h-32 p-1">
-        <NuxtLink to="/signin">
+        <NuxtLink :to="isAnonymous() ? '/login' : '/mypage'">
           <img
-              src="/assets/image/icon/profile.svg"
+              :src="resolvedProfileImg"
               alt="Profile"
               width="32"
               height="32"
@@ -57,6 +67,7 @@ const toggleSidebar = () => {
           />
         </NuxtLink>
       </div>
+
       <div class="w-25 h-25 p-1">
         <NuxtLink to="/mypage/bookmark" class="me-3">
           <img

@@ -8,11 +8,11 @@ const route = useRoute();
 const userDetails = useUserDetails();
 // const rememberMe = ref(false);
 
-const signInHandler = async () => {
+const logInHandler = async () => {
   console.log("로그인 버튼 작동 중");
 
   try {
-    let response = await useDataFetch("auth/signin", {
+    let response = await useDataFetch("auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -66,7 +66,7 @@ const signInHandler = async () => {
       <h2>Login</h2>
     </div>
 
-    <form @submit.prevent="signInHandler" class="mx-auto" style="max-width: 400px;">
+    <form @submit.prevent="logInHandler" class="mx-auto" style="max-width: 400px;">
       <!-- ID -->
       <div class="mb-3">
         <label for="id" class="form-label">ID</label>
