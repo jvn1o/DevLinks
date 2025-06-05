@@ -1,5 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+
+  // Vite 서버 설정
+  vite: {
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8080', // 백엔드 API 주소
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+        },
+      },
+    },
+  },
 })

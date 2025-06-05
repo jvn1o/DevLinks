@@ -147,7 +147,7 @@ const toggleSidebar = () => {
     />
 
     <!-- 글 작성 -->
-    <NuxtLink to="/" class="ms-auto navbar-brand">
+    <NuxtLink to="/links/create" class="ms-auto navbar-brand">
       <img src="/assets/image/icon/write.svg" alt="Logo" width="90" height="20"/>
     </NuxtLink>
   </nav>
