@@ -32,7 +32,7 @@
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
-            <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
+            <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Algorithm & Data Structures
               </h5>
@@ -50,7 +50,7 @@
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
-            <NuxtLink :to="`/category/algorithm-data-structures`" class="nav-link">
+            <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 API & Documentation
               </h5>
@@ -68,7 +68,7 @@
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
-            <NuxtLink :to="`/category/cloud-devops`" class="nav-link">
+            <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Cloud & DevOps
               </h5>
@@ -86,7 +86,7 @@
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
-            <NuxtLink :to="`/category/testing-qa`" class="nav-link">
+            <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 Testing & QA
               </h5>
@@ -104,7 +104,7 @@
       <div class="col-md-7">
         <div class="card h-100 shadow-sm hover-card ms-md-auto">
           <div class="card-body py-4 px-4">
-            <NuxtLink :to="`/category/ui-ux`" class="nav-link">
+            <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
                 UI / UX
               </h5>

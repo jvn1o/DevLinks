@@ -126,7 +126,7 @@ const toggleSidebar = () => {
         <ul class="navbar-nav d-flex flex-row">
           <li v-for="(tab, index) in tabs" :key="index" class="nav-item px-2">
             <NuxtLink
-                :to="`/category/${slugify(tab)}`"
+                :to="`/links/category/${slugify(tab)}`"
                 class="nav-link fw-bold text-primary"
             >
               {{ tab }}

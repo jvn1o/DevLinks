@@ -1,10 +1,10 @@
-package com.jvn1o.devlinks.anonymous.link.service;
+package com.jvn1o.devlinks.link.service;
 
 import com.jvn1o.devlinks.common.enums.PriceType;
 import com.jvn1o.devlinks.entity.Image;
 import com.jvn1o.devlinks.entity.Link;
 import com.jvn1o.devlinks.repository.LinkRepository;
-import com.jvn1o.devlinks.anonymous.link.dto.LinkListDto;
+import com.jvn1o.devlinks.link.dto.LinkListDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -57,8 +57,8 @@ public class DefaultLinkService implements LinkService {
                             .id(link.getId())
                             .thumbnail(thumbnail)
                             .title(link.getTitle())
-                            .categories(link.getCategory() != null ? List.of(link.getCategory().getSlug()) : null) // 카테고리 이름
-                            .price(link.getPriceType()) // 가격 타입
+                            .categoryId(link.getCategory() != null ? link.getCategory().getId() : null)
+                            .pricetype(link.getPriceType())
                             .bookmarkCount(bookmarkCount) // 북마크에 link 해당하는 개수
                             .build();
                 })

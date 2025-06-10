@@ -6,17 +6,17 @@ import lombok.Builder;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberLinkListDto {
     private Long id;
+    // Image 에서 order 가 1인 src
     private String thumbnail;
     private String title;
-    private List<String> categories;
-    private PriceType price;
+    // CategoryId 에 해당하는 slug 를 가져와 필터링
+    private Long categoryId;
+    private PriceType pricetype;
     private Integer bookmarkCount;
 }

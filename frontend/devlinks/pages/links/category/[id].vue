@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import CategoryCard from '~/components/category/CategoryCard.vue';
-import img from '~/assets/image/figma.png';
+import img from 'assets/image/figma.png';
 
 const route = useRoute();
 const categorySlug = route.params.id;

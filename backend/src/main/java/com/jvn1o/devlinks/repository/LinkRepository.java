@@ -2,7 +2,7 @@ package com.jvn1o.devlinks.repository;
 
 import com.jvn1o.devlinks.common.enums.PriceType;
 import com.jvn1o.devlinks.entity.Link;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,10 +17,10 @@ public interface LinkRepository extends JpaRepository<Link, Long> {
             "SELECT l " +
             "FROM Link l " +
             "WHERE l.category.slug = :slug " +
-            "AND (:price IS NULL OR l.priceType = :price)"
+            "AND (:pricetype IS NULL OR l.priceType = :pricetype)"
     )
     List<Link> findByCategorySlugAndPrice(
             @Param("slug") String slug,
-            @Param("price") PriceType price
+            @Param("pricetype") PriceType pricetype
     );
 }
