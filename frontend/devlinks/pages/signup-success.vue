@@ -4,7 +4,7 @@
     <div class="fs-2 fw-bold text-dark mb-4">
       Your account was successfully created!
     </div>
-    <RouterLink to="/devlinks/pages/login" class="btn btn-primary px-4 py-2">
+    <RouterLink to="/login" class="btn btn-primary px-4 py-2">
       Back to Login
     </RouterLink>
   </main>

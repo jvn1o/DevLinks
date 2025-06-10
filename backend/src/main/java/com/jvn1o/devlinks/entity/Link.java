@@ -50,6 +50,7 @@ public class Link {
     @Column(name = "price", nullable = false)
     private PriceType priceType;
 
+    // DB - LINK 에 BOOKMARK_ID 추가하기
     @OneToMany(mappedBy = "link", cascade = CascadeType.REMOVE)
     @JsonManagedReference(value = "link-bookmark")
     private List<Bookmark> bookmarks;

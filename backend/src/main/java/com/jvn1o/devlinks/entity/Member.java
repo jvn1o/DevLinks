@@ -7,6 +7,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -42,19 +43,15 @@ public class Member {
     @CreationTimestamp
     private Instant regDate;
 
-    @Column(name = "country")
-    private String country;
-
     @Column(name = "profile_img_src")
     private String profileImgSrc;
+
+    @Column(name = "birth")
+    private LocalDate birth;
 
     @OneToMany(mappedBy = "member")
     @JsonManagedReference
     private List<Bookmark> bookmarks;
-
-    @OneToMany(mappedBy = "member")
-    @JsonManagedReference
-    private List<Sns> sns;
 
     @OneToMany(mappedBy = "member")
     private List<Link> links;
