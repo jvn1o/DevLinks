@@ -15,6 +15,19 @@ const categories = [
   'UI / UX',
 ]
 
+// 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
+const slugify = (text) => {
+  return text
+      .toLowerCase()
+      .trim()
+      .replace(/ & /g, ' and ')   // 의미 보존 (예: API & Docs → api-and-docs)
+      .replace(/ \/ /g, '-')      // 슬래시 제거 (예: UI / UX → ui-ux)
+      .replace(/[^\w\s-]/g, '')   // 나머지 특수문자 제거
+      .replace(/\s+/g, '-')
+      .replace(/--+/g, '-')       // 연속된 하이픈 정리
+      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
+}
+
 const priceType = ref('')
 const priceTypes = ['Free', 'Paid', 'Free & Paid']
 
@@ -43,7 +56,7 @@ async function submitForm() {
 
   const formData = new FormData();
   formData.append('title', title.value);
-  formData.append('category', category.value);
+  formData.append('category', slugify(category.value)); // slugify 처리
   formData.append('priceType', priceType.value);
   formData.append('description', plainDesc); // 문자열 강제 처리
 
@@ -111,7 +124,7 @@ async function submitForm() {
             :class="{ 'text-dark': category }"
             required
         >
-          <option value="" disabled selected>Select Category</option>
+          <option value="" disabled>Select Category</option>
           <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
         </select>
       </div>
@@ -125,7 +138,7 @@ async function submitForm() {
             :class="{ 'text-dark': priceType }"
             required
         >
-          <option value="" disabled selected>Select PriceType</option>
+          <option value="" disabled>Select PriceType</option>
           <option v-for="price in priceTypes" :key="price" :value="price">{{ price }}</option>
         </select>
       </div>

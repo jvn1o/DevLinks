@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { watch } from 'vue';
 import CategoryCard from '~/components/category/CategoryCard.vue';
 import img from 'assets/image/figma.png';
 
@@ -22,6 +22,7 @@ const fetchLinks = async () => {
     console.error("링크 목록 로딩 실패", err);
   }
 };
+
 
 
 const currentPage = ref(1);
@@ -65,13 +66,35 @@ const pagesToShow = computed(() => {
   return pages;
 });
 
+
+
 watchEffect(() => {
   fetchLinks();
 });
+
+// selectedPrice 또는 selectedSort 변경
+watch([selectedPrice, selectedSort], () => {
+  currentPage.value = 1;  // 필터나 정렬이 바뀌면 페이지 1로 초기화하는 게 일반적
+  fetchLinks();
+});
+
+// selectedCategorySlug 변경
+watch(selectedCategorySlug, () => {
+  currentPage.value = 1;
+  fetchLinks();
+});
+
+// currentPage 변경
+watch(currentPage, () => {
+  fetchLinks();
+});
+
 </script>
 
 <template>
   <div class="d-flex flex-wrap gap-2 p-3 justify-content-end">
+
+
     <!-- Price Type -->
     <select v-model="selectedPrice" class="form-select w-auto">
       <option :value="null">All</option>
@@ -80,13 +103,16 @@ watchEffect(() => {
       <option value="FREE_PAID">Free & Paid</option>
     </select>
 
-    <!-- Sort Option -->
+    <!-- Sort -->
     <select v-model="selectedSort" class="form-select w-auto">
       <option value="newest">Newest</option>
       <option value="popular">Most Popular</option>
     </select>
   </div>
 
+
+
+  <!-- Links  -->
   <div class="row p-3">
     <div
         v-for="item in pagedItems"

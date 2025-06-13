@@ -32,8 +32,8 @@ public class Link {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "detail", nullable = false)
-    private String detail;
+    @Column(name = "description", nullable = false)
+    private String description;
 
     @Column(name = "reg_date", updatable = false)
     @CreationTimestamp

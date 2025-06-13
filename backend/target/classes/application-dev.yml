@@ -1,9 +1,9 @@
 spring:
   application:
-    name: HaruSeoul
+    name: DevLinks
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://hi.newlecture.com:3306/m2j2db
+    driver-class-name: org.oracle.jdbc.Driver
+    url: jdbc:oracle:thin:@192.168.0.11:1521:jvn1orcl
     username: {SPRING_DATASOURCE_USERNAME}
     password: {SPRING_DATASOURCE_PASSWORD}
 
@@ -18,7 +18,7 @@ spring:
         format_sql: true
 
 
-haruSeoul:
+devLinks:
   jwt:
     secret: ${SPRING_JWT_SECRET_KEY}
 
@@ -31,7 +31,7 @@ server:
 #  configuration:
 #    map-underscore-to-camel-case: true
 #  mapper-locations: mappers/*Mapper.xml
-#  type-aliases-package: com.m2j2.haruseoul.entity
+#  type-aliases-package: com.jvn1o.devlinks.entity
 #logging:
 #  level:
-#    com.m2j2.haruseoul.repository.ProgramRepository: trace
+#    com.jvn1o.devlinks.repository.LinkRepository: trace

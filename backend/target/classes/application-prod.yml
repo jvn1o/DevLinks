@@ -1,6 +1,6 @@
 spring:
   application:
-    name: HaruSeoul
+    name: DevLinks
 
   jpa:
     generate-ddl: false
@@ -14,4 +14,4 @@ spring:
     defer-datasource-initialization: true
 
 server:
-  port: 8083
+  port: 8080
