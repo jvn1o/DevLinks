@@ -18,7 +18,7 @@ public interface MemberLinkRepository extends JpaRepository<Link, Long> {
             size(l.bookmarks)
         )
         from Link l
-        where l.member.id = :userId
+        where l.member.id = :memberId
         order by l.regDate desc
     """)
     List<MemberLinkListDto> findAllByMemberId(Long memberId);

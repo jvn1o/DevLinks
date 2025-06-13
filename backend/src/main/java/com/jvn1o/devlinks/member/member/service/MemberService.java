@@ -5,5 +5,5 @@ import com.jvn1o.devlinks.member.member.dto.MemberSignupRequestDto;
 public interface MemberService {
     void signup(MemberSignupRequestDto request);
 
-    boolean existsByUserId(String userId);
+    boolean existsByMemberId(String memberId);
 }

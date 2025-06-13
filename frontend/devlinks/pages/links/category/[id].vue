@@ -4,11 +4,26 @@ import { useRoute } from 'vue-router';
 import CategoryCard from '~/components/category/CategoryCard.vue';
 import img from 'assets/image/figma.png';
 
-const route = useRoute();
-const categorySlug = route.params.id;
+const links = ref([]);
+const selectedCategorySlug = ref("algorithm-data-structures");
+const selectedSort = ref("newest");
+const selectedPrice = ref(null); // Free, Paid, Free & Paid
 
-const selectedFilter = ref('newest');
-const selectedPrice = ref('all');
+const fetchLinks = async () => {
+  try {
+    const { data } = await axios.get(`/api/v1/links/category/${selectedCategorySlug.value}`, {
+      params: {
+        sort: selectedSort.value,
+        pricetype: selectedPrice.value ?? '', // null 이면 필터링 없이 반환
+      },
+    });
+    links.value = data;
+  } catch (err) {
+    console.error("링크 목록 로딩 실패", err);
+  }
+};
+
+
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
@@ -49,9 +64,29 @@ const pagesToShow = computed(() => {
   }
   return pages;
 });
+
+watchEffect(() => {
+  fetchLinks();
+});
 </script>
 
 <template>
+  <div class="d-flex flex-wrap gap-2 p-3 justify-content-end">
+    <!-- Price Type -->
+    <select v-model="selectedPrice" class="form-select w-auto">
+      <option :value="null">All</option>
+      <option value="FREE">Free</option>
+      <option value="PAID">Paid</option>
+      <option value="FREE_PAID">Free & Paid</option>
+    </select>
+
+    <!-- Sort Option -->
+    <select v-model="selectedSort" class="form-select w-auto">
+      <option value="newest">Newest</option>
+      <option value="popular">Most Popular</option>
+    </select>
+  </div>
+
   <div class="row p-3">
     <div
         v-for="item in pagedItems"

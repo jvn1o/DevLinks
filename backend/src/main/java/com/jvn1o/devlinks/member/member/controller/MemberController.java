@@ -29,25 +29,25 @@ public class MemberController {
 
     // ID 중복 체크
     @PostMapping("/idvalid")
-    public ResponseEntity<?> checkUserId(@RequestBody UserIdRequest request) {
-        boolean exists = memberService.existsByUserId(request.getUserId());
+    public ResponseEntity<?> checkMemberId(@RequestBody MemberIdRequest request) {
+        boolean exists = memberService.existsByMemberId(request.getMemberId());
         if (exists) {
             // 409 Conflict 반환하여 Vue composable에서 처리
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("User ID already exists");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Member ID already exists");
         }
         return ResponseEntity.ok().build();
     }
 
     // ID 중복 체크 요청 DTO
-    public static class UserIdRequest {
-        private String userId;
+    public static class MemberIdRequest {
+        private String memberId;
 
-        public String getUserId() {
-            return userId;
+        public String getMemberId() {
+            return memberId;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setMemberId(String memberId) {
+            this.memberId = memberId;
         }
     }
 }

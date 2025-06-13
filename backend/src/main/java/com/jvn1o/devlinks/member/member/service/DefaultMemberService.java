@@ -54,8 +54,8 @@ public class DefaultMemberService implements MemberService {
     }
 
     @Override
-    public boolean existsByUserId(String userId) {
-        return memberRepository.existsByMemberId(userId);
+    public boolean existsByMemberId(String memberId) {
+        return memberRepository.existsByMemberId(memberId);
     }
 
     private String saveProfileImage(MultipartFile file) {

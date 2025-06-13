@@ -20,7 +20,7 @@ public class DefaultLinkService implements LinkService {
     @Override
     public List<LinkListDto> findBySortAndPrice(String slug, String sort, PriceType price) {
 
-        // repository에서 필터링된 링크들
+        // repository 에서 필터링된 링크들
         List<Link> links = linkRepository.findByCategorySlugAndPrice(slug, price);
 
         // 정렬

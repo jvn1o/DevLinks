@@ -37,7 +37,7 @@ async function submitForm() {
   const plainDesc = description.value?.toString().trim();
 
   if (!title.value || !category.value || !priceType.value || !plainDesc) {
-    alert('모든 필드를 채워주세요.');
+    alert('Please fill out all fields.');
     return;
   }
 

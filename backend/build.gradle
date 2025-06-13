@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.h2database:h2' // H2 기존 의존성 << 임시 서버
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'  // Thymeleaf Starter
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'  // Thymeleaf Layout Dialect
     implementation 'org.springframework.boot:spring-boot-starter'  // 기본 Starter
@@ -22,7 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'  // 보안 Starter
 
     runtimeOnly 'com.oracle.database.jdbc:ojdbc11:21.9.0.0'  // 오라클 JDBC 드라이버 (버전 주의)
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'  // MariaDB JDBC 드라이버
+//    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'  // MariaDB JDBC 드라이버
 
     compileOnly 'org.projectlombok:lombok'  // Lombok
     annotationProcessor 'org.projectlombok:lombok'  // Lombok annotation processor
