@@ -1,10 +1,10 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useWindowSize } from '@vueuse/core'
-import Sidebar from '~/components/mobile/Sidebar.vue'
+import {computed, ref} from 'vue'
+import Sidebar from "~/components/mobile/Sidebar.vue";
+import {useWindowSize} from '@vueuse/core'
 import useMemberDetails from '~/composables/useMemberDetails'
 import defaultProfileImg from 'assets/image/icon/default_profile.svg'
-import { slugify } from '~/utils/slugify.js'
+import {slugify} from '~/utils/slugify.js'
 
 // 다크모드 상태를 props로 전달받음
 const props = defineProps({darkMode: Boolean,})
