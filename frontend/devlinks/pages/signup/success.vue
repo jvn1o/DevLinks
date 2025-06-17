@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+  layout: 'auth'
+})
+</script>
+
 <template>
   <main class="container d-flex flex-column align-items-center justify-content-center text-center vh-70">
     <img src="../../assets/image/icon/checked.png" alt="Success Icon" class="mb-4" style="width: 100px; height: 100px;" />

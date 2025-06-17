@@ -40,6 +40,15 @@ const toggleSidebar = () => {
 // 로그인 유도 모달 참조
 const modalRef = ref()
 
+// 프로필 이동
+const handleProfileClick = async () => {
+  if (isAnonymous()) {
+    await modalRef.value?.show()
+    return
+  }
+  router.push('/member/index')
+}
+
 // 북마크 이동
 const goToBookmarks = async () => {
   if (isAnonymous()) {
@@ -78,7 +87,11 @@ const goToPost = async () => {
     >
       <!-- 프로필 -->
       <div class="w-32 h-32 p-1">
-        <NuxtLink :to="isAnonymous() ? '/login' : '/mypage'">
+        <button
+            @click="handleProfileClick"
+            class="btn p-0 border-0 bg-transparent"
+            aria-label="프로필"
+        >
           <img
               :src="resolvedProfileImg"
               alt="Profile"
@@ -86,7 +99,7 @@ const goToPost = async () => {
               height="32"
               class="rounded-circle"
           />
-        </NuxtLink>
+        </button>
       </div>
 
       <!-- 북마크 아이콘 -->

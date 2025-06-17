@@ -58,50 +58,71 @@ const logInHandler = async () => {
     }
   }
 };
+
+definePageMeta({
+  layout: 'auth'
+})
 </script>
 
 <template>
-  <main class="container mt-5">
-    <div class="text-center mb-4">
-      <h2>Login</h2>
-    </div>
+  <main class="container-sm mt-5 d-flex flex-column align-items-center">
+    <div class="mb-5 w-100" style="max-width: 560px; width: 100%;">
+      <h2 class="mb-4 fw-bold text-center">Login</h2>
 
-    <form @submit.prevent="logInHandler" class="mx-auto" style="max-width: 400px;">
-      <!-- ID -->
-      <div class="mb-3">
-        <label for="id" class="form-label">ID</label>
-        <input type="text" id="id" class="form-control" v-model="memberId" placeholder="Enter your ID" required>
-      </div>
-
-      <!-- Password -->
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" v-model="memberPwd" placeholder="Enter your Password" required>
-      </div>
-
-      <!-- 추가 옵션 -->
-      <div class="d-flex justify-content-between mb-4 text-muted small">
-        <!-- <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="rememberMe" v-model="rememberMe">
-          <label class="form-check-label" for="rememberMe">Remember me</label>
-        </div> -->
-        <div>
-          <a href="#" class="me-3">Forgot ID</a>
-          <a href="#">Forgot Password</a>
+      <form @submit.prevent="logInHandler" style="width: 100%;">
+        <!-- ID -->
+        <div class="mb-4">
+          <label for="id" class="form-label fs-5">ID</label>
+          <input
+              type="text"
+              id="id"
+              class="form-control form-control-lg"
+              v-model="memberId"
+              placeholder="Enter your ID"
+              required
+          />
         </div>
-      </div>
 
-      <!-- 로그인 버튼 -->
-      <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="form-label fs-5">Password</label>
+          <input
+              type="password"
+              id="password"
+              class="form-control form-control-lg"
+              v-model="memberPwd"
+              placeholder="Enter your Password"
+              required
+          />
+        </div>
 
-      <!-- 구분선 -->
-      <div class="text-center text-muted my-3">
-        <hr>
-        <span class="position-relative px-3 bg-white" style="top: -18px;">or</span>
-      </div>
+        <!-- 추가 옵션 -->
+        <div class="d-flex justify-content-between mb-4 text-muted">
+          <div>
+            <a href="#" class="me-3" style="font-size: 1.1rem !important;">Forgot ID</a>
+            <a href="#" style="font-size: 1.1rem !important;">Forgot Password</a>
+          </div>
+        </div>
 
-      <!-- 회원가입 버튼 -->
-      <RouterLink to="/signup" class="btn btn-outline-secondary w-100">Create an account</RouterLink>
-    </form>
+        <!-- 로그인 버튼 -->
+        <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+
+        <!-- 구분선 -->
+        <div class="text-center text-muted my-4 position-relative">
+          <hr />
+          <span
+              class="position-absolute top-50 start-50 translate-middle px-3 bg-white"
+              style="font-weight: 600; font-size: 1rem;"
+          >
+            or
+          </span>
+        </div>
+
+        <!-- 회원가입 버튼 -->
+        <RouterLink to="/signup" class="btn btn-outline-secondary btn-lg w-100">
+          Create an account
+        </RouterLink>
+      </form>
+    </div>
   </main>
 </template>
