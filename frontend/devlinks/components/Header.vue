@@ -1,9 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useWindowSize } from '@vueuse/core'
-import Sidebar from './Sidebar.vue'
-import useUserDetails from '@/composables/useUserDetails'
+import Sidebar from '~/components/mobile/Sidebar.vue'
+import useMemberDetails from '~/composables/useMemberDetails'
 import defaultProfileImg from 'assets/image/icon/default_profile.svg'
+import { slugify } from '~/utils/slugify.js'
 
 // 다크모드 상태를 props로 전달받음
 const props = defineProps({darkMode: Boolean,})
@@ -12,28 +13,15 @@ const emit = defineEmits(['update:darkMode'])
 const { width } = useWindowSize()
 const isMobileDevice = computed(() => width.value < 1193.75)
 
-// user 상태 가져오기
+// member 상태 가져오기
 const {
   isAnonymous,
   profileImgSrc,
-} = useUserDetails()
+} = useMemberDetails()
 
 const resolvedProfileImg = computed(() =>
     isAnonymous() || !profileImgSrc ? defaultProfileImg : profileImgSrc
 )
-
-// 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
-const slugify = (text) => {
-  return text
-      .toLowerCase()
-      .trim()
-      .replace(/ & /g, ' and ')   // 의미 보존 (예: API & Docs → api-and-docs)
-      .replace(/ \/ /g, '-')      // 슬래시 제거 (예: UI / UX → ui-ux)
-      .replace(/[^\w\s-]/g, '')   // 나머지 특수문자 제거
-      .replace(/\s+/g, '-')
-      .replace(/--+/g, '-')       // 연속된 하이픈 정리
-      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
-}
 
 const tabs = [
   "Algorithm & Data Structures",

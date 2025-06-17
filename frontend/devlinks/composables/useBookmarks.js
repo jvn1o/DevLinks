@@ -6,8 +6,8 @@ export default function useBookmarks() {
     const loading = ref(false)
     const error = ref(null)
 
-    // userId로 북마크 리스트 가져오기
-    const fetchBookmarks = async (userId) => {
+    // memberId로 북마크 리스트 가져오기
+    const fetchBookmarks = async (memberId) => {
         loading.value = true
         error.value = null
         try {
@@ -22,17 +22,17 @@ export default function useBookmarks() {
         }
     }
 
-    // userId와 itemId로 북마크 토글
-    const toggleBookmark = async (userId, itemId) => {
+    // memberId와 itemId로 북마크 토글
+    const toggleBookmark = async (memberId, itemId) => {
         try {
             const res = await fetch(`http://localhost:8080/api/v1/bookmarks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, itemId }),
+                body: JSON.stringify({ memberId, itemId }),
             })
             if (!res.ok) throw new Error('Failed to toggle bookmark')
             // toggle 후, 최신 북마크 리스트 다시 불러오기 권장
-            await fetchBookmarks(userId)
+            await fetchBookmarks(memberId)
         } catch (err) {
             error.value = err.message
         }

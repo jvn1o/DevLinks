@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import Toast from '@/components/Toast.vue'
-import useUserDetails from '@/composables/useUserDetails'
+import useMemberDetails from '~/composables/useMemberDetails'
 import useBookmarks from '@/composables/useBookmarks'
 
 const props = defineProps({
@@ -18,7 +18,7 @@ const route = useRoute()
 const isBookmarked = ref(false)
 const toastMessage = ref('')
 
-const { userId, isAnonymous } = useUserDetails()
+const { memberId, isAnonymous } = useMemberDetails()
 const { toggleBookmark: toggleBookmarkAPI } = useBookmarks()
 
 const toggleBookmark = async () => {
@@ -31,7 +31,7 @@ const toggleBookmark = async () => {
 
   try {
     isBookmarked.value = !isBookmarked.value
-    await toggleBookmarkAPI(userId.value, props.item.id)
+    await toggleBookmarkAPI(memberId.value, props.item.id)
     toastMessage.value = isBookmarked.value ? 'Bookmark added!' : 'Bookmark removed!'
   } catch (e) {
     isBookmarked.value = !isBookmarked.value // 실패 시 원래대로 롤백

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
         <div class="responsive-padding rounded-4 mb-5 shadow-sm border text-center">
-          <h2 class="fw-bold mb-3 intro-title-responsive">
+          <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
         <span class="text-gradient d-inline-flex align-items-center gap-2">
           <img
               src="/assets/image/DevLinks.svg"
@@ -17,7 +17,7 @@
           DevLinks
         </span>
           </h2>
-          <p class="text-muted intro-text-responsive mb-2">
+          <p class="text-secondary intro-text-responsive mb-2">
             개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
           </p>
           <p class="text-secondary intro-text-responsive">
@@ -167,7 +167,7 @@
   }
 
   .intro-title-responsive {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
   }
   .intro-text-responsive {
     font-size: 0.65rem;

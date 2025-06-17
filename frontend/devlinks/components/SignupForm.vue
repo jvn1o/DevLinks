@@ -6,7 +6,7 @@ const {
   previewImage,
   onFileChange,
   name,
-  userId,
+  memberId,
   nickname,
   emailId,
   emailDomain,
@@ -19,7 +19,7 @@ const {
   nameError,
   nicknameError,
   passwordError,
-  userIdError,
+  memberIdError,
   emailError,
   submitHandler,
   validHandler
@@ -58,8 +58,8 @@ const {
         <label for="id" class="form-label">ID</label>
         <div class="input-group">
           <input
-              v-model="userId"
-              @input="userId = userId.replace(/[^A-Za-z0-9]/g, '')"
+              v-model="memberId"
+              @input="memberId = memberId.replace(/[^A-Za-z0-9]/g, '')"
               type="text"
               class="form-control"
               id="id"
@@ -68,7 +68,7 @@ const {
           <button @click="validHandler" type="button" class="btn btn-outline-primary">Verify</button>
         </div>
         <div class="form-text text-success" v-if="isChecked">ID verified</div>
-        <div class="form-text text-danger" v-else>{{ userIdError || "Please verify the ID" }}</div>
+        <div class="form-text text-danger" v-else>{{ memberIdError || "Please verify the ID" }}</div>
       </div>
 
       <!-- Password -->

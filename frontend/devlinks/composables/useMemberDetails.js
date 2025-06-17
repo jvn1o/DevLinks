@@ -1,21 +1,21 @@
 export default () => {
     const id = useState('id', () => null);
-    const userId = useState('userId', () => null);
+    const memberId = useState('memberId', () => null);
     const email = useState('email', () => null);
     const birth = useState('birth', () => null);
-    const username = useState('username', () => null);
+    const memberName = useState('memberName', () => null);
     const profileImgSrc = useState('profileImgSrc', () => null);
     const token = useState('token', () => null);
 
     const isAnonymous = () => {
-        return !userId.value || !token.value;
+        return !memberId.value || !token.value;
     }
 
     const login = (loginInfo) => {
         console.log("유저디테일에서 확인용:",loginInfo);
         id.value = loginInfo.id;
-        userId.value = loginInfo.userId;
-        username.value = loginInfo.username;
+        memberId.value = loginInfo.memberId;
+        memberName.value = loginInfo.memberName;
         email.value = loginInfo.email;
         birth.value = loginInfo.birth;
         profileImgSrc.value = loginInfo.profileImgSrc;
@@ -23,26 +23,26 @@ export default () => {
 
         if (process.client) {
             localStorage.setItem('id', JSON.stringify(loginInfo.id));
-            localStorage.setItem('userId', loginInfo.userId);
+            localStorage.setItem('memberId', loginInfo.memberId);
             localStorage.setItem('email', loginInfo.email);
             localStorage.setItem('birth', loginInfo.birth);
-            localStorage.setItem('username', loginInfo.username);
+            localStorage.setItem('memberName', loginInfo.memberName);
             localStorage.setItem('profileImgSrc', loginInfo.profileImgSrc);
             localStorage.setItem('token', loginInfo.token);
         }
 
     }
 
-    const loadUserFromStorage = async () => {
+    const loadMemberFromStorage = async () => {
         if (process.client) {
-            const storedUserId = localStorage.getItem('userId');
+            const storedMemberId = localStorage.getItem('memberId');
             const storedToken = localStorage.getItem('token');
 
-            if (storedUserId && storedToken) {
-                userId.value = storedUserId;
+            if (storedMemberId && storedToken) {
+                memberId.value = storedMemberId;
                 token.value = storedToken;
                 id.value = JSON.parse(localStorage.getItem('id'));
-                username.value = localStorage.getItem('username');
+                memberName.value = localStorage.getItem('memberName');
                 birth.value = localStorage.getItem('birth');
                 email.value = localStorage.getItem('email');
                 profileImgSrc.value = localStorage.getItem('profileImgSrc');
@@ -52,17 +52,17 @@ export default () => {
 
     const logout = () => {
         id.value = null;
-        userId.value = null;
+        memberId.value = null;
         email.value = null;
         birth.value = null;
-        username.value = null;
+        memberName.value = null;
         token.value = null;
         if (process.client) {
             localStorage.removeItem('id');
-            localStorage.removeItem('userId');
+            localStorage.removeItem('memberId');
             localStorage.removeItem('email');
             localStorage.removeItem('birth');
-            localStorage.removeItem('username');
+            localStorage.removeItem('memberName');
             localStorage.removeItem('token');
             localStorage.removeItem('profileImgSrc');
         }
@@ -71,14 +71,14 @@ export default () => {
 
     return {
         id,
-        userId,
+        memberId,
         email,
         birth,
-        username,
+        memberName,
         token,
         profileImgSrc,
         isAnonymous,
-        loadUserFromStorage,
+        loadMemberFromStorage: loadMemberFromStorage,
         login,
         logout
     }

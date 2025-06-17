@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Header from '~/components/DefaultHeader.vue'
-import Footer from '~/components/DefaultFooter.vue'
+import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -26,7 +26,7 @@ watch(darkMode, (newVal) => {
 
 <template>
   <div :class="{ 'bg-dark text-white': darkMode }" class="layout-root">
-    <!-- Header & Footer에 v-model로 다크모드 상태 양방향 바인딩 -->
+    <!-- Header & Footer 에 v-model 로 다크모드 상태 양방향 바인딩 -->
     <Header v-model:darkMode="darkMode" />
 
     <!-- 페이지 콘텐츠 -->

@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import TiptapEditor from '@/components/TiptapEditor.vue'
+import { slugify } from '~/utils/slugify.js'
 
 // npm install axios, npm install @tiptap/vue-3 @tiptap/starter-kit @tiptap/extension-image
 
@@ -14,19 +15,6 @@ const categories = [
   'Testing & QA',
   'UI / UX',
 ]
-
-// 모든 특수문자와 공백 등을 안전한 slug로 변환하는 함수
-const slugify = (text) => {
-  return text
-      .toLowerCase()
-      .trim()
-      .replace(/ & /g, ' and ')   // 의미 보존 (예: API & Docs → api-and-docs)
-      .replace(/ \/ /g, '-')      // 슬래시 제거 (예: UI / UX → ui-ux)
-      .replace(/[^\w\s-]/g, '')   // 나머지 특수문자 제거
-      .replace(/\s+/g, '-')
-      .replace(/--+/g, '-')       // 연속된 하이픈 정리
-      .replace(/^-+|-+$/g, '');   // 양쪽 끝 하이픈 제거
-}
 
 const priceType = ref('')
 const priceTypes = ['Free', 'Paid', 'Free & Paid']

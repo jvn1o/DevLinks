@@ -2,10 +2,10 @@
 import { ref } from 'vue';
 import { jwtDecode } from "jwt-decode";
 
-const userId = ref('');
-const userPwd = ref('');
+const memberId = ref('');
+const memberPwd = ref('');
 const route = useRoute();
-const userDetails = useUserDetails();
+const memberDetails = useMemberDetails();
 // const rememberMe = ref(false);
 
 const logInHandler = async () => {
@@ -18,22 +18,22 @@ const logInHandler = async () => {
         "Content-Type": "application/json"
       },
       body: {
-        userId: userId.value,
-        userPwd: userPwd.value
+        memberId: memberId.value,
+        memberPwd: memberPwd.value
       }
     });
 
     // 응답받은 토큰을 jwt 디코딩을 통하여 사용자 정보를 추출
-    let userInfo = jwtDecode(response.token);
+    let memberInfo = jwtDecode(response.token);
 
-    // 디코딩한 정보를 userDetails.login 으로 전역 저장
-    userDetails.login({
-      id: userInfo.id,
-      userId: userInfo.userId,
-      username: userInfo.name,
-      birth: userInfo.birth,
-      email: userInfo.email,
-      profileImgSrc: userInfo.profileImgSrc,
+    // 디코딩한 정보를 memberDetails.login 으로 전역 저장
+    memberDetails.login({
+      id: memberInfo.id,
+      memberId: memberInfo.memberId,
+      memberName: memberInfo.name,
+      birth: memberInfo.birth,
+      email: memberInfo.email,
+      profileImgSrc: memberInfo.profileImgSrc,
       token: response.token
     });
 
@@ -70,13 +70,13 @@ const logInHandler = async () => {
       <!-- ID -->
       <div class="mb-3">
         <label for="id" class="form-label">ID</label>
-        <input type="text" id="id" class="form-control" v-model="userId" placeholder="Enter your ID" required>
+        <input type="text" id="id" class="form-control" v-model="memberId" placeholder="Enter your ID" required>
       </div>
 
       <!-- Password -->
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" v-model="userPwd" placeholder="Enter your Password" required>
+        <input type="password" id="password" class="form-control" v-model="memberPwd" placeholder="Enter your Password" required>
       </div>
 
       <!-- 추가 옵션 -->

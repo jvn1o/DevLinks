@@ -1,9 +1,9 @@
-import useUserDetails from "~/composables/useUserDetails.js";
+import useMemberDetails from "~/composables/useMemberDetails.js";
 
 
 export function useDataFetch(url, options={}){
 
-    const {token} = useUserDetails();
+    const {token} = useMemberDetails();
 
     options.headers = {
         ...options.headers,

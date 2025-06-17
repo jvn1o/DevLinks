@@ -17,7 +17,7 @@ export function useSignupForm() {
     const password = ref("");
     const confirmPassword = ref("");
     const name = ref("");
-    const userId = ref("");
+    const memberId = ref("");
     const nickname = ref("");
     const birth = ref("");
     const isChecked = ref(false);
@@ -41,10 +41,10 @@ export function useSignupForm() {
     const nameError = ref("");
     const nicknameError = ref("");
     const passwordError = ref("");
-    const userIdError = ref("");
+    const memberIdError = ref("");
     const emailError = ref("");
 
-    watch(userId, () => {
+    watch(memberId, () => {
         isChecked.value = false;
     });
 
@@ -53,7 +53,7 @@ export function useSignupForm() {
         nameError.value = "";
         nicknameError.value = "";
         passwordError.value = "";
-        userIdError.value = "";
+        memberIdError.value = "";
         emailError.value = "";
 
         let isValid = true;
@@ -82,7 +82,7 @@ export function useSignupForm() {
         }
 
         if (!isChecked.value) {
-            userIdError.value = "Please verify your ID.";
+            memberIdError.value = "Please verify your ID.";
             isValid = false;
         }
 
@@ -100,7 +100,7 @@ export function useSignupForm() {
 
         const formData = new FormData();
         formData.append("name", name.value);
-        formData.append("memberId", userId.value);
+        formData.append("memberId", memberId.value);
         formData.append("memberPwd", password.value);
         formData.append("nickname", nickname.value);
         formData.append("email", email.value);
@@ -126,18 +126,18 @@ export function useSignupForm() {
     const validHandler = async () => {
         try {
             await axios.post("http://localhost:8080/api/v1/members/idvalid", {
-                userId: userId.value,
+                memberId: memberId.value,
             });
             alert("ID verified");
             isChecked.value = true;
-            userIdError.value = ""; // 에러 초기화
+            memberIdError.value = ""; // 에러 초기화
         } catch (error) {
             isChecked.value = false;
             if (error.response && error.response.status === 409) {
-                userIdError.value = "This ID already exists.";
+                memberIdError.value = "This ID already exists.";
                 alert("This ID already exists");
             } else {
-                userIdError.value = "An error occurred. Please try again.";
+                memberIdError.value = "An error occurred. Please try again.";
                 alert("An error occurred. Please try again.");
             }
         }
@@ -148,7 +148,7 @@ export function useSignupForm() {
         previewImage,
         onFileChange,
         name,
-        userId,
+        memberId,
         nickname,
         emailId,
         emailDomain,
@@ -163,7 +163,7 @@ export function useSignupForm() {
         nameError,
         nicknameError,
         passwordError,
-        userIdError,
+        memberIdError,
         emailError,
     };
 }

@@ -37,7 +37,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.notion.so/9abf00bcde874b929db4315dda03238f?pvs=4" target="_blank"
+              <a href="https://www.notion.so/DevLinks-0585a337df2145c4abbb59a6e9f273ed" target="_blank"
                  class="text-decoration-none">
                 Notion
               </a>
