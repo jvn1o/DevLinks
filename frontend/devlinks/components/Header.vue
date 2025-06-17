@@ -1,6 +1,7 @@
 <script setup>
 import {computed, ref} from 'vue'
 import Sidebar from "~/components/mobile/Sidebar.vue";
+import LoginPromptModal from '~/components/LoginPromptModal.vue'
 import {useWindowSize} from '@vueuse/core'
 import useMemberDetails from '~/composables/useMemberDetails'
 import defaultProfileImg from 'assets/image/icon/default_profile.svg'
@@ -35,6 +36,36 @@ const isSidebarOpen = ref(false)
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
+
+// 로그인 유도 모달 참조
+const modalRef = ref()
+
+// 북마크 이동
+const goToBookmarks = async () => {
+  if (isAnonymous()) {
+    const confirm = await modalRef.value?.show()
+    return
+  }
+  router.push('/member/bookmarks')
+}
+
+// 알림 이동
+const goToAlarms = async () => {
+  if (isAnonymous()) {
+    const confirm = await modalRef.value?.show()
+    return
+  }
+  router.push('/member/alrams')
+}
+
+// 글 작성 이동
+const goToPost = async () => {
+  if (isAnonymous()) {
+    const confirm = await modalRef.value?.show()
+    return
+  }
+  router.push('/links/create')
+}
 </script>
 
 <template>
@@ -45,7 +76,7 @@ const toggleSidebar = () => {
         class="d-flex justify-content-center align-items-center p-2 border-end"
         :style="{'border-color': darkMode ? '#495057' : '#CED3D9'}"
     >
-      <!--  프로필 사진-->
+      <!-- 프로필 -->
       <div class="w-32 h-32 p-1">
         <NuxtLink :to="isAnonymous() ? '/login' : '/mypage'">
           <img
@@ -58,8 +89,9 @@ const toggleSidebar = () => {
         </NuxtLink>
       </div>
 
+      <!-- 북마크 아이콘 -->
       <div class="w-25 h-25 p-1">
-        <NuxtLink to="/member/bookmarks" class="me-3">
+        <button @click="goToBookmarks" class="btn p-0 border-0 bg-transparent me-3">
           <img
               src="/assets/image/icon/bookmark.svg"
               alt="Bookmark"
@@ -67,10 +99,12 @@ const toggleSidebar = () => {
               height="30"
               :class="{'icon-dark': darkMode}"
           />
-        </NuxtLink>
+        </button>
       </div>
+
+      <!-- 알람 아이콘 -->
       <div class="w-25 h-25 p-1">
-        <NuxtLink to="/member/alram" class="me-3">
+        <button @click="goToAlarms" class="btn p-0 border-0 bg-transparent me-3">
           <img
               src="/assets/image/icon/alarm.svg"
               alt="Alarm"
@@ -78,7 +112,7 @@ const toggleSidebar = () => {
               height="30"
               :class="{'icon-dark': darkMode}"
           />
-        </NuxtLink>
+        </button>
       </div>
     </div>
 
@@ -137,9 +171,11 @@ const toggleSidebar = () => {
     />
 
     <!-- 글 작성 -->
-    <NuxtLink to="/links/create" class="ms-auto navbar-brand">
-      <img src="/assets/image/icon/write.svg" alt="Logo" width="90" height="20"/>
-    </NuxtLink>
+    <button @click="goToPost" class="ms-auto navbar-brand btn p-0 border-0 bg-transparent">
+      <img src="/assets/image/icon/post.svg" alt="글 작성" width="90" height="20" />
+    </button>
+
+    <LoginPromptModal ref="modalRef" />
   </nav>
 </template>
 
