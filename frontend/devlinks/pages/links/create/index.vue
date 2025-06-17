@@ -75,6 +75,10 @@ async function submitForm() {
     alert('Error');
   }
 }
+
+definePageMeta({
+  middleware: 'auth',
+})
 </script>
 
 <template>

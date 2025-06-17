@@ -21,6 +21,7 @@ public class MemberLinkController {
 
     private final MemberLinkService memberLinkService;
 
+    // front 의 mypage/links 와 매핑
     @GetMapping
     public ResponseEntity<List<MemberLinkListDto>> getMemberLinkList(@AuthenticationPrincipal MemberPrincipal member) {
         return ResponseEntity.ok(memberLinkService.getMemberLinkList(member.getId()));

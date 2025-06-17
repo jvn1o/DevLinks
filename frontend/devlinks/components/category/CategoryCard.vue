@@ -41,7 +41,7 @@ const toggleBookmark = async () => {
 </script>
 
 <template>
-  <NuxtLink :to="`/links/${item.id}`"
+  <NuxtLink :to="`/links/detail/${item.id}`"
             class="card h-100 hover-card"
             style="text-decoration: none !important;">
     <div class="card-img-wrapper">

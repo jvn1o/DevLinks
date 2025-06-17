@@ -59,7 +59,7 @@ const toggleSidebar = () => {
       </div>
 
       <div class="w-25 h-25 p-1">
-        <NuxtLink to="/mypage/bookmark" class="me-3">
+        <NuxtLink to="/member/bookmarks" class="me-3">
           <img
               src="/assets/image/icon/bookmark.svg"
               alt="Bookmark"
@@ -70,7 +70,7 @@ const toggleSidebar = () => {
         </NuxtLink>
       </div>
       <div class="w-25 h-25 p-1">
-        <NuxtLink to="/mypage/alarm" class="me-3">
+        <NuxtLink to="/member/alram" class="me-3">
           <img
               src="/assets/image/icon/alarm.svg"
               alt="Alarm"

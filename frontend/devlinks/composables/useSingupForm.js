@@ -116,7 +116,7 @@ export function useSignupForm() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            navigateTo("/signup-success");
+            navigateTo("/signup/success");
         } catch (error) {
             alert("Please check your input.");
         }

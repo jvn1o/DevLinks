@@ -1,9 +1,11 @@
 <script setup lang="ts">
-
+definePageMeta({
+  middleware: 'auth',
+})
 </script>
 
 <template>
-<div> 북마크 페이지 </div>
+<div> 나의 Member 정보 </div>
 </template>
 
 <style scoped>

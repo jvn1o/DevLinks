@@ -12,8 +12,7 @@ if (route.params.id === 'create') {
 
 <template>
   <div>
-    <h1>안녕</h1>
-    <div>반가워요</div>
+    <div> {{ route.params.id }}번 페이지 세부 내용</div>
   </div>
 </template>
 
