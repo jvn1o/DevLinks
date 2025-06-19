@@ -3,34 +3,40 @@
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-        <div class="responsive-padding rounded-4 mb-5 shadow-sm border text-center">
+      <div class="col-12 col-sm-12 col-md-12 col-xl-9">
+        <div class="card-bg responsive-padding rounded-4   shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
         <span class="text-gradient d-inline-flex align-items-center gap-2">
           <img
+              class="logo-responsive img-non-filter"
               src="/assets/image/DevLinks.svg"
               alt="Logo"
               width="36"
               height="36"
-              class="logo-responsive"
           />
           DevLinks
         </span>
           </h2>
-          <p class="text-secondary intro-text-responsive mb-2">
+          <p class="intro-text-responsive mb-2">
             개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
           </p>
-          <p class="text-secondary intro-text-responsive">
+          <p class="intro-text-responsive">
             분야별로 정리된 링크들을 통해 더 똑똑한 개발을 시작하세요!
           </p>
         </div>
       </div>
     </div>
 
+    <div class="scroll-down-indicator text-center my-4">
+      <div class="d-flex justify-content-center arrows">
+        <i class="bi bi-chevron-down fs-3 d-block"></i>
+      </div>
+    </div>
+
     <!-- 카드 목록 -->
     <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
-        <div class="card h-100 shadow-sm hover-card">
+        <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
@@ -48,7 +54,7 @@
 
     <div class="row mb-5 justify-content-end">
       <div class="col-md-7">
-        <div class="card h-100 shadow-sm hover-card">
+        <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
@@ -66,7 +72,7 @@
 
     <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
-        <div class="card h-100 shadow-sm hover-card">
+        <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
@@ -84,7 +90,7 @@
 
     <div class="row mb-5 justify-content-end">
       <div class="col-md-7">
-        <div class="card h-100 shadow-sm hover-card">
+        <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
@@ -102,7 +108,7 @@
 
     <div class="row mb-5 justify-content-start">
       <div class="col-md-7">
-        <div class="card h-100 shadow-sm hover-card ms-md-auto">
+        <div class="card card-bg h-100 shadow-sm hover-card ms-md-auto">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
               <h5 class="card-title card-title-responsive fw-bold text-primary">
@@ -123,9 +129,8 @@
 
 
 <style scoped>
-
-.card {
-  background-color: #f8f9fa; /* 연한 회색 */
+.card-bg {
+  background-color: var(--bg-card); /* 연한 회색 */
 }
 
 .responsive-padding {
@@ -157,7 +162,29 @@
   }
 }
 
-@media (max-width: 576px) {
+.scroll-down-indicator .arrows i {
+  animation: bounce 1.2s infinite;
+}
+
+.scroll-down-indicator .arrows i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1093px) {
+  .container.py-5 {
+      padding: 0 !important;
+  }
   .responsive-padding {
     padding: 1.25rem;
   }

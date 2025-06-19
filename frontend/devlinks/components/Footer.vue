@@ -1,8 +1,19 @@
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+
+const props = defineProps({
+  darkMode: Boolean,
+})
+const emit = defineEmits(['update:darkMode'])
+
+const toggleDarkMode = () => {
+  emit('update:darkMode', !props.darkMode)
+}
+</script>
+
 <template>
   <footer
-      :class="{
-    'n-footer-dark': darkMode} "
-      class="n-footer py-5 mt-5"
+      class="n-footer py-5"
   >
     <div class="container">
       <div class="row">
@@ -101,51 +112,7 @@
   </footer>
 </template>
 
-<script setup>
-import {watch, onMounted, defineEmits, defineProps} from 'vue';
-
-// 부모로부터 받은 다크 모드 상태
-const props = defineProps({
-  darkMode: Boolean,
-});
-
-const emit = defineEmits(['update:darkMode']);
-
-// toggle 함수: 다크 모드 상태를 반전시켜 부모에게 전달
-const toggleDarkMode = () => {
-  emit('update:darkMode', !props.darkMode);
-};
-
-onMounted(() => {
-  if (process.client) {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode !== null) {
-      emit('update:darkMode', savedMode === 'true');
-    }
-  }
-});
-
-
-watch(
-    () => props.darkMode,
-    (newVal) => {
-      // 클라이언트에서만 실행
-      if (process.client) {
-        // HTML에 클래스 적용
-        document.documentElement.classList.toggle('dark-mode', newVal);
-        // 로컬 스토리지에 저장
-        localStorage.setItem('darkMode', newVal.toString());
-      }
-    },
-    {immediate: true} // 마운트 시에도 즉시 실행
-);
-</script>
-
 <style scoped>
-a {
-  color: black;
-}
-
 .toggle-wrapper {
   position: relative;
 }
@@ -218,32 +185,33 @@ input:checked + .slider:before {
 }
 
 /* 다크 모드 */
-.n-footer-dark {
-  background-color: #212529;
-  color: #e9ecef;
+.n-footer {
+  background-color: var(--footer-bg);
+  color: var(--text-main);
 }
 
-.n-footer-dark a {
-  color: #adb5bd;
+.n-footer a {
+  color: var(--link-color);
+  transition: color 0.2s;
 }
 
-.n-footer-dark a:hover {
-  color: #ffffff;
+.n-footer a:hover {
+  color: var(--link-hover-color);
   text-decoration: underline;
 }
 
-.n-footer-dark select.form-select {
-  background-color: #343a40;
-  color: #e9ecef;
-  border: 1px solid #495057;
+.n-footer select.form-select {
+  background-color: var(--select-bg);
+  color: var(--select-text);
+  border: 1px solid var(--select-border);
 }
 
-.n-footer-dark .text-muted {
-  color: #adb5bd !important;
+.n-footer .text-muted {
+  color: var(--text-subtle) !important;
 }
 
-.n-footer-dark img {
-  filter: brightness(0) invert(1);
+.n-footer img {
+  filter: var(--icon-filter);
 }
 
 /* --------------------------------------------------- */
@@ -254,4 +222,9 @@ select.form-select {
   transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
+@media (max-width: 576px) {
+  .n-footer.py-5 {
+    padding-top: 0 !important;
+  }
+}
 </style>

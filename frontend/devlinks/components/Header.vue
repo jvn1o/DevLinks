@@ -7,10 +7,6 @@ import useMemberDetails from '~/composables/useMemberDetails'
 import defaultProfileImg from 'assets/image/icon/default_profile.svg'
 import {slugify} from '~/utils/slugify.js'
 
-// 다크모드 상태를 props로 전달받음
-const props = defineProps({darkMode: Boolean,})
-const emit = defineEmits(['update:darkMode'])
-
 const { width } = useWindowSize()
 const isMobileDevice = computed(() => width.value < 1193.75)
 
@@ -78,12 +74,12 @@ const goToPost = async () => {
 </script>
 
 <template>
-  <nav :class="['navbar p-0 w-auto', { 'navbar-dark bg-dark': darkMode }]">
+  <nav class="navbar p-0 w-auto">
     <!-- 아이콘 (프로필, 북마크, 알람) -->
     <div
         v-if="!isMobileDevice"
-        class="d-flex justify-content-center align-items-center p-2 border-end"
-        :style="{'border-color': darkMode ? '#495057' : '#CED3D9'}"
+        class="d-flex justify-content-center align-items-center"
+        style="border-color: var(--card-border)"
     >
       <!-- 프로필 -->
       <div class="w-32 h-32 p-1">
@@ -97,7 +93,7 @@ const goToPost = async () => {
               alt="Profile"
               width="32"
               height="32"
-              class="rounded-circle"
+              class="rounded-circle img-non-filter"
           />
         </button>
       </div>
@@ -110,7 +106,6 @@ const goToPost = async () => {
               alt="Bookmark"
               width="30"
               height="30"
-              :class="{'icon-dark': darkMode}"
           />
         </button>
       </div>
@@ -123,7 +118,6 @@ const goToPost = async () => {
               alt="Alarm"
               width="30"
               height="30"
-              :class="{'icon-dark': darkMode}"
           />
         </button>
       </div>
@@ -131,11 +125,12 @@ const goToPost = async () => {
 
     <!-- 로고 (홈 이동) -->
     <div
-        class="d-flex align-items-stretch ps-3 border-end"
-        :style="{'height': '56px', 'border-color': darkMode ? '#495057' : '#CED3D9'}"
+        class="d-flex align-items-stretch ps-3 border-start border-end"
+        style="height: 56px; border-color: var(--card-border)"
     >
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img
+            class="img-non-filter"
             src="/assets/image/DevLinks.svg"
             alt="Logo"
             width="28"
@@ -150,7 +145,6 @@ const goToPost = async () => {
       <button
           v-if="isMobileDevice"
           class="navbar-toggler custom-toggler ps-3"
-          :class="{'icon-dark': darkMode}"
           :style="{'border': 'none', 'padding': '4px 6px'}"
           type="button"
           @click="toggleSidebar"
@@ -180,15 +174,23 @@ const goToPost = async () => {
         :toggleSidebar="toggleSidebar"
         :tabs="tabs"
         :slugify="slugify"
-        :darkMode="darkMode"
     />
 
     <!-- 글 작성 -->
-    <button @click="goToPost" class="ms-auto navbar-brand btn p-0 border-0 bg-transparent">
-      <img src="/assets/image/icon/post.svg" alt="글 작성" width="90" height="20" />
+    <button
+        @click="goToPost"
+        class="d-flex align-items-center ms-auto navbar-brand btn p-0 border-0 bg-transparent"
+    >
+      <img
+          class="img-non-filter"
+          src="/assets/image/icon/post.svg"
+          alt="글 작성"
+          width="90"
+          height="20"
+      />
     </button>
 
-    <LoginPromptModal ref="modalRef" />
+    <LoginPromptModal ref="modalRef" :darkMode="darkMode" />
   </nav>
 </template>
 
@@ -221,10 +223,5 @@ const goToPost = async () => {
 .navbar-toggler:focus {
   outline: none;
   box-shadow: none;
-}
-
-/* 다크모드일 때 아이콘 색상 반전 */
-.icon-dark {
-  filter: brightness(0) invert(1);
 }
 </style>

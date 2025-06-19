@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+const props = defineProps({
+  darkMode: Boolean
+})
+
 const visible = ref(false)
 const resolveCallback = ref(null)
 
@@ -17,7 +21,6 @@ const show = () => {
 const onConfirm = () => {
   visible.value = false
   resolveCallback.value?.(true)
-
   router.push(`/login?redirect=${encodeURIComponent(window.location.pathname)}`)
 }
 
@@ -30,98 +33,42 @@ defineExpose({ show })
 </script>
 
 <template>
-  <div class="modal-backdrop" v-if="visible">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h4 class="modal-title">로그인이 필요합니다</h4>
+  <div
+      v-if="visible"
+      :class="[
+      'position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 p-3',
+      darkMode ? 'bg-dark bg-opacity-75' : 'bg-dark bg-opacity-50'
+    ]"
+  >
+    <div
+        :class="[
+        'p-4 w-100',
+        'rounded-3',
+        'shadow-lg',
+        'animation-fadeIn',
+        darkMode ? 'bg-secondary text-light' : 'bg-white text-dark'
+      ]"
+        style="max-width: 450px; font-size: 1.1rem;"
+    >
+      <div class="text-center mb-3">
+        <h5 class="fw-semibold mb-0">로그인이 필요합니다</h5>
       </div>
-      <div class="modal-body">
-        <p>해당 기능은 로그인 후 이용할 수 있습니다.
-          <br/>로그인하시겠습니까?
+      <div class="mb-3 text-center">
+        <p class="mb-0">
+          해당 기능은 로그인 후 이용할 수 있습니다.<br />
+          로그인하시겠습니까?
         </p>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" @click="onConfirm">로그인</button>
-        <button class="btn btn-secondary" @click="onCancel">취소</button>
+      <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
+        <button class="btn btn-primary w-100 w-sm-auto" @click="onConfirm">로그인</button>
+        <button class="btn btn-secondary w-100 w-sm-auto" @click="onCancel">취소</button>
       </div>
     </div>
   </div>
 </template>
 
+
 <style scoped>
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.modal-container {
-  background: white;
-  padding: 25px;
-  width: 100%;
-  max-width: 450px;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease;
-
-  .modal-header{
-    justify-content: center;
-
-    .modal-title {
-      font-weight: bold;
-      margin-bottom: 0;
-    }
-  }
-
-  .modal-body {
-    margin: 15px 0;
-    text-align: center;
-  }
-
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-
-    .btn {
-      padding: 0.55rem 1.1rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border-radius: 8px;
-    }
-  }
-}
-
-/* 반응형 */
-@media (max-width: 576px) {
-  .modal-container {
-    height: auto;
-    padding: 1.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .modal-footer {
-    width: 100%;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .btn {
-    width: 100%;
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -133,4 +80,3 @@ defineExpose({ show })
   }
 }
 </style>
-
