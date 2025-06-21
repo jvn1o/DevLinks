@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
+import Header from '~/components/layout/Header.vue'
+import Footer from '~/components/layout/Footer.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 

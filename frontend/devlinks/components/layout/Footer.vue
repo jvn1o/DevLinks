@@ -18,7 +18,7 @@ const toggleDarkMode = () => {
     <div class="container">
       <div class="row">
         <!-- Product Section -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4 ps-3">
           <h5 class="fw-bold text-primary">Product</h5>
           <ul class="list-unstyled">
             <li>
@@ -34,7 +34,7 @@ const toggleDarkMode = () => {
         </div>
 
         <!-- Community Section -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4 ps-3">
           <h5 class="fw-bold text-primary">Community</h5>
           <ul class="list-unstyled">
             <li>
@@ -57,7 +57,7 @@ const toggleDarkMode = () => {
         </div>
 
         <!-- Legal Section -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4 ps-3">
           <h5 class="fw-bold text-primary">Legal</h5>
           <ul class="list-unstyled">
             <li>
@@ -70,7 +70,7 @@ const toggleDarkMode = () => {
         </div>
 
         <!-- DarkMode + Language -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4 ps-3">
           <h6 class="fw-bold text-primary">Theme</h6>
           <!-- 다크 모드 토글 버튼 -->
           <div class="toggle-wrapper mt-4">

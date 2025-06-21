@@ -1,5 +1,6 @@
 <script setup>
 import {ref, watch} from 'vue'
+import DevLinks from "~/components/logo/DevLinks.vue";
 
 const props = defineProps({
   isSidebarOpen: Boolean,
@@ -7,9 +8,10 @@ const props = defineProps({
   tabs: Array,
   slugify: Function,
   darkMode: Boolean,
+  navigateWithAuth: Function,
 })
 
-const asideRef = ref < HTMLElement | null > (null)
+const asideRef = ref(null)
 
 watch(
     () => props.darkMode,
@@ -46,9 +48,8 @@ watch(
       aria-label="Sidebar navigation"
   >
     <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center p-4">
-        <img src="/assets/image/DevLinks.svg" class="me-2 img-non-filter" width="32" alt="Logo"/>
-        <h1 class="fs-2 p-1 m-0">DevLinks</h1>
+      <div class="d-flex align-items-center p-4 gap-2">
+        <DevLinks/>
       </div>
       <button
           class="btn-close p-4"
@@ -74,11 +75,11 @@ watch(
           class="nav-item p-3"
           v-for="(tab, index) in tabs"
           :key="index"
+          @click="toggleSidebar"
       >
         <NuxtLink
             :to="`/category/${slugify(tab)}`"
             class="nav-link"
-            @click="toggleSidebar"
         >
           {{ tab }}
         </NuxtLink>
@@ -95,32 +96,39 @@ watch(
         </span>
       </li>
 
-      <li class="nav-item p-3">
-        <NuxtLink
-            to="/member"
-            class="nav-link"
+      <li class="nav-item p-3"
+          @click="toggleSidebar"
+      >
+        <button
+            class="nav-link bg-transparent border-0 text-start w-100"
+            @click="navigateWithAuth('/member')"
         >
           Profile
-        </NuxtLink>
+        </button>
       </li>
 
-      <li class="nav-item p-3">
-        <NuxtLink
-            to="/member/bookmarks"
-            class="nav-link"
+      <li class="nav-item p-3"
+          @click="toggleSidebar"
+      >
+        <button
+            class="nav-link bg-transparent border-0 text-start w-100"
+            @click="navigateWithAuth('/member/bookmarks')"
         >
           Bookmarks
-        </NuxtLink>
+        </button>
       </li>
 
-      <li class="nav-item p-3">
-        <NuxtLink
-            to="/member/alarms"
-            class="nav-link"
+      <li class="nav-item p-3"
+          @click="toggleSidebar"
+      >
+        <button
+            class="nav-link bg-transparent border-0 text-start w-100"
+            @click="navigateWithAuth('/member/alarms')"
         >
           Alarms
-        </NuxtLink>
+        </button>
       </li>
+
     </ul>
 
   </aside>
@@ -169,7 +177,7 @@ watch(
 
 @media (max-width: 576px) {
   .sidebar .nav-link {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .btn-close {

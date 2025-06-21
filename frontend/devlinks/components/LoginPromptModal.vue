@@ -21,7 +21,6 @@ const show = () => {
 const onConfirm = () => {
   visible.value = false
   resolveCallback.value?.(true)
-  router.push(`/login?redirect=${encodeURIComponent(window.location.pathname)}`)
 }
 
 const onCancel = () => {

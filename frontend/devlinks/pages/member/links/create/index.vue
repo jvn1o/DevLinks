@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import TiptapEditor from '@/components/TiptapEditor.vue'
+import TiptapEditor from '~/components/TiptapEditor.vue'
 import { slugify } from '~/utils/slugify.js'
 
 // npm install axios, npm install @tiptap/vue-3 @tiptap/starter-kit @tiptap/extension-image
@@ -75,10 +75,6 @@ async function submitForm() {
     alert('Error');
   }
 }
-
-definePageMeta({
-  middleware: 'auth',
-})
 </script>
 
 <template>

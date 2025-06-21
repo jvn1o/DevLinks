@@ -4,17 +4,10 @@
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
       <div class="col-12 col-sm-12 col-md-12 col-xl-9">
-        <div class="card-bg responsive-padding rounded-4   shadow-sm border text-center">
+        <div class="card-bg responsive-padding rounded-4 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
-        <span class="text-gradient d-inline-flex align-items-center gap-2">
-          <img
-              class="logo-responsive img-non-filter"
-              src="/assets/image/DevLinks.svg"
-              alt="Logo"
-              width="36"
-              height="36"
-          />
-          DevLinks
+        <span class="d-inline-flex align-items-center gap-2">
+          <DevLinks/>
         </span>
           </h2>
           <p class="intro-text-responsive mb-2">
@@ -142,12 +135,6 @@
   height: 36px;
 }
 
-.text-gradient {
-  background: linear-gradient(to right, #007cf0, #00dfd8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .hover-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -188,10 +175,6 @@
   .responsive-padding {
     padding: 1.25rem;
   }
-  .logo-responsive {
-    width: 18px;
-    height: 18px;
-  }
 
   .intro-title-responsive {
     font-size: 1.5rem;
@@ -207,3 +190,6 @@
   }
 }
 </style>
+<script setup lang="ts">
+import DevLinks from "~/components/logo/DevLinks.vue";
+</script>

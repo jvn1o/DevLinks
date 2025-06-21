@@ -34,46 +34,26 @@ const toggleSidebar = () => {
 }
 
 // 로그인 유도 모달 참조
-const modalRef = ref()
+const modalRef = ref(null)
+const { navigateWithAuth } = useAuthRedirect(isAnonymous, modalRef)
 
 // 프로필 이동
-const handleProfileClick = async () => {
-  if (isAnonymous()) {
-    await modalRef.value?.show()
-    return
-  }
-  router.push('/member/index')
-}
+const handleProfileClick = () => navigateWithAuth('/member/index')
 
 // 북마크 이동
-const goToBookmarks = async () => {
-  if (isAnonymous()) {
-    const confirm = await modalRef.value?.show()
-    return
-  }
-  router.push('/member/bookmarks')
-}
+const goToBookmarks = () => navigateWithAuth('/member/bookmarks')
 
 // 알림 이동
-const goToAlarms = async () => {
-  if (isAnonymous()) {
-    const confirm = await modalRef.value?.show()
-    return
-  }
-  router.push('/member/alrams')
-}
+const goToAlarms = () => navigateWithAuth('/member/alarms')
 
 // 글 작성 이동
-const goToPost = async () => {
-  if (isAnonymous()) {
-    const confirm = await modalRef.value?.show()
-    return
-  }
-  router.push('/links/create')
-}
+const goToPost = () => navigateWithAuth('/member/links/create')
 </script>
 
 <template>
+  <!-- 로그인 모달 랜더링 시간을 위해 맨위에 배치-->
+  <LoginPromptModal ref="modalRef" :darkMode="darkMode" />
+
   <nav class="navbar p-0 w-auto">
     <!-- 아이콘 (프로필, 북마크, 알람) -->
     <div
@@ -128,7 +108,7 @@ const goToPost = async () => {
         class="d-flex align-items-stretch ps-3 border-start border-end"
         style="height: 56px; border-color: var(--card-border)"
     >
-      <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
+      <NuxtLink to="/devlinks/public" class="navbar-brand d-flex align-items-center">
         <img
             class="img-non-filter"
             src="/assets/image/DevLinks.svg"
@@ -174,6 +154,8 @@ const goToPost = async () => {
         :toggleSidebar="toggleSidebar"
         :tabs="tabs"
         :slugify="slugify"
+        :darkMode="darkMode"
+        :navigateWithAuth="navigateWithAuth"
     />
 
     <!-- 글 작성 -->
@@ -189,8 +171,6 @@ const goToPost = async () => {
           height="20"
       />
     </button>
-
-    <LoginPromptModal ref="modalRef" :darkMode="darkMode" />
   </nav>
 </template>
 

@@ -60,8 +60,8 @@ const logInHandler = async () => {
 };
 
 definePageMeta({
-  layout: 'auth'
-})
+  layout: false
+});
 </script>
 
 <template>
