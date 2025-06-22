@@ -108,7 +108,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
         class="d-flex align-items-stretch ps-3 border-start border-end"
         style="height: 56px; border-color: var(--card-border)"
     >
-      <NuxtLink to="/devlinks/public" class="navbar-brand d-flex align-items-center">
+      <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img
             class="img-non-filter"
             src="/assets/image/DevLinks.svg"
