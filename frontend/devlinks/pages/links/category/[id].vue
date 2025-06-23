@@ -125,24 +125,13 @@ watch(currentPage, () => {
 
   <div class="d-flex justify-content-center my-4">
     <nav>
-      <ul class="pagination">
-        <li class="page-item" :class="{ disabled: currentPage === 1 }">
-          <button class="page-link" @click="currentPage--" :disabled="currentPage === 1">이전</button>
-        </li>
-
-        <li
-            v-for="page in pagesToShow"
-            :key="page"
-            class="page-item"
-            :class="{ active: page === currentPage }"
-        >
-          <button class="page-link" @click="currentPage = page">{{ page }}</button>
-        </li>
-
-        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-          <button class="page-link" @click="currentPage++" :disabled="currentPage === totalPages">다음</button>
-        </li>
-      </ul>
+      <Pagination
+          :currentPage="currentPage"
+          :totalPages="totalPages"
+          :pagesToShow="pagesToShow"
+          :darkMode="darkMode"
+          @update:page="(val) => currentPage = val"
+      />
     </nav>
   </div>
 </template>

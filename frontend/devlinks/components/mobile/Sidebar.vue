@@ -78,7 +78,7 @@ watch(
           @click="toggleSidebar"
       >
         <NuxtLink
-            :to="`/category/${slugify(tab)}`"
+            :to="`/links/category/${slugify(tab)}`"
             class="nav-link"
         >
           {{ tab }}

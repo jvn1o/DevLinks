@@ -7,6 +7,10 @@ import useMemberDetails from '~/composables/useMemberDetails'
 import defaultProfileImg from 'assets/image/icon/default_profile.svg'
 import {slugify} from '~/utils/slugify.js'
 
+const props = defineProps({
+  darkMode: Boolean
+})
+
 const { width } = useWindowSize()
 const isMobileDevice = computed(() => width.value < 1193.75)
 
@@ -71,8 +75,8 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           <img
               :src="resolvedProfileImg"
               alt="Profile"
-              width="32"
-              height="32"
+              width="28"
+              height="28"
               class="rounded-circle img-non-filter"
           />
         </button>
@@ -84,8 +88,8 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           <img
               src="/assets/image/icon/bookmark.svg"
               alt="Bookmark"
-              width="30"
-              height="30"
+              width="26"
+              height="26"
           />
         </button>
       </div>
@@ -96,8 +100,8 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           <img
               src="/assets/image/icon/alarm.svg"
               alt="Alarm"
-              width="30"
-              height="30"
+              width="26"
+              height="26"
           />
         </button>
       </div>
@@ -114,7 +118,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
             src="/assets/image/DevLinks.svg"
             alt="Logo"
             width="28"
-            height="32"
+            height="28"
         />
       </NuxtLink>
     </div>
@@ -164,8 +168,18 @@ const goToPost = () => navigateWithAuth('/member/links/create')
         class="d-flex align-items-center ms-auto navbar-brand btn p-0 border-0 bg-transparent"
     >
       <img
+          v-if="!darkMode"
           class="img-non-filter"
           src="/assets/image/icon/post.svg"
+          alt="글 작성"
+          width="90"
+          height="20"
+      />
+
+      <img
+          v-else
+          class="img-non-filter"
+          src="/assets/image/icon/post-dark.svg"
           alt="글 작성"
           width="90"
           height="20"

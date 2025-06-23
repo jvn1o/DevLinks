@@ -16,13 +16,10 @@ const props = defineProps({
 
 <style scoped>
 .overlay {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  z-index: 1040;
-  top: 0;
-  right: 0;
   position: fixed;
-  height: 100vh;
+  inset: 0; /* top/right/bottom/left 0 */
+  background-color: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  z-index: 1;
 }
 </style>

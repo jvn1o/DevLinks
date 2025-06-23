@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import {defineProps, defineEmits} from 'vue'
 
 const props = defineProps({
   darkMode: Boolean,
@@ -14,6 +14,7 @@ const toggleDarkMode = () => {
 <template>
   <footer
       class="n-footer py-5"
+      :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">
       <div class="row">
@@ -71,9 +72,17 @@ const toggleDarkMode = () => {
 
         <!-- DarkMode + Language -->
         <div class="col-md-3 mb-4 ps-3">
-          <h6 class="fw-bold text-primary">Theme</h6>
+          <h5 class="fw-bold text-primary">Language</h5>
+          <select id="language" class="form-select w-auto mt-3">
+            <option>Korean</option>
+            <option>English</option>
+          </select>
+        </div>
+
+        <div class="col-md-3 mb-4 ps-3">
+          <h5 class="fw-bold text-primary">Theme</h5>
           <!-- 다크 모드 토글 버튼 -->
-          <div class="toggle-wrapper mt-4">
+          <div class="toggle-wrapper mt-3">
             <label class="switch">
               <input type="checkbox" @change="toggleDarkMode" :checked="darkMode"/>
               <span class="slider round">
@@ -82,19 +91,13 @@ const toggleDarkMode = () => {
               </span>
             </label>
           </div>
-
-          <div class="mt-4">
-            <label for="lang" class="fw-bold text-primary form-label">Language</label>
-            <select id="lang" class="form-select">
-              <option>Korean</option>
-              <option>English</option>
-            </select>
-          </div>
         </div>
+
+
       </div>
 
       <!-- Bottom Section -->
-      <div class="text-center mt-5">
+      <div class="text-center mt-2">
         <div class="d-flex justify-content-center gap-3 mb-3">
           <a href="https://github.com/jvn1o" target="_blank">
             <img src="/assets/image/icon/github.svg" alt="GitHub" width="24"/>
@@ -162,7 +165,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX( calc(100% + 10px) );
+  transform: translateX(calc(100% + 10px));
 }
 
 /* 아이콘 스타일 */
@@ -185,6 +188,7 @@ input:checked + .slider:before {
 }
 
 /* 다크 모드 */
+
 .n-footer {
   background-color: var(--footer-bg);
   color: var(--text-main);
@@ -192,34 +196,15 @@ input:checked + .slider:before {
 
 .n-footer a {
   color: var(--link-color);
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
 
 .n-footer a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
-}
-
-.n-footer select.form-select {
-  background-color: var(--select-bg);
-  color: var(--select-text);
-  border: 1px solid var(--select-border);
 }
 
 .n-footer .text-muted {
-  color: var(--text-subtle) !important;
-}
-
-.n-footer img {
-  filter: var(--icon-filter);
-}
-
-/* --------------------------------------------------- */
-
-/* 셀렉트 박스 (언어 선택) */
-select.form-select {
-  font-size: 0.9rem;
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  color: var(--text-subtle);
 }
 
 @media (max-width: 576px) {

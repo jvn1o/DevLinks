@@ -1,9 +1,13 @@
+<script setup lang="ts">
+import DevLinks from "~/components/logo/DevLinks.vue";
+</script>
+
 <template>
-  <div class="container py-5 my-4">
+  <div class="container py-2 my-4">
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-12 col-md-12 col-xl-9">
+      <div class="col-sm-11 col-md-9 col-lg-7">
         <div class="card-bg responsive-padding rounded-4 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
         <span class="d-inline-flex align-items-center gap-2">
@@ -20,6 +24,7 @@
       </div>
     </div>
 
+    <!-- 화살표 애니메이션  -->
     <div class="scroll-down-indicator text-center my-4">
       <div class="d-flex justify-content-center arrows">
         <i class="bi bi-chevron-down fs-3 d-block"></i>
@@ -28,7 +33,7 @@
 
     <!-- 카드 목록 -->
     <div class="row mb-5 justify-content-start">
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -46,7 +51,7 @@
     </div>
 
     <div class="row mb-5 justify-content-end">
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -64,7 +69,7 @@
     </div>
 
     <div class="row mb-5 justify-content-start">
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
@@ -82,7 +87,7 @@
     </div>
 
     <div class="row mb-5 justify-content-end">
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
@@ -100,7 +105,7 @@
     </div>
 
     <div class="row mb-5 justify-content-start">
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm hover-card ms-md-auto">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
@@ -122,12 +127,25 @@
 
 
 <style scoped>
+.intro-title-responsive {
+  font-size: 1.3rem;
+}
+.intro-text-responsive {
+  font-size: 0.8rem;
+}
+.card-title-responsive {
+  font-size: 0.9rem;
+}
+.card-text-responsive {
+  font-size: 0.7rem;
+}
+
 .card-bg {
-  background-color: var(--bg-card); /* 연한 회색 */
+  background-color: var(--bg-card);
 }
 
 .responsive-padding {
-  padding: 2.5rem;
+  padding: 1.25rem 1.75rem;
 }
 
 .logo-responsive {
@@ -169,27 +187,32 @@
 }
 
 @media (max-width: 1093px) {
-  .container.py-5 {
-      padding: 0 !important;
-  }
-  .responsive-padding {
-    padding: 1.25rem;
-  }
+  .container {
 
-  .intro-title-responsive {
-    font-size: 1.5rem;
-  }
-  .intro-text-responsive {
-    font-size: 0.65rem;
-  }
-  .card-title-responsive {
-    font-size: 0.9rem;
-  }
-  .card-text-responsive {
-    font-size: 0.75rem;
+    .py-5 {
+      padding: 0 !important;
+    }
+
+    .card-text-responsive br {
+      display: none;
+    }
+
+    .responsive-padding {
+      padding: 1.25rem;
+    }
+
+    .intro-title-responsive {
+      font-size: 1.5rem;
+    }
+    .intro-text-responsive {
+      font-size: 0.65rem;
+    }
+    .card-title-responsive {
+      font-size: 0.9rem;
+    }
+    .card-text-responsive {
+      font-size: 0.75rem;
+    }
   }
 }
 </style>
-<script setup lang="ts">
-import DevLinks from "~/components/logo/DevLinks.vue";
-</script>

@@ -3,8 +3,8 @@
       class="logo-responsive img-non-filter"
       src="/assets/image/DevLinks.svg"
       alt="Logo"
-      width="36"
-      height="36"
+      width="28"
+      height="28"
   />
   <span class="text-gradient logo-text">
     DevLinks
@@ -20,7 +20,7 @@
 
 .logo-text {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1093px) {

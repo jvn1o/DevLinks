@@ -45,7 +45,7 @@ const toggleBookmark = async () => {
             class="card h-100 hover-card"
             style="text-decoration: none !important;">
     <div class="card-img-wrapper">
-      <img :src="item.image" class="card-img-top" :alt="item.title"/>
+      <img :src="item.image" class="card-img-top img-non-filter" :alt="item.title"/>
     </div>
 
     <div class="card-body d-flex flex-column">
@@ -113,6 +113,5 @@ const toggleBookmark = async () => {
 .hover-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  background-color: #f8f9fa;
 }
 </style>
