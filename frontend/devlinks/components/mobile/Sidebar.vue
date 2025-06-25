@@ -1,6 +1,7 @@
 <script setup>
 import {ref, watch} from 'vue'
 import DevLinks from "~/components/logo/DevLinks.vue";
+import {useRoute} from 'vue-router'
 
 const props = defineProps({
   isSidebarOpen: Boolean,
@@ -10,6 +11,10 @@ const props = defineProps({
   darkMode: Boolean,
   navigateWithAuth: Function,
 })
+
+const route = useRoute()
+const isActiveTab = (tab) => route.path === `/links/category/${slugify(tab)}`
+const isActiveRoute = (path) => route.path === path
 
 const asideRef = ref(null)
 
@@ -80,6 +85,7 @@ watch(
         <NuxtLink
             :to="`/links/category/${slugify(tab)}`"
             class="nav-link"
+            :class="{ active: isActiveTab(tab) }"
         >
           {{ tab }}
         </NuxtLink>
@@ -102,6 +108,7 @@ watch(
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
             @click="navigateWithAuth('/member')"
+            :class="{ active: isActiveRoute('/member') }"
         >
           Profile
         </button>
@@ -113,6 +120,7 @@ watch(
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
             @click="navigateWithAuth('/member/bookmarks')"
+            :class="{ active: isActiveRoute('/member/bookmarks') }"
         >
           Bookmarks
         </button>
@@ -124,6 +132,7 @@ watch(
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
             @click="navigateWithAuth('/member/alarms')"
+            :class="{ active: isActiveRoute('/member/alarms') }"
         >
           Alarms
         </button>
@@ -161,6 +170,13 @@ watch(
 
 .sidebar .nav-link:hover {
   color: var(--text-primary);
+}
+
+.active {
+  border-left: 4px solid var(--text-primary) !important;
+  font-weight: 600;
+  color: var(--text-active) !important;
+  padding-left: 12px;
 }
 
 .btn-close {
