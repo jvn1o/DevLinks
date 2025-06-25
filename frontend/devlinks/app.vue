@@ -63,6 +63,7 @@ body {
   --text-main: #212529;
   --text-primary: #66b2ff;
   --text-subtle: #6c757d;
+  --text-active: #0d6efd;
 
   --bg-card: #f8f9fa;
   --card-border: #dee2e6;
