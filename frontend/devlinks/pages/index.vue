@@ -3,11 +3,11 @@ import DevLinks from "~/components/logo/DevLinks.vue";
 </script>
 
 <template>
-  <div class="container py-2 my-4">
+  <div class="container py-2 my-3">
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
-      <div class="col-sm-11 col-md-9 col-lg-7">
+      <div class="col-lg-7">
         <div class="card-bg responsive-padding rounded-4 shadow-sm border text-center">
           <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
         <span class="d-inline-flex align-items-center gap-2">
@@ -32,8 +32,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <!-- 카드 목록 -->
-    <div class="row mb-5 justify-content-start">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -50,8 +50,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-end">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -60,7 +60,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
               </h5>
               <p class="card-text card-text-responsive">
                 다양한 외부 API 사용법과 문서화 가이드를 확인할 수 있습니다. <br/>
-                (REST API, Swagger, OpenAPI 문서 작성 등)
+                (예: REST API, Swagger, OpenAPI 문서 작성 등)
               </p>
             </NuxtLink>
           </div>
@@ -68,8 +68,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-start">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
@@ -78,7 +78,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
               </h5>
               <p class="card-text card-text-responsive">
                 클라우드 환경 설정부터 CI/CD 파이프라인 구축까지, 인프라 자동화에 대한 내용을 다룹니다. <br/>
-                (AWS, Docker, Kubernetes, GitHub Actions 등)
+                (예: AWS, Docker, Kubernetes, GitHub Actions 등)
               </p>
             </NuxtLink>
           </div>
@@ -86,8 +86,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-end">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
@@ -96,7 +96,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
               </h5>
               <p class="card-text card-text-responsive">
                 코드 테스트 방법과 품질 보증(QA) 관련 자료를 모았습니다. <br/>
-                (단위 테스트, 통합 테스트, 테스트 자동화 도구 등)
+                (예: 단위 테스트, 통합 테스트, 테스트 자동화 도구 등)
               </p>
             </NuxtLink>
           </div>
@@ -104,8 +104,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-start">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm hover-card ms-md-auto">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
@@ -114,7 +114,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
               </h5>
               <p class="card-text card-text-responsive">
                 사용자 경험을 향상시키기 위한 UI 설계 및 디자인 시스템, 접근성 관련 정보를 제공합니다. <br/>
-                (디자인 패턴, 피그마, 사용자 흐름 분석 등)
+                (예: 디자인 패턴, 피그마, 사용자 흐름 분석 등)
               </p>
             </NuxtLink>
           </div>
@@ -188,7 +188,6 @@ import DevLinks from "~/components/logo/DevLinks.vue";
 
 @media (max-width: 1093px) {
   .container {
-
     .py-5 {
       padding: 0 !important;
     }

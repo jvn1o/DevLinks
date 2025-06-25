@@ -111,7 +111,7 @@ definePageMeta({
         <div class="text-center text-muted my-4 position-relative">
           <hr />
           <span
-              class="position-absolute top-50 start-50 translate-middle px-3 bg-white"
+              class="position-absolute top-50 start-50 translate-middle px-3"
               style="font-weight: 600; font-size: 1rem;"
           >
             or
@@ -119,7 +119,10 @@ definePageMeta({
         </div>
 
         <!-- 회원가입 버튼 -->
-        <RouterLink to="/signup" class="btn btn-outline-secondary btn-lg w-100">
+        <RouterLink to="/signup"
+                    class="btn btn-outline-secondary text-danger btn-lg w-100"
+                    style="--bs-btn-hover-bg: var(--card-border); --bs-btn-active-bg: var(--card-hover-border)"
+        >
           Create an account
         </RouterLink>
       </form>

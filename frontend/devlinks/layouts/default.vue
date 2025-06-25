@@ -1,19 +1,43 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
+import {useWindowSize} from '@vueuse/core'
 import Header from '~/components/layout/Header.vue'
 import Footer from '~/components/layout/Footer.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const darkMode = ref(false)
+const hideHeader = ref(false)
+
+const {width} = useWindowSize()
+const isMobile = computed(() => width.value < 1193.75)
+
+let lastScrollTop = 0
 
 // 클라이언트에서만 localStorage 접근
 onMounted(() => {
   if (typeof window !== 'undefined') {
+    // 다크모드 초기화
     darkMode.value = localStorage.getItem('darkMode') === 'true'
     document.documentElement.classList.toggle('dark-mode', darkMode.value)
   }
 })
+
+// 실시간 모바일 환경 감지
+watchEffect(() => {
+  // 모바일 환경에서만 스크롤 감지
+  if (isMobile.value) {
+    window.addEventListener('scroll', handleScroll)
+  }
+})
+
+// 모바일 환경에서 스크롤 시에 Header.vue 숨기기
+function handleScroll() {
+  const current = window.scrollY || document.documentElement.scrollTop
+  hideHeader.value = current > lastScrollTop && current > 50;
+  lastScrollTop = current <= 0 ? 0 : current
+}
+
 
 // 다크모드 상태가 바뀔 때마다 html 클래스와 localStorage에 반영
 watch(darkMode, (newVal) => {
@@ -27,12 +51,12 @@ watch(darkMode, (newVal) => {
 <template>
   <div :class="{ 'bg-dark text-white': darkMode }" class="layout-root">
     <!-- Header & Footer 에 v-model 로 다크모드 상태 양방향 바인딩 -->
-    <Header v-model:darkMode="darkMode" />
+    <Header v-model:darkMode="darkMode" :hideOnScroll="hideHeader"/>
 
     <!-- 페이지 콘텐츠 -->
-    <slot />
+    <slot/>
 
-    <Footer v-model:darkMode="darkMode" />
+    <Footer v-model:darkMode="darkMode"/>
   </div>
 </template>
 

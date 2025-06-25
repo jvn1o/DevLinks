@@ -4,7 +4,19 @@ import { watch } from 'vue';
 import CategoryCard from '~/components/category/CategoryCard.vue';
 import img from 'assets/image/figma.png';
 
-const links = ref([]);
+// const links = ref([]); 서버 랜더링 용
+const links = ref([
+  { id: 1, title: 'Learn Algorithms', category: 'Algorithm & Data Structures', price: 'Free & Paid', bookmarkCount: 45, image: img },
+  { id: 2, title: 'API Basics', category: 'API & Documentation', price: 'Paid', bookmarkCount: 40, image: img },
+  { id: 3, title: 'Cloud Fundamentals', category: 'Cloud & DevOps', price: 'Free', bookmarkCount: 35, image: img },
+  { id: 4, title: 'Testing Tips', category: 'Testing & QA', price: 'Paid', bookmarkCount: 50, image: img },
+  { id: 5, title: 'UI Design Basics', category: 'UI / UX', price: 'Free', bookmarkCount: 47, image: img },
+  { id: 6, title: 'Data Structures', category: 'Algorithm & Data Structures', price: 'Paid', bookmarkCount: 42, image: img },
+  { id: 7, title: 'Advanced APIs', category: 'API & Documentation', price: 'Free', bookmarkCount: 39, image: img },
+  { id: 8, title: 'DevOps Pipeline', category: 'Cloud & DevOps', price: 'Paid', bookmarkCount: 48, image: img },
+  { id: 9, title: 'React Basics', category: 'Frontend', price: 'Free', bookmarkCount: 30, image: img },
+]); // 임시용
+
 const selectedCategorySlug = ref("algorithm-data-structures");
 const selectedSort = ref("newest");
 const selectedPrice = ref(null); // Free, Paid, Free & Paid
@@ -23,29 +35,15 @@ const fetchLinks = async () => {
   }
 };
 
-
-
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
-const dummyItems = [
-  { id: 1, title: 'Learn Algorithms', category: 'Algorithm & Data Structures', price: 'Free & Paid', bookmarkCount: 45, image: img },
-  { id: 2, title: 'API Basics', category: 'API & Documentation', price: 'Paid', bookmarkCount: 40, image: img },
-  { id: 3, title: 'Cloud Fundamentals', category: 'Cloud & DevOps', price: 'Free', bookmarkCount: 35, image: img },
-  { id: 4, title: 'Testing Tips', category: 'Testing & QA', price: 'Paid', bookmarkCount: 50, image: img },
-  { id: 5, title: 'UI Design Basics', category: 'UI / UX', price: 'Free', bookmarkCount: 47, image: img },
-  { id: 6, title: 'Data Structures', category: 'Algorithm & Data Structures', price: 'Paid', bookmarkCount: 42, image: img },
-  { id: 7, title: 'Advanced APIs', category: 'API & Documentation', price: 'Free', bookmarkCount: 39, image: img },
-  { id: 8, title: 'DevOps Pipeline', category: 'Cloud & DevOps', price: 'Paid', bookmarkCount: 48, image: img },
-  { id: 9, title: 'React Basics', category: 'Frontend', price: 'Free', bookmarkCount: 30, image: img },
-];
-
-const totalItems = ref(dummyItems.length);
+const totalItems = computed(() => links.value.length);
 const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage));
 
 const pagedItems = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
-  return dummyItems.slice(start, start + itemsPerPage);
+  return links.value.slice(start, start + itemsPerPage);
 });
 
 // 최대 5개 페이지 버튼만 보여주도록 범위 계산
@@ -86,28 +84,35 @@ watch(selectedCategorySlug, () => {
 
 // currentPage 변경
 watch(currentPage, () => {
-  fetchLinks();
+  fetchLinks(true);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 </script>
 
 <template>
-  <div class="d-flex flex-wrap gap-2 p-3 justify-content-end">
 
+  <div class="d-flex justify-content-between align-items-center px-3 py-2 flex-wrap gap-2">
+    <div class="fw-bold ps-2">
+      Page {{ currentPage }}
+    </div>
 
-    <!-- Price Type -->
-    <select v-model="selectedPrice" class="form-select w-auto">
-      <option :value="null">All</option>
-      <option value="FREE">Free</option>
-      <option value="PAID">Paid</option>
-      <option value="FREE_PAID">Free & Paid</option>
-    </select>
+    <!-- Filter & Sort -->
+    <div class="d-flex flex-wrap gap-2">
+      <!-- Price Type -->
+      <select v-model="selectedPrice" class="form-select w-auto">
+        <option :value="null">All</option>
+        <option value="FREE">Free</option>
+        <option value="PAID">Paid</option>
+        <option value="FREE_PAID">Free & Paid</option>
+      </select>
 
-    <!-- Sort -->
-    <select v-model="selectedSort" class="form-select w-auto">
-      <option value="newest">Newest</option>
-      <option value="popular">Most Popular</option>
-    </select>
+      <!-- Time Type -->
+      <select v-model="selectedSort" class="form-select w-auto">
+        <option value="newest">Newest</option>
+        <option value="popular">Most Popular</option>
+      </select>
+    </div>
   </div>
 
 

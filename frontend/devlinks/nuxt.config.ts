@@ -15,4 +15,12 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  // auth 인증 우회 (개발용) ------------------------
+  runtimeConfig: {
+    public: {
+      DEV_BYPASS_AUTH: 'true'
+    }
+  },
+  // ----------------------------------------------
 })
