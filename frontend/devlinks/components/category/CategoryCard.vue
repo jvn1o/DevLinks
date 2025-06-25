@@ -42,7 +42,7 @@ const toggleBookmark = async () => {
 
 <template>
   <NuxtLink :to="`/links/detail/${item.id}`"
-            class="card h-100 hover-card"
+            class="card hover-card"
             style="text-decoration: none !important;">
     <div class="card-img-wrapper">
       <img :src="item.image" class="card-img-top img-non-filter" :alt="item.title"/>
@@ -56,7 +56,7 @@ const toggleBookmark = async () => {
         </h5>
 
         <div class="d-flex justify-content-between align-items-center">
-          <p class="card-text text-muted text-truncate mb-0">
+          <p class="card-text text-category text-truncate mb-0">
             {{ item.category }}
           </p>
           <button class="bookmark-btn btn p-0 ms-2 flex-shrink-0"
@@ -100,7 +100,6 @@ const toggleBookmark = async () => {
 </template>
 
 <style scoped>
-
 .card-img-wrapper img {
   height: 225px;
   object-fit: cover;
@@ -113,5 +112,10 @@ const toggleBookmark = async () => {
 .hover-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.text-category {
+  font-weight: bold;
+  color: var(--text-active);
 }
 </style>
