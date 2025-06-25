@@ -22,6 +22,14 @@ const pageClass = (page: number) => {
   };
 };
 
+const handlePageChange = (page: number) => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  emit('update:page', page);
+};
+
 const pageLinkClass = computed(() => ({
   'page-link': true,
 }));
@@ -35,7 +43,7 @@ const pageLinkClass = computed(() => ({
       <li :class="['page-item', { disabled: isFirst }]">
         <button
             :class="pageLinkClass"
-            @click="$emit('update:page', currentPage - 1)"
+            @click="handlePageChange(currentPage - 1)"
             :disabled="isFirst"
         >
           이전
@@ -46,7 +54,7 @@ const pageLinkClass = computed(() => ({
       <li v-for="page in pagesToShow" :key="page" :class="pageClass(page)">
         <button
             :class="pageLinkClass"
-            @click="$emit('update:page', page)"
+            @click="handlePageChange(page)"
         >
           {{ page }}
         </button>
@@ -56,12 +64,13 @@ const pageLinkClass = computed(() => ({
       <li :class="['page-item', { disabled: isLast }]">
         <button
             :class="pageLinkClass"
-            @click="$emit('update:page', currentPage + 1)"
+            @click="handlePageChange(currentPage + 1)"
             :disabled="isLast"
         >
           다음
         </button>
       </li>
+
     </ul>
   </nav>
 </template>
