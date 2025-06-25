@@ -56,7 +56,7 @@ watch(visible, (val) => {
           로그인하시겠습니까?
         </p>
       </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-center gap-4">
+      <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
         <button class="btn btn-primary small-btn" @click="onConfirm">로그인</button>
         <button class="btn btn-secondary small-btn" @click="onCancel">취소</button>
       </div>
