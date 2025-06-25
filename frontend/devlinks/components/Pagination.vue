@@ -24,7 +24,6 @@ const pageClass = (page: number) => {
 
 const pageLinkClass = computed(() => ({
   'page-link': true,
-  'bg-dark text-white border-secondary': props.darkMode,
 }));
 </script>
 
@@ -66,3 +65,28 @@ const pageLinkClass = computed(() => ({
     </ul>
   </nav>
 </template>
+
+<style scoped>
+.dark-mode {
+  .page-link {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+  }
+
+  .page-link:hover {
+    background-color: var(--bg-sub);
+    border-color: var(--card-hover-border);
+  }
+
+  .page-item.active .page-link {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+</style>
