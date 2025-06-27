@@ -116,13 +116,34 @@ body {
   color: var(--select-text);
   border: 1px solid var(--select-border);
   transition: all 0.3s ease;
-  box-shadow: none;
+  box-shadow: 0 0 0 0.25rem rgba(102, 178, 255, 0.4);
 }
 
 .form-select:focus {
   border-color: var(--text-primary);
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(102, 178, 255, 0.2);
+}
+
+/* input (form-control) */
+.form-control {
+  background-color: var(--bg-sub);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  background-color: var(--bg-sub);
+  color: var(--text-main);
+  border-color: var(--text-primary);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(102, 178, 255, 0.2);
+}
+
+.form-control::placeholder {
+  color: var(--text-subtle);
 }
 
 /* card --- */
