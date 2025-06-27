@@ -1,19 +1,28 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import Toast from '@/components/Toast.vue'
 import useMemberDetails from '~/composables/useMemberDetails'
 import useBookmarks from '@/composables/useBookmarks'
 
-const props = defineProps({
-  item: {
-    type: Object,
-    required: true,
-  },
-})
-
 const router = useRouter()
 const route = useRoute()
+
+interface card {
+  id: number
+  title: string
+  image: string
+  category: string
+  price: string
+  bookmarkCount?: number
+  viewCount?: number
+}
+
+const props = defineProps<{ item: card }>()
+const priceWords = computed(() => {
+  const price = props.item.price || ''
+  return price.match(/\S+|\s+/g) || []  // 단어(\S+) 또는 공백(\s+) 유지해서 배열로 반환
+})
 
 const isBookmarked = ref(false)
 const toastMessage = ref('')
@@ -25,7 +34,7 @@ const toggleBookmark = async () => {
   // 비로그인 유저가 북마크 버튼을 누르면 로그인 이후
   if (isAnonymous()) {
     const currentPath = route.fullPath
-    router.push(`/login?redirect=${encodeURIComponent(currentPath)}`)
+    await router.push(`/login?redirect=${encodeURIComponent(currentPath)}`)
     return
   }
 
@@ -67,7 +76,7 @@ const toggleBookmark = async () => {
             <i
                 :class="[
                 'bi',
-                isBookmarked ? 'bi-bookmark-fill text-warning' : 'bi-bookmark'
+                isBookmarked ? 'bi-bookmark-fill text-warning' : 'bi-bookmark',
               ]"
             ></i>
           </button>
@@ -77,19 +86,16 @@ const toggleBookmark = async () => {
       </div>
 
       <div class="d-flex justify-content-between mt-2">
-        <div v-if="item.bookmarkCount">
-          <span class="bi bi-bookmark-fill text-warning"></span>({{ item.bookmarkCount || 0 }})
-          <span class="bi bi-eye"></span>({{ item.viewCount || 0 }})
+        <div>
+          <span class="bi bi-bookmark-fill text-warning pe-1"/>({{ item.bookmarkCount }})
+          <span class="bi bi-eye pe-1"></span>({{ item.viewCount || 0 }})
         </div>
 
-        <div
-            class="fw-bold mt-auto"
-            :class="{
-            'text-danger': item.price !== 'Free',
-            'text-info': item.price === 'Free'
-          }"
-        >
-          {{ item.price }}
+        <div class="fw-bold mt-auto">
+          <template v-for="(word, index) in priceWords" :key="index">
+            <span :class="{ 'text-danger': word === 'Paid' }">{{ word }}</span>
+            <span v-if="index !== priceWords.length - 1"> </span>
+          </template>
         </div>
       </div>
 
