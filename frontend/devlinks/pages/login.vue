@@ -105,7 +105,9 @@ definePageMeta({
         </div>
 
         <!-- 로그인 버튼 -->
-        <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+        <button type="submit"
+                class="btn btn-primary btn-lg w-100"
+                >Login</button>
 
         <!-- 구분선 -->
         <div class="text-center text-muted my-4 position-relative">
@@ -119,12 +121,11 @@ definePageMeta({
         </div>
 
         <!-- 회원가입 버튼 -->
-        <RouterLink to="/signup"
-                    class="btn btn-outline-secondary text-danger btn-lg w-100"
-                    style="--bs-btn-hover-bg: var(--card-border); --bs-btn-active-bg: var(--card-hover-border)"
+        <NuxtLink to="/signup"
+                    class="btn btn-danger btn-lg w-100"
         >
           Create an account
-        </RouterLink>
+        </NuxtLink>
       </form>
     </div>
   </main>
