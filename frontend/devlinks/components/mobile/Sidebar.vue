@@ -47,13 +47,13 @@ watch(
 <template>
   <aside
       ref="asideRef"
-      class="sidebar p-3 position-fixed top-0 start-0 h-100"
+      class="sidebar p-2 position-fixed top-0 start-0 h-100"
       :class="{ show: isSidebarOpen }"
       role="navigation"
       aria-label="Sidebar navigation"
   >
     <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center p-4 gap-2">
+      <div class="d-flex align-items-center p-4 gap-3">
         <DevLinks/>
       </div>
       <button
@@ -119,6 +119,18 @@ watch(
       >
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
+            @click="navigateWithAuth('/member/links')"
+            :class="{ active: isActiveRoute('/member/links') }"
+        >
+          Links
+        </button>
+      </li>
+
+      <li class="nav-item p-3"
+          @click="toggleSidebar"
+      >
+        <button
+            class="nav-link bg-transparent border-0 text-start w-100"
             @click="navigateWithAuth('/member/bookmarks')"
             :class="{ active: isActiveRoute('/member/bookmarks') }"
         >
@@ -156,6 +168,10 @@ watch(
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
+
+  .p-3 {
+    padding: 0.9rem !important;
+  }
 }
 
 .sidebar.show {

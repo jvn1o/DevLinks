@@ -51,6 +51,9 @@ const {navigateWithAuth} = useAuthRedirect(isAnonymous, modalRef)
 // 프로필 이동
 const handleProfileClick = () => navigateWithAuth('/member/index')
 
+// 내가 쓴 글 이동
+const goToLinks = () => navigateWithAuth('/member/links')
+
 // 북마크 이동
 const goToBookmarks = () => navigateWithAuth('/member/bookmarks')
 
@@ -74,7 +77,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           style="border-color: var(--card-border)"
       >
         <!-- 프로필 -->
-        <div class="w-32 h-32 p-1">
+        <div class="w-32 ps-2">
           <button
               @click="handleProfileClick"
               class="btn p-0 border-0 bg-transparent"
@@ -83,33 +86,36 @@ const goToPost = () => navigateWithAuth('/member/links/create')
             <img
                 :src="resolvedProfileImg"
                 alt="Profile"
-                width="28"
-                height="28"
+                width="25"
+                height="25"
                 class="rounded-circle img-non-filter"
             />
           </button>
         </div>
 
+        <!-- 내가 쓴 글 아이콘 -->
+        <div class="w-32 ps-2">
+          <button @click="goToLinks" class="btn p-0 border-0 bg-transparent">
+            <i class="bi bi-journals fs-4"
+               :class="darkMode ? 'text-white' : 'text-dark'"
+            />
+          </button>
+        </div>
+
         <!-- 북마크 아이콘 -->
-        <div class="w-25 h-25 p-1">
-          <button @click="goToBookmarks" class="btn p-0 border-0 bg-transparent me-3">
-            <img
-                src="/assets/image/icon/bookmark.svg"
-                alt="Bookmark"
-                width="26"
-                height="26"
+        <div class="w-32 ps-2">
+          <button @click="goToBookmarks" class="btn p-0 border-0 bg-transparent">
+            <i class="bi bi-bookmark fs-4"
+               :class="darkMode ? 'text-white' : 'text-dark'"
             />
           </button>
         </div>
 
         <!-- 알람 아이콘 -->
-        <div class="w-25 h-25 p-1">
-          <button @click="goToAlarms" class="btn p-0 border-0 bg-transparent me-3">
-            <img
-                src="/assets/image/icon/alarm.svg"
-                alt="Alarm"
-                width="26"
-                height="26"
+        <div class="w-32 px-2">
+          <button @click="goToAlarms" class="btn p-0 border-0 bg-transparent">
+            <i class="bi bi-bell fs-4"
+               :class="darkMode ? 'text-white' : 'text-dark'"
             />
           </button>
         </div>
@@ -185,22 +191,10 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           @click="goToPost"
           class="d-flex align-items-center ms-auto navbar-brand btn p-0 border-0 bg-transparent"
       >
-        <img
-            v-if="!darkMode"
-            class="img-non-filter"
-            src="/assets/image/icon/post.svg"
-            alt="글 작성"
-            width="90"
-            height="20"
-        />
+        <i v-if="!darkMode" class="bi bi-pencil-square fs-4" />
 
-        <img
-            v-else
-            class="img-non-filter"
-            src="/assets/image/icon/post-dark.svg"
-            alt="글 작성"
-            width="90"
-            height="20"
+        <i v-else class="bi bi-pencil-square fs-4"
+           :class="darkMode ? 'text-white' : 'text-dark'"
         />
       </button>
     </nav>
