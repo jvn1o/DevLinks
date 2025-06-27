@@ -21,14 +21,16 @@ onMounted(() => {
     darkMode.value = localStorage.getItem('darkMode') === 'true'
     document.documentElement.classList.toggle('dark-mode', darkMode.value)
   }
-})
 
-// 실시간 모바일 환경 감지
-watchEffect(() => {
-  // 모바일 환경에서만 스크롤 감지
-  if (isMobile.value) {
-    window.addEventListener('scroll', handleScroll)
-  }
+  // // 모바일 환경에서만 스크롤 이벤트 등록 및 해제 감시
+  watch(isMobile, (isMobileNow) => {
+    if (isMobileNow) {
+      window.addEventListener('scroll', handleScroll)
+    } else {
+      window.removeEventListener('scroll', handleScroll)
+      hideHeader.value = false // PC 에서는 항상 보이게
+    }
+  }, { immediate: true })
 })
 
 // 모바일 환경에서 스크롤 시에 Header.vue 숨기기
@@ -37,7 +39,6 @@ function handleScroll() {
   hideHeader.value = current > lastScrollTop && current > 50;
   lastScrollTop = current <= 0 ? 0 : current
 }
-
 
 // 다크모드 상태가 바뀔 때마다 html 클래스와 localStorage에 반영
 watch(darkMode, (newVal) => {
