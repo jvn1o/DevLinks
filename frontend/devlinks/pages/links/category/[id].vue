@@ -38,33 +38,10 @@ const fetchLinks = async () => {
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
-const totalItems = computed(() => links.value.length);
-const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage));
-
 const pagedItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  return links.value.slice(start, start + itemsPerPage);
-});
-
-// 최대 5개 페이지 버튼만 보여주도록 범위 계산
-const pagesToShow = computed(() => {
-  const maxButtons = 5;
-  let startPage = Math.max(currentPage.value - 2, 1);
-  let endPage = startPage + maxButtons - 1;
-
-  if (endPage > totalPages.value) {
-    endPage = totalPages.value;
-    startPage = Math.max(endPage - maxButtons + 1, 1);
-  }
-
-  const pages = [];
-  for (let i = startPage; i <= endPage; i++) {
-    pages.push(i);
-  }
-  return pages;
-});
-
-
+  const start = (currentPage.value - 1) * itemsPerPage
+  return links.value.slice(start, start + itemsPerPage)
+})
 
 watchEffect(() => {
   fetchLinks();
@@ -84,7 +61,6 @@ watch(selectedCategorySlug, () => {
 
 // currentPage 변경
 watch(currentPage, () => {
-  fetchLinks(true);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
@@ -115,27 +91,24 @@ watch(currentPage, () => {
     </div>
   </div>
 
-
-
   <!-- Links  -->
   <div class="row p-3">
     <div
         v-for="item in pagedItems"
         :key="item.id"
-        class="col-lg-3 col-md-4 col-sm-6 mb-4"
+        class="col-md-6 col-xl-3 mb-4"
     >
-      <CategoryCard :item="item" />
+      <CategoryCard :item="item" :darkMode="darkMode" />
     </div>
   </div>
 
   <div class="d-flex justify-content-center my-4">
     <nav>
       <Pagination
-          :currentPage="currentPage"
-          :totalPages="totalPages"
-          :pagesToShow="pagesToShow"
+          :totalItems="links.length"
+          :itemsPerPage="itemsPerPage"
+          v-model:currentPage="currentPage"
           :darkMode="darkMode"
-          @update:page="(val) => currentPage = val"
       />
     </nav>
   </div>
