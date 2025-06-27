@@ -1,38 +1,54 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps<{
-  currentPage: number;
-  totalPages: number;
-  pagesToShow: number[];
-  darkMode: boolean;
-}>();
+  totalItems: number
+  itemsPerPage: number
+  currentPage: number
+  darkMode: boolean
+}>()
 
 const emit = defineEmits<{
-  (e: 'update:page', value: number): void;
-}>();
+  (e: 'update:currentPage', value: number): void
+}>()
 
-const isFirst = computed(() => props.currentPage === 1);
-const isLast = computed(() => props.currentPage === props.totalPages);
+const totalPages = computed(() =>
+    Math.ceil(props.totalItems / props.itemsPerPage)
+)
 
-const pageClass = (page: number) => {
-  return {
-    'page-item': true,
-    active: page === props.currentPage,
-  };
-};
+const isFirst = computed(() => props.currentPage === 1)
+const isLast = computed(() => props.currentPage === totalPages.value)
 
-const handlePageChange = (page: number) => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-  emit('update:page', page);
-};
+const pagesToShow = computed(() => {
+  const maxButtons = 5
+  let startPage = Math.max(props.currentPage - 2, 1)
+  let endPage = startPage + maxButtons - 1
+
+  if (endPage > totalPages.value) {
+    endPage = totalPages.value
+    startPage = Math.max(endPage - maxButtons + 1, 1)
+  }
+
+  const pages = []
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i)
+  }
+  return pages
+})
+
+const pageClass = (page: number) => ({
+  'page-item': true,
+  active: page === props.currentPage
+})
 
 const pageLinkClass = computed(() => ({
-  'page-link': true,
-}));
+  'page-link': true
+}))
+
+const handlePageChange = (page: number) => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+  emit('update:currentPage', page)
+}
 </script>
 
 <template>

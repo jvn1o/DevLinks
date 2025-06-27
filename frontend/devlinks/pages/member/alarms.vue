@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div> 알람 페이지 </div>
+<div> 나의 알람 페이지 </div>
 </template>
 
 <style scoped>
