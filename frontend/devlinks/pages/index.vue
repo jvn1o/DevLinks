@@ -8,8 +8,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
       <div class="col-lg-7">
-        <div class="card-bg responsive-padding rounded-4 shadow-sm border text-center">
-          <h2 class="fw-bold mb-3 intro-title-responsive" style="padding-right: 8px;">
+        <div class="card-bg responsive-padding rounded-1 shadow-sm border text-center">
+          <h2 class="fw-bold my-3 intro-title-responsive" style="padding-right: 8px;">
         <span class="d-inline-flex align-items-center gap-2">
           <DevLinks/>
         </span>
@@ -33,12 +33,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
 
     <!-- 카드 목록 -->
     <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-6">
-        <div class="card card-bg h-100 shadow-sm hover-card">
+      <div class="col-lg-7">
+        <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
-              <h5 class="card-title card-title-responsive fw-bold text-primary">
+              <h5 class="card-title card-title-responsive fw-bold text-primary ps-4">
                 Algorithm & Data Structures
+                <i class="bi bi-box-arrow-up-right link-icon ps-1"></i>
               </h5>
               <p class="card-text card-text-responsive">
                 효율적인 문제 해결을 위한 알고리즘과 자료구조에 대한 정보와 예제를 제공합니다. <br/>
@@ -51,12 +52,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-6">
-        <div class="card card-bg h-100 shadow-sm hover-card">
+      <div class="col-lg-7">
+        <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
-              <h5 class="card-title card-title-responsive fw-bold text-primary">
+              <h5 class="card-title card-title-responsive fw-bold text-primary ps-4">
                 API & Documentation
+                <i class="bi bi-box-arrow-up-right link-icon ps-1"></i>
               </h5>
               <p class="card-text card-text-responsive">
                 다양한 외부 API 사용법과 문서화 가이드를 확인할 수 있습니다. <br/>
@@ -69,12 +71,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-6">
-        <div class="card card-bg h-100 shadow-sm hover-card">
+      <div class="col-lg-7">
+        <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
-              <h5 class="card-title card-title-responsive fw-bold text-primary">
+              <h5 class="card-title card-title-responsive fw-bold text-primary ps-4">
                 Cloud & DevOps
+                <i class="bi bi-box-arrow-up-right link-icon ps-1"></i>
               </h5>
               <p class="card-text card-text-responsive">
                 클라우드 환경 설정부터 CI/CD 파이프라인 구축까지, 인프라 자동화에 대한 내용을 다룹니다. <br/>
@@ -87,12 +90,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-6">
-        <div class="card card-bg h-100 shadow-sm hover-card">
+      <div class="col-lg-7">
+        <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
-              <h5 class="card-title card-title-responsive fw-bold text-primary">
+              <h5 class="card-title card-title-responsive fw-bold text-primary ps-4">
                 Testing & QA
+                <i class="bi bi-box-arrow-up-right link-icon ps-1"></i>
               </h5>
               <p class="card-text card-text-responsive">
                 코드 테스트 방법과 품질 보증(QA) 관련 자료를 모았습니다. <br/>
@@ -105,12 +109,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-6">
-        <div class="card card-bg h-100 shadow-sm hover-card ms-md-auto">
+      <div class="col-lg-7">
+        <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
-              <h5 class="card-title card-title-responsive fw-bold text-primary">
+              <h5 class="card-title card-title-responsive fw-bold text-primary ps-4">
                 UI / UX
+                <i class="bi bi-box-arrow-up-right link-icon ps-1"></i>
               </h5>
               <p class="card-text card-text-responsive">
                 사용자 경험을 향상시키기 위한 UI 설계 및 디자인 시스템, 접근성 관련 정보를 제공합니다. <br/>
