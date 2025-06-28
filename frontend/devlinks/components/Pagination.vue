@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import {computed} from 'vue'
 
 const props = defineProps<{
   totalItems: number
   itemsPerPage: number
   currentPage: number
-  darkMode: boolean
 }>()
 
 const emit = defineEmits<{
@@ -46,13 +45,13 @@ const pageLinkClass = computed(() => ({
 }))
 
 const handlePageChange = (page: number) => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({top: 0, behavior: 'smooth'})
   emit('update:currentPage', page)
 }
 </script>
 
 <template>
-  <nav :class="{ 'dark-mode': darkMode }">
+  <nav>
     <ul class="pagination justify-content-center">
 
       <!-- 이전 버튼 -->
@@ -92,26 +91,24 @@ const handlePageChange = (page: number) => {
 </template>
 
 <style scoped>
-.dark-mode {
-  .page-link {
-    background-color: var(--bg-card);
-    color: var(--text-main);
-    border: 1px solid var(--card-border);
-  }
+.page-link {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+}
 
-  .page-link:hover {
-    background-color: var(--bg-sub);
-    border-color: var(--card-hover-border);
-  }
+.page-link:hover {
+  background-color: var(--bg-sub);
+  border-color: var(--card-hover-border);
+}
 
-  .page-item.active .page-link {
-    background-color: var(--text-primary);
-    border-color: var(--text-primary);
-  }
+.page-item.active .page-link {
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+}
 
-  .page-item.disabled .page-link {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+.page-item.disabled .page-link {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>

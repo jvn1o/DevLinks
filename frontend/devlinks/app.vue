@@ -116,7 +116,6 @@ body {
   color: var(--select-text);
   border: 1px solid var(--select-border);
   transition: all 0.3s ease;
-  box-shadow: 0 0 0 0.25rem rgba(102, 178, 255, 0.4);
 }
 
 .form-select:focus {
