@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {ref, computed} from 'vue';
-import {watch} from 'vue';
+import {ref, computed, watch, onMounted} from 'vue';
 import img from 'assets/image/figma.png';
+import axios from "axios";
 
 // const links = ref([]); 서버 랜더링 용
 const links = ref([
@@ -31,10 +31,9 @@ const links = ref([
 ]); // 임시용
 
 const fetchLinks = async () => {
-  const { data } = await axios.get('/api/v1/member/link');
+  const {data} = await axios.get('/api/v1/member/link');
 
   links.value = data.items;
-  totalItems.value = data.items.length;
 };
 
 const currentPage = ref(1);
@@ -66,7 +65,7 @@ const handleDelete = async (id: number) => {
 </script>
 
 <template>
-  <DeleteConfirmModal ref="deleteModal" :dark-mode="darkMode" />
+  <DeleteConfirmModal ref="deleteModal"/>
 
   <div class="d-flex justify-content-between align-items-center px-md-5 px-sm-3 py-2 flex-wrap gap-2">
     <!-- Links  -->
@@ -89,7 +88,6 @@ const handleDelete = async (id: number) => {
         :totalItems="links.length"
         :itemsPerPage="itemsPerPage"
         v-model:currentPage="currentPage"
-        :darkMode="darkMode"
     />
   </div>
 
