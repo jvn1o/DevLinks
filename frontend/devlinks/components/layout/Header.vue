@@ -49,16 +49,16 @@ const modalRef = ref(null)
 const {navigateWithAuth} = useAuthRedirect(isAnonymous, modalRef)
 
 // 프로필 이동
-const handleProfileClick = () => navigateWithAuth('/member/index')
+const handleProfileClick = () => navigateWithAuth('/member/my/index')
 
 // 내가 쓴 글 이동
-const goToLinks = () => navigateWithAuth('/member/links')
+const goToLinks = () => navigateWithAuth('/member/my/links')
 
 // 북마크 이동
-const goToBookmarks = () => navigateWithAuth('/member/bookmarks')
+const goToBookmarks = () => navigateWithAuth('/member/my/bookmarks')
 
 // 알림 이동
-const goToAlarms = () => navigateWithAuth('/member/alarms')
+const goToAlarms = () => navigateWithAuth('/member/my/alarms')
 
 // 글 작성 이동
 const goToPost = () => navigateWithAuth('/member/links/create')

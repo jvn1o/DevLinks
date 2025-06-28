@@ -107,8 +107,8 @@ watch(
       >
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
-            @click="navigateWithAuth('/member')"
-            :class="{ active: isActiveRoute('/member') }"
+            @click="navigateWithAuth('/member/my')"
+            :class="{ active: isActiveRoute('/member/my') }"
         >
           Profile
         </button>
@@ -119,8 +119,8 @@ watch(
       >
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
-            @click="navigateWithAuth('/member/links')"
-            :class="{ active: isActiveRoute('/member/links') }"
+            @click="navigateWithAuth('/member/my/links')"
+            :class="{ active: isActiveRoute('/member/my/links') }"
         >
           Links
         </button>
@@ -131,8 +131,8 @@ watch(
       >
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
-            @click="navigateWithAuth('/member/bookmarks')"
-            :class="{ active: isActiveRoute('/member/bookmarks') }"
+            @click="navigateWithAuth('/member/my/bookmarks')"
+            :class="{ active: isActiveRoute('/member/my/bookmarks') }"
         >
           Bookmarks
         </button>
@@ -143,8 +143,8 @@ watch(
       >
         <button
             class="nav-link bg-transparent border-0 text-start w-100"
-            @click="navigateWithAuth('/member/alarms')"
-            :class="{ active: isActiveRoute('/member/alarms') }"
+            @click="navigateWithAuth('/member/my/alarms')"
+            :class="{ active: isActiveRoute('/member/my/alarms') }"
         >
           Alarms
         </button>

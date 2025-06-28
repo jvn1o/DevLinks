@@ -22,7 +22,7 @@ const priceWords = computed(() => {
 })
 
 const goToEdit = () => {
-  router.push(`/member/links/edit/${props.item.id}`)
+  router.push(`/member/my/links/edit/${props.item.id}`)
 }
 
 const deleteConfirmClick = () => {
@@ -36,7 +36,7 @@ const deleteConfirmClick = () => {
       <img :src="item.image" class="card-img-top img-non-filter" :alt="item.title"/>
     </div>
 
-    <div class="card-body d-flex flex-column p-4">
+    <div class="card-body d-flex flex-column">
       <h5 class="card-title fs-5 text-truncate fw-bold mb-3" :title="item.title">
         {{ item.title }}
       </h5>
@@ -48,7 +48,7 @@ const deleteConfirmClick = () => {
         <span class="bi bi-bookmark-fill text-warning ms-3"></span>({{ item.bookmarkCount || 0 }})
       </div>
 
-      <div class="fw-bold fs-6 mb-3">
+      <div class="fw-bold fs-6">
         <template v-for="(word, index) in priceWords" :key="index">
           <span :class="{ 'text-danger': word === 'Paid' }">{{ word }}</span>
           <span v-if="index !== priceWords.length - 1"> </span>
