@@ -83,7 +83,7 @@ async function submitForm() {
 
     <form @submit.prevent="submitForm" class="row flex-column g-3">
       <!-- Thumbnail -->
-      <div class="col-5">
+      <div class="col-12 col-md-5">
         <label class="form-label fw-bold">Thumbnail</label>
         <input
             type="file"
@@ -104,7 +104,7 @@ async function submitForm() {
       </div>
 
       <!-- Category -->
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-sm-6 col-md-3">
         <label class="form-label fw-bold">Category</label>
         <select
             v-model="category"
@@ -118,7 +118,7 @@ async function submitForm() {
       </div>
 
       <!-- PriceType -->
-      <div class="col-12 col-md-2">
+      <div class="col-12 col-sm-6 col-md-2">
         <label class="form-label fw-bold">PriceType</label>
         <select
             v-model="priceType"
