@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import {ref, watch} from 'vue'
 
 const props = defineProps({
   darkMode: Boolean
@@ -25,7 +25,7 @@ const onCancel = () => {
   resolveCallback.value?.(false)
 }
 
-defineExpose({ show })
+defineExpose({show})
 
 watch(visible, (val) => {
   document.body.style.overflow = val ? 'hidden' : ''
@@ -33,26 +33,29 @@ watch(visible, (val) => {
 </script>
 
 <template>
-  <div
-      v-if="visible"
-      class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 p-3"
-      :class="{ 'dark-mode': darkMode }"
-  >
-    <div class="login-modal-box">
-      <div class="text-center mb-3">
-        <h6 class="fw-semibold mb-0">정말 삭제하시겠습니까?</h6>
-      </div>
-      <div class="mb-3 text-center">
-        <p class="mb-0">삭제된 항목은 복구할 수 없습니다.</p>
-      </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-        <button class="btn btn-danger small-btn" @click="onConfirm">삭제</button>
-        <button class="btn btn-secondary small-btn" @click="onCancel">취소</button>
+<!-- 최상단으로 append -->
+  <teleport to="body">
+    <div
+        v-if="visible"
+        class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 p-3"
+        :class="{ 'dark-mode': darkMode }"
+    >
+      <div class="login-modal-box">
+        <div class="text-center mb-3">
+          <h6 class="fw-semibold mb-0">정말 삭제하시겠습니까?</h6>
+        </div>
+        <div class="mb-3 text-center">
+          <p class="mb-0">삭제된 항목은 복구할 수 없습니다.</p>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+          <button class="btn btn-danger small-btn" @click="onConfirm">삭제</button>
+          <button class="btn btn-secondary small-btn" @click="onCancel">취소</button>
+        </div>
       </div>
     </div>
-  </div>
+  </teleport>
 
-  <Overlay :visible="visible" :onClick="onCancel" />
+  <Overlay :visible="visible" :onClick="onCancel"/>
 </template>
 
 <style scoped>

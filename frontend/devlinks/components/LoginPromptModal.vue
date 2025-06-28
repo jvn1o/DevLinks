@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 const props = defineProps({
   darkMode: Boolean
@@ -28,7 +28,7 @@ const onCancel = () => {
   resolveCallback.value?.(false)
 }
 
-defineExpose({ show })
+defineExpose({show})
 
 // 휠 내림 방지
 watch(visible, (val) => {
@@ -41,29 +41,32 @@ watch(visible, (val) => {
 </script>
 
 <template>
-  <div
-      v-if="visible"
-      class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 p-3"
-      :class="{ 'dark-mode': darkMode }"
-  >
-    <div class="login-modal-box">
-      <div class="text-center mb-3">
-        <h6 class="fw-semibold mb-0">로그인이 필요합니다</h6>
-      </div>
-      <div class="mb-3 text-center">
-        <p class="mb-0">
-          해당 기능은 로그인 후 이용할 수 있습니다.<br />
-          로그인하시겠습니까?
-        </p>
-      </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-        <button class="btn btn-primary small-btn" @click="onConfirm">로그인</button>
-        <button class="btn btn-secondary small-btn" @click="onCancel">취소</button>
+  <!-- 최상단으로 append -->
+  <teleport to="body">
+    <div
+        v-if="visible"
+        class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 p-3"
+        :class="{ 'dark-mode': darkMode }"
+    >
+      <div class="login-modal-box">
+        <div class="text-center mb-3">
+          <h6 class="fw-semibold mb-0">로그인이 필요합니다</h6>
+        </div>
+        <div class="mb-3 text-center">
+          <p class="mb-0">
+            해당 기능은 로그인 후 이용할 수 있습니다.<br/>
+            로그인하시겠습니까?
+          </p>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+          <button class="btn btn-primary small-btn" @click="onConfirm">로그인</button>
+          <button class="btn btn-secondary small-btn" @click="onCancel">취소</button>
+        </div>
       </div>
     </div>
-  </div>
+  </teleport>
 
-  <Overlay :visible="visible" :onClick="onCancel" />
+  <Overlay :visible="visible" :onClick="onCancel"/>
 </template>
 
 <style scoped>
