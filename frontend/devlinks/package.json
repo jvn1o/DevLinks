@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nuxt dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "nuxt build",
+    "postinstall": "npm install axios swiper @tiptap/vue-3 @tiptap/starter-kit @tiptap/extension-image"
   },
   "dependencies": {
     "@vueuse/core": "^13.1.0",
