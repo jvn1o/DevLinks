@@ -4,8 +4,6 @@ import { ref } from 'vue'
 import TiptapEditor from '~/components/TiptapEditor.vue'
 import { slugify } from '~/utils/slugify.js'
 
-// npm install axios, npm install @tiptap/vue-3 @tiptap/starter-kit @tiptap/extension-image
-
 const title = ref('')
 const category = ref('')
 const categories = [
@@ -42,18 +40,22 @@ async function submitForm() {
     return;
   }
 
+  const dto = {
+    title: title.value,
+    categorySlug: slugify(category.value),
+    priceType: priceType.value,
+    description: plainDesc,
+  }
+
   const formData = new FormData();
-  formData.append('title', title.value);
-  formData.append('category', slugify(category.value)); // slugify 처리
-  formData.append('priceType', priceType.value);
-  formData.append('description', plainDesc); // 문자열 강제 처리
+  formData.append('data', new Blob([JSON.stringify(dto)], { type: 'application/json' }));
 
   if (imageFile.value) {
     formData.append('image', imageFile.value);
   }
 
   try {
-    const response = await axios.post('/api/v1/links/create', formData, {
+    const response = await axios.post('/member/links/create', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
