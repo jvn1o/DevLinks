@@ -23,7 +23,7 @@ export const useAuthRedirect = (
             console.log('[navigateWithAuth] modal confirmed:', confirmed)
 
             if (confirmed) {
-                const loginPath = `/login?redirect=${encodeURIComponent(targetPath)}`
+                const loginPath = `/auth/login?redirect=${encodeURIComponent(targetPath)}`
                 console.log('[navigateWithAuth] redirecting to login:', loginPath)
                 router.push(loginPath)
             }

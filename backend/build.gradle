@@ -23,8 +23,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'  // Web Services Starter
     implementation 'org.springframework.boot:spring-boot-starter-security'  // 보안 Starter
 
-    runtimeOnly 'com.oracle.database.jdbc:ojdbc11:21.9.0.0'  // 오라클 JDBC 드라이버 (버전 주의)
-//    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'  // MariaDB JDBC 드라이버
+    implementation 'com.oracle.database.jdbc:ojdbc11:21.9.0.0'  // 오라클 JDBC 드라이버 (버전 주의)
+//    implementation 'org.mariadb.jdbc:mariadb-java-client'  // MariaDB JDBC 드라이버
 
     compileOnly 'org.projectlombok:lombok'  // Lombok
     annotationProcessor 'org.projectlombok:lombok'  // Lombok annotation processor

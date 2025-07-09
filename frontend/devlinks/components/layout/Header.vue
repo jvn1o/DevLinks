@@ -49,7 +49,7 @@ const modalRef = ref(null)
 const {navigateWithAuth} = useAuthRedirect(isAnonymous, modalRef)
 
 // 프로필 이동
-const handleProfileClick = () => navigateWithAuth('/member/my/index')
+const handleProfileClick = () => navigateWithAuth('/member/my')
 
 // 내가 쓴 글 이동
 const goToLinks = () => navigateWithAuth('/member/my/links')

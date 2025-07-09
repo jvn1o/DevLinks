@@ -1,9 +1,6 @@
 package com.jvn1o.devlinks.member.member.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
@@ -12,7 +9,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberSignupRequestDto {
+public class SignupRequest {
     private MultipartFile profileImg;
     private String name;
     private String memberId;

@@ -1,29 +1,36 @@
+# 임시 H2 설정
 #spring:
-#  profiles:
-#    active: dev #dev #prod
-#    include: secret #민감정보 secret파일
 #  datasource:
-#    url: jdbc:oracle:thin:@localhost:1521:jvn1orcl  # 오라클 DB 주소
-#    username: C##JVN1ORCL  # 오라클 DB 사용자 이름
-#    password: 19990610  # 오라클 DB 비밀번호
-#    driver-class-name: oracle.jdbc.OracleDriver  # 오라클 JDBC 드라이버
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
 #  jpa:
-#    database-platform: org.hibernate.dialect.OracleDialect  # Hibernate 오라클 Dialect
 #    hibernate:
-#      ddl-auto: update  # 필요하면 create, update, validate 설정 가능
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.H2Dialect
 
-
-# 임시 H2 설정, 지우고 위에 DB 설정 살리기
 spring:
+  profiles:
+    active: dev #dev #prod
+    include: secret #민감정보 secret파일
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:oracle:thin:@192.168.0.11:1521:jvn1orcl  # 오라클 DB 주소
+    username: C##JVN1ORCL  # 오라클 DB 사용자 이름
+    password: 19990610  # 오라클 DB 비밀번호
+    driver-class-name: oracle.jdbc.OracleDriver  # 오라클 JDBC 드라이버
+    hikari:
+      minimum-idle: 2       # 최소 유지할 커넥션 수
+      maximum-pool-size: 10
+      connection-timeout: 10000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      validation-timeout: 5000
+      initialization-fail-timeout: 10000 # 초기 커넥션 풀 생성 실패 시 타임아웃
   jpa:
+    database-platform: org.hibernate.dialect.OracleDialect  # Hibernate 오라클 Dialect
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: validate  # 필요하면 create, update, validate 설정 가능
   web:
     resources:
       static-locations: file:./uploads/

@@ -1,6 +1,7 @@
 package com.jvn1o.devlinks.member.member.controller;
 
-import com.jvn1o.devlinks.member.member.dto.MemberSignupRequestDto;
+import com.jvn1o.devlinks.member.member.dto.SignupRequest;
+import com.jvn1o.devlinks.member.member.service.DefaultSignupService;
 import com.jvn1o.devlinks.member.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,23 +9,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/members")
+@RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
+    private final DefaultSignupService signupService;
 
-    // 회원가입
-    @PostMapping(value = "/signup", consumes = {"multipart/form-data"})
-    public ResponseEntity<?> signup(@ModelAttribute MemberSignupRequestDto request) {
-        try {
-            memberService.signup(request);
-            return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
-        }
+    @PostMapping("/signup")
+    public ResponseEntity<String> signup(@RequestBody SignupRequest request) {
+        signupService.signup(request);
+        return ResponseEntity.ok("회원가입 완료");
     }
 
     // ID 중복 체크
