@@ -3,11 +3,11 @@
 
 <template>
   <main class="container d-flex flex-column align-items-center justify-content-center text-center vh-70">
-    <img src="../../assets/image/icon/checked.png" alt="Success Icon" class="mb-4" style="width: 100px; height: 100px;" />
+    <img src="../../../assets/image/icon/checked.png" alt="Success Icon" class="mb-4" style="width: 100px; height: 100px;" />
     <div class="fs-2 fw-bold text-dark mb-4">
       Your account was successfully created!
     </div>
-    <RouterLink to="/login" class="btn btn-primary px-4 py-2">
+    <RouterLink to="/auth/login" class="btn btn-primary px-4 py-2">
       Back to Login
     </RouterLink>
   </main>
