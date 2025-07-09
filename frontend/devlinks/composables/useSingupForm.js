@@ -111,7 +111,7 @@ export function useSignupForm() {
         }
 
         try {
-            await axios.post("http://localhost:8080/api/v1/members/signup", formData, {
+            await axios.post("http://192.168.0.11:8080/api/v1/member/signup", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -125,7 +125,7 @@ export function useSignupForm() {
     // ID 중복 확인 핸들러
     const validHandler = async () => {
         try {
-            await axios.post("http://localhost:8080/api/v1/members/idvalid", {
+            await axios.post("http://192.168.0.11:8080/api/v1/member/idvalid", {
                 memberId: memberId.value,
             });
             alert("ID verified");
