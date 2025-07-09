@@ -12,7 +12,7 @@ const logInHandler = async () => {
   console.log("로그인 버튼 작동 중");
 
   try {
-    let response = await useDataFetch("auth/login", {
+    let response = await useDataFetch("/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -121,7 +121,7 @@ definePageMeta({
         </div>
 
         <!-- 회원가입 버튼 -->
-        <NuxtLink to="/signup"
+        <NuxtLink to="/member/signup"
                     class="btn btn-danger btn-lg w-100"
         >
           Create an account
