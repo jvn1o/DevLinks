@@ -59,22 +59,38 @@ async function submitForm() {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
+      validateStatus: () => true, // axios가 상태코드 관계없이 catch로 빠지지 않게 함
     });
 
-    alert('Posted Successfully!');
-    console.log('Server Response:', response.data);
+    const status = response.status;
 
-    // 초기화
-    title.value = '';
-    category.value = '';
-    priceType.value = '';
-    description.value = '';
-    imageFile.value = null;
-    imagePreview.value = null;
+    if (status === 201 || status === 200) {
+      alert('Posted Successfully!');
+      console.log('Server Response:', response.data);
+
+      // 초기화
+      title.value = '';
+      category.value = '';
+      priceType.value = '';
+      description.value = '';
+      imageFile.value = null;
+      imagePreview.value = null;
+
+    } else if (status === 400) {
+      alert('요청 형식이 잘못되었습니다. 모든 필드를 정확히 입력했는지 확인해 주세요.');
+    } else if (status === 401) {
+      alert('인증되지 않았습니다. 로그인 후 다시 시도해 주세요.');
+    } else if (status === 409) {
+      alert('이미 존재하는 링크입니다.');
+    } else if (status >= 500) {
+      alert('서버 내부 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    } else {
+      alert(`알 수 없는 오류가 발생했습니다 (Status: ${status})`);
+    }
 
   } catch (error) {
     console.error('Posted Failed:', error);
-    alert('Error');
+    alert('네트워크 오류 또는 예기치 못한 문제가 발생했습니다.');
   }
 }
 </script>
