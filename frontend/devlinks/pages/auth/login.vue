@@ -1,32 +1,41 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import { jwtDecode } from "jwt-decode";
+import { useRoute } from 'vue-router';
+import { jwtDecode } from 'jwt-decode';
+import { useMemberApi } from '~/composables/useMemberApi.ts';
+import useMemberDetails from '~/composables/useMemberDetails';
 
 const memberId = ref('');
 const memberPwd = ref('');
 const route = useRoute();
 const memberDetails = useMemberDetails();
-// const rememberMe = ref(false);
 
 const logInHandler = async () => {
   console.log("로그인 버튼 작동 중");
 
   try {
-    let response = await useDataFetch("/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: {
-        memberId: memberId.value,
-        memberPwd: memberPwd.value
-      }
+    const api = useMemberApi();
+    const response = await api.post('/auth/login', {
+      memberId: memberId.value,
+      memberPwd: memberPwd.value,
     });
 
-    // 응답받은 토큰을 jwt 디코딩을 통하여 사용자 정보를 추출
-    let memberInfo = jwtDecode(response.token);
+    const token = response.data?.token;
+    if (!token) {
+      alert("로그인 응답에 문제가 있습니다.");
+      return;
+    }
 
-    // 디코딩한 정보를 memberDetails.login 으로 전역 저장
+    const memberInfo = jwtDecode(token) as {
+      id: number;
+      memberId: string;
+      name: string;
+      birth: string;
+      email: string;
+      profileImgSrc: string | null;
+    };
+
+    // 전역 상태에 로그인 정보 저장
     memberDetails.login({
       id: memberInfo.id,
       memberId: memberInfo.memberId,
@@ -34,33 +43,37 @@ const logInHandler = async () => {
       birth: memberInfo.birth,
       email: memberInfo.email,
       profileImgSrc: memberInfo.profileImgSrc,
-      token: response.token
+      token,
     });
 
-    // 로그인 전 접근하려던 returnURL로 이동
-    console.log('조각난 리턴url: ', route.query);
-    let originalReturnURL = route.query.returnURL;
+    // 로그인 전 URL 복원
+    let returnURL = (route.query.redirect as string) || '/';
     Object.entries(route.query)
-        .filter(([key]) => key !== 'returnURL')
+        .filter(([key]) => key !== 'redirect')
         .forEach(([key, value]) => {
-          originalReturnURL += `&${key}=${value}`;
+          returnURL += `&${key}=${value}`;
         });
-    console.log('originalReturnUrl: ', originalReturnURL);
 
-    return navigateTo(originalReturnURL);
+    return navigateTo(returnURL);
 
-  } catch (error) {
-    if (error.response && error.response.status === 401) {
-      alert("존재하지 않는 아이디입니다.");
+  } catch (error: any) {
+    const status = error.response?.status || error.status || null;
+
+    if (status === 401) {
+      alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+    } else if (status === 400) {
+      alert("요청 형식이 잘못되었습니다. 입력값을 다시 확인해 주세요.");
+    } else if (status === 500) {
+      alert("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     } else {
-      console.error("로그인 중 오류 발생:", error);
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+      console.error("로그인 중 알 수 없는 오류:", error);
+      alert("로그인에 실패했습니다. 네트워크 상태를 확인해주세요.");
     }
   }
 };
 
 definePageMeta({
-  layout: false
+  layout: false,
 });
 </script>
 
