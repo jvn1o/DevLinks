@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { watch } from 'vue';
+import axios from 'axios';
+import { useMemberApi } from '~/composables/useMemberApi';
 import CategoryCard from '~/components/category/CategoryCard.vue';
 import img from 'assets/image/figma.png';
 
@@ -21,19 +23,31 @@ const selectedCategorySlug = ref("algorithm-data-structures");
 const selectedSort = ref("newest");
 const selectedPrice = ref(null); // Free, Paid, Free & Paid
 
+const api = useMemberApi()
+
 const fetchLinks = async () => {
   try {
-    const { data } = await axios.get(`/api/v1/links/category/${selectedCategorySlug.value}`, {
-      params: {
-        sort: selectedSort.value,
-        pricetype: selectedPrice.value ?? '', // null 이면 필터링 없이 반환
-      },
-    });
-    links.value = data;
-  } catch (err) {
-    console.error("링크 목록 로딩 실패", err);
+    let response
+    if (isLoggedIn.value) {  // 회원일 때 tokken 소유
+      response = await api.get(`/api/v1/links/category/${selectedCategorySlug.value}`, {
+        params: {
+          sort: selectedSort.value,
+          pricetype: selectedPrice.value ?? '',
+        },
+      })
+    } else {
+      response = await axios.get(`/api/v1/links/category/${selectedCategorySlug.value}`, {
+        params: {
+          sort: selectedSort.value,
+          pricetype: selectedPrice.value ?? '',
+        },
+      })
+    }
+    links.value = response.data
+  } catch (error) {
+    console.error('링크 목록 로딩 실패', error)
   }
-};
+}
 
 const currentPage = ref(1);
 const itemsPerPage = 8;
