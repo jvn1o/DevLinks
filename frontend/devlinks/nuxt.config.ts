@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['swiper/swiper-bundle.css'],
+  css: ['swiper/swiper-bundle.css', 'aos/dist/aos.css'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 

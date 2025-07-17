@@ -20,7 +20,7 @@
 
 .logo-text {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 
 @media (max-width: 1093px) {

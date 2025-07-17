@@ -3,6 +3,10 @@
     "@tiptap/extension-image": "^2.25.0",
     "@tiptap/starter-kit": "^2.25.0",
     "@tiptap/vue-3": "^2.25.0",
+    "aos": "^2.3.4",
     "swiper": "^11.2.10"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
   }
 }

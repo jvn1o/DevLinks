@@ -9,16 +9,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     <div class="row justify-content-center">
       <div class="col-lg-7">
         <div class="card-bg responsive-padding rounded-1 shadow-sm border text-center">
-          <h2 class="fw-bold my-3 intro-title-responsive" style="padding-right: 8px;">
-        <span class="d-inline-flex align-items-center gap-2">
-          <DevLinks/>
-        </span>
-          </h2>
-          <p class="intro-text-responsive mb-2">
-            개발자들이 자주 찾는 인기 사이트, 유용한 자료, 최신 트렌드를 <strong>한 곳에서 탐색</strong>할 수 있는 플랫폼입니다.
-          </p>
+          <h1 class="fw-bold my-3" style="padding-right: 8px;">
+            <span class="d-inline-flex align-items-center gap-2">
+              <DevLinks/>
+            </span>
+          </h1>
           <p class="intro-text-responsive">
-            분야별로 정리된 링크들을 통해 더 똑똑한 개발을 시작하세요!
+            개발자가 꼭 알아야 할 링크를 한 곳에
           </p>
         </div>
       </div>
@@ -27,13 +24,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     <!-- 화살표 애니메이션  -->
     <div class="scroll-down-indicator text-center my-4">
       <div class="d-flex justify-content-center arrows">
-        <i class="bi bi-chevron-down fs-3 d-block"></i>
+        <i class="bi bi-chevron-down fs-2 d-block"></i>
       </div>
     </div>
 
     <!-- 카드 목록 -->
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-start text-center" data-aos="fade-right">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -51,8 +48,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-end text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -70,8 +67,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-start text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
@@ -89,8 +86,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-end text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
@@ -108,8 +105,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
+    <div class="row mb-5 justify-content-start text-center">
+      <div class="col-lg-6">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
@@ -136,7 +133,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
   font-size: 1.3rem;
 }
 .intro-text-responsive {
-  font-size: 0.8rem;
+  font-size: 1.25rem;
 }
 .card-title-responsive {
   font-size: 0.9rem;
@@ -205,11 +202,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       padding: 1.25rem;
     }
 
-    .intro-title-responsive {
-      font-size: 1.5rem;
-    }
     .intro-text-responsive {
-      font-size: 0.65rem;
+      font-size: 0.8rem;
     }
     .card-title-responsive {
       font-size: 0.9rem;

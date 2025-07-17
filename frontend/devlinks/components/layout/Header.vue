@@ -96,7 +96,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
         <!-- 내가 쓴 글 아이콘 -->
         <div class="w-32 ps-2">
           <button @click="goToLinks" class="btn p-0 border-0 bg-transparent">
-            <i class="bi bi-journals fs-4"
+            <i class="bi bi-journals fs-5"
                :class="darkMode ? 'text-white' : 'text-dark'"
             />
           </button>
@@ -105,7 +105,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
         <!-- 북마크 아이콘 -->
         <div class="w-32 ps-2">
           <button @click="goToBookmarks" class="btn p-0 border-0 bg-transparent">
-            <i class="bi bi-bookmark fs-4"
+            <i class="bi bi-bookmark fs-5"
                :class="darkMode ? 'text-white' : 'text-dark'"
             />
           </button>
@@ -114,7 +114,7 @@ const goToPost = () => navigateWithAuth('/member/links/create')
         <!-- 알람 아이콘 -->
         <div class="w-32 px-2">
           <button @click="goToAlarms" class="btn p-0 border-0 bg-transparent">
-            <i class="bi bi-bell fs-4"
+            <i class="bi bi-bell fs-5"
                :class="darkMode ? 'text-white' : 'text-dark'"
             />
           </button>
@@ -131,8 +131,8 @@ const goToPost = () => navigateWithAuth('/member/links/create')
               class="img-non-filter"
               src="/assets/image/DevLinks.svg"
               alt="Logo"
-              width="28"
-              height="28"
+              width="26"
+              height="26"
           />
         </NuxtLink>
       </div>
@@ -191,9 +191,9 @@ const goToPost = () => navigateWithAuth('/member/links/create')
           @click="goToPost"
           class="d-flex align-items-center ms-auto navbar-brand btn p-0 border-0 bg-transparent"
       >
-        <i v-if="!darkMode" class="bi bi-pencil-square fs-4" />
+        <i v-if="!darkMode" class="bi bi-pencil-square fs-5" />
 
-        <i v-else class="bi bi-pencil-square fs-4"
+        <i v-else class="bi bi-pencil-square fs-5"
            :class="darkMode ? 'text-white' : 'text-dark'"
         />
       </button>
