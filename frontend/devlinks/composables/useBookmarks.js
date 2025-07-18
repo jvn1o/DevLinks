@@ -11,7 +11,7 @@ export default function useBookmarks() {
         loading.value = true
         error.value = null
         try {
-            const res = await fetch(`http://localhost:8080/api/v1/bookmarks`)
+            const res = await fetch(`http://192.168.0.11:8080/api/v1/bookmarks`)
             if (!res.ok) throw new Error('Failed to fetch bookmarks')
             const data = await res.json()
             bookmarks.value = data.bookmarks || []
@@ -25,7 +25,7 @@ export default function useBookmarks() {
     // memberId와 itemId로 북마크 토글
     const toggleBookmark = async (memberId, itemId) => {
         try {
-            const res = await fetch(`http://localhost:8080/api/v1/bookmarks`, {
+            const res = await fetch(`http://192.168.0.11:8080/api/v1/bookmarks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ memberId, itemId }),
