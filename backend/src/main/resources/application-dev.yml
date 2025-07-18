@@ -1,20 +1,24 @@
+# application-dev.yml (dev 프로파일 전용 설정)
 spring:
-  application:
-    name: DevLinks  # 앱 이름
+  profiles:
+    active: dev  # dev 프로파일 활성화
+    include: secret  # 민감정보는 별도 secret 프로파일로 분리
 
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@192.168.0.11:1521:jvn1orcl
-    username: C##JVN1ORCL
-    password: 19990610
+    url: jdbc:oracle:thin:@192.168.0.11:1521:jvn1orcl  # 오라클 DB 주소
+    username: C##JVN1ORCL  # 오라클 DB 사용자명
+    password: 19990610  # 오라클 DB 비밀번호
+    hikari:
+      minimum-idle: 2  # 최소 커넥션 수
+      maximum-pool-size: 10  # 최대 커넥션 수
+      connection-timeout: 10000  # 커넥션 타임아웃 (ms)
+      idle-timeout: 600000  # 커넥션 아이들 타임아웃 (ms)
+      max-lifetime: 1800000  # 최대 커넥션 수명 (ms)
+      validation-timeout: 5000  # 검증 타임아웃 (ms)
+      initialization-fail-timeout: 10000  # 초기 커넥션 풀 실패시 타임아웃 (ms)
 
   jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true  # SQL 쿼리 출력
-    properties:
-      hibernate:
-        format_sql: true  # SQL 포맷팅
+    database-platform: org.hibernate.dialect.OracleDialect  # Hibernate 오라클 Dialect 지정
 
   servlet:
     multipart:
@@ -27,14 +31,9 @@ spring:
       static-locations: file:./uploads/
 
 server:
-  port: 8080
   servlet:
-    context-path: /api/v1
+    context-path: /api/v1  # API 기본 컨텍스트 경로
 
-file:
-  upload-dir: ./uploads
-
-devlinks:
-  jwt:
-    secret: ${SPRING_JWT_SECRET_KEY}
-
+jwt:
+  secret: ${SPRING_JWT_SECRET_KEY}  # 환경변수로 JWT 시크릿키 주입
+  expiration: ${JWT_EXPIRATION:3600000}  # JWT 만료 시간 기본 1시간(ms)
