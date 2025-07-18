@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberLinkListDto {
+public class LinkListDto {
     private Long id;
     // Image 에서 order 가 1인 src
     private String thumbnail;

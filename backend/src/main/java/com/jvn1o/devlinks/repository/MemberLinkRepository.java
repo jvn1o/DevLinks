@@ -1,7 +1,7 @@
 package com.jvn1o.devlinks.repository;
 
 import com.jvn1o.devlinks.entity.Link;
-import com.jvn1o.devlinks.member.link.dto.MemberLinkListDto;
+import com.jvn1o.devlinks.member.link.dto.LinkListDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -21,6 +21,5 @@ public interface MemberLinkRepository extends JpaRepository<Link, Long> {
         where l.member.id = :memberId
         order by l.regDate desc
     """)
-    List<MemberLinkListDto> findAllByMemberId(Long memberId);
-
+    List<LinkListDto> findLinksByMemberId(Long memberId);
 }

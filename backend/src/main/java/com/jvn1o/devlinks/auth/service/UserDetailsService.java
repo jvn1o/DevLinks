@@ -2,7 +2,7 @@ package com.jvn1o.devlinks.auth.service;
 
 import com.jvn1o.devlinks.entity.Member;
 import com.jvn1o.devlinks.repository.MemberRepository;
-import com.jvn1o.devlinks.security.principal.MemberPrincipal;
+import com.jvn1o.devlinks.auth.principal.MemberPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
