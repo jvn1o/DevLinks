@@ -1,5 +1,6 @@
-package com.jvn1o.devlinks.security;
+package com.jvn1o.devlinks.auth.config;
 
+import com.jvn1o.devlinks.auth.filter.JwtAuthenticationFilter;
 import com.jvn1o.devlinks.auth.service.UserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -32,6 +34,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
     // SecurityFilterChain 구성
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -42,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/member/signup", "/member/idvalid").permitAll() // 회원 가입 및 아이디 중복 체크는 허용
                         .anyRequest().authenticated()
                 )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

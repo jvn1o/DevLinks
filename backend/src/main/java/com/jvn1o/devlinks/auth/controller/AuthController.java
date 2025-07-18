@@ -2,10 +2,8 @@ package com.jvn1o.devlinks.auth.controller;
 
 import com.jvn1o.devlinks.auth.dto.LoginRequest;
 import com.jvn1o.devlinks.auth.dto.LoginResponse;
-import com.jvn1o.devlinks.member.member.dto.SignupRequest;
-import com.jvn1o.devlinks.member.member.service.DefaultSignupService;
 import com.jvn1o.devlinks.auth.util.JwtUtil;
-import com.jvn1o.devlinks.security.principal.MemberPrincipal;
+import com.jvn1o.devlinks.auth.principal.MemberPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

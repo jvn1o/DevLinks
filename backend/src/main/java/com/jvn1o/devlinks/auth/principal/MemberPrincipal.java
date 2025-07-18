@@ -1,7 +1,9 @@
-package com.jvn1o.devlinks.security.principal;
+package com.jvn1o.devlinks.auth.principal;
 
 import com.jvn1o.devlinks.entity.Member;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +13,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Getter
+@Setter
+@Builder
 public class MemberPrincipal implements UserDetails {
 
     private final Long id;
@@ -22,9 +26,15 @@ public class MemberPrincipal implements UserDetails {
     private final String profileImgSrc;
     private final LocalDate birth;
     private final Collection<? extends GrantedAuthority> authorities;
+    private final boolean accountNonExpired;
+    private final boolean accountNonLocked;
+    private final boolean credentialsNonExpired;
+    private final boolean enabled;
 
     public MemberPrincipal(Long id, String memberId, String memberPwd, String nickname, String name, String email,
-                           String profileImgSrc, LocalDate birth, Collection<? extends GrantedAuthority> authorities) {
+                           String profileImgSrc, LocalDate birth, Collection<? extends GrantedAuthority> authorities,
+                           boolean accountNonExpired, boolean accountNonLocked,
+                           boolean credentialsNonExpired, boolean enabled) {
         this.id = id;
         this.memberId = memberId;
         this.memberPwd = memberPwd;
@@ -34,11 +44,15 @@ public class MemberPrincipal implements UserDetails {
         this.profileImgSrc = profileImgSrc;
         this.birth = birth;
         this.authorities = Collections.unmodifiableCollection(authorities);
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
+
 
     // Member 엔티티를 사용하여 UserPrincipal 객체를 생성하는 팩토리 메서드
     public static MemberPrincipal create(Member member) {
-        // 권한을 'USER'로 설정한 예시입니다. 실제 권한은 필요에 따라 다르게 설정할 수 있습니다.
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");
 
         return new MemberPrincipal(
@@ -50,9 +64,14 @@ public class MemberPrincipal implements UserDetails {
                 member.getEmail(),
                 member.getProfileImgSrc(),
                 member.getBirth(),
-                Collections.singletonList(authority) // 기본적으로 USER 권한을 부여
+                Collections.singletonList(authority),
+                member.isAccountNonExpired(),
+                member.isAccountNonLocked(),
+                member.isCredentialsNonExpired(),
+                member.isEnabled()
         );
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -71,22 +90,22 @@ public class MemberPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // 계정 만료 여부
+        return accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // 계정 잠금 여부
+        return accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // 비밀번호 만료 여부
+        return credentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // 계정 활성화 여부
+        return enabled;
     }
 
 }
