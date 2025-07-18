@@ -1,3 +1,21 @@
+# 민감한 설정 파일 (비밀번호, 시크릿 키 등)
+application-secret.yml
+
+# 빌드 디렉토리
+target/
+build/
+
+# IDE 설정
+.idea/
+*.iml
+.vscode/
+
+# 운영체제별 불필요 파일
+.DS_Store
+Thumbs.db
+.fleet
+.idea
+
 # Nuxt dev/build outputs
 .output
 .data
@@ -12,11 +30,6 @@ node_modules
 # Logs
 logs
 *.log
-
-# Misc
-.DS_Store
-.fleet
-.idea
 
 # Local env files
 .env
