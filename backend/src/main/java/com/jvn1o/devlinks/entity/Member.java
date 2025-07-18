@@ -56,7 +56,15 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Link> links;
 
-//    @OneToMany(mappedBy = "member")
-//    @JsonManagedReference
-//    private List<Review> reviews;
+    @Column(name = "account_non_expired", nullable = false)
+    private boolean accountNonExpired = true;
+
+    @Column(name = "account_non_locked", nullable = false)
+    private boolean accountNonLocked = true;
+
+    @Column(name = "credentials_non_expired", nullable = false)
+    private boolean credentialsNonExpired = true;
+
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled = true;
 }

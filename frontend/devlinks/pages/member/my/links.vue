@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, computed, watch, onMounted} from 'vue';
+import {computed, onMounted, ref, watch} from 'vue';
 import img from 'assets/image/figma.png';
 import axios from "axios";
 
@@ -67,7 +67,9 @@ const handleDelete = async (id: number) => {
 <template>
   <DeleteConfirmModal ref="deleteModal"/>
 
-  <div class="d-flex justify-content-between align-items-center px-md-5 px-sm-3 py-2 flex-wrap gap-2">
+  <section class="d-flex justify-content-between align-items-center px-md-5 px-sm-3 py-2 flex-wrap gap-2">
+    <h1 class="fs-4 fw-bold mx-4 md-4">내가 작성한 링크</h1>
+
     <!-- Links  -->
     <div class="p-3 w-100">
       <div
@@ -79,9 +81,13 @@ const handleDelete = async (id: number) => {
             :item="item"
             @delete="handleDelete"
         />
+
+        <div v-if="links.length === 0" class="text-muted text-center">
+          내가 작성한 링크가 없습니다.
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <div class="d-flex justify-content-center my-4">
     <Pagination

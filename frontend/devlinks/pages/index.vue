@@ -7,14 +7,14 @@ import DevLinks from "~/components/logo/DevLinks.vue";
 
     <!-- 소개 영역 -->
     <div class="row justify-content-center">
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="card-bg responsive-padding rounded-1 shadow-sm border text-center">
           <h1 class="fw-bold my-3" style="padding-right: 8px;">
             <span class="d-inline-flex align-items-center gap-2">
               <DevLinks/>
             </span>
           </h1>
-          <p class="intro-text-responsive">
+          <p class="fw-bold intro-text-responsive">
             개발자가 꼭 알아야 할 링크를 한 곳에
           </p>
         </div>
@@ -22,15 +22,15 @@ import DevLinks from "~/components/logo/DevLinks.vue";
     </div>
 
     <!-- 화살표 애니메이션  -->
-    <div class="scroll-down-indicator text-center my-4">
+    <div class="scroll-down-indicator text-center mt-3 mb-4">
       <div class="d-flex justify-content-center arrows">
         <i class="bi bi-chevron-down fs-2 d-block"></i>
       </div>
     </div>
 
     <!-- 카드 목록 -->
-    <div class="row mb-5 justify-content-start text-center" data-aos="fade-right">
-      <div class="col-lg-6">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -48,8 +48,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-end text-center">
-      <div class="col-lg-6">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/algorithm-data-structures`" class="nav-link">
@@ -67,8 +67,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-start text-center">
-      <div class="col-lg-6">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/cloud-devops`" class="nav-link">
@@ -86,8 +86,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-end text-center">
-      <div class="col-lg-6">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/testing-qa`" class="nav-link">
@@ -105,8 +105,8 @@ import DevLinks from "~/components/logo/DevLinks.vue";
       </div>
     </div>
 
-    <div class="row mb-5 justify-content-start text-center">
-      <div class="col-lg-6">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7">
         <div class="card card-bg h-100 shadow-sm border hover-card">
           <div class="card-body py-4 px-4">
             <NuxtLink :to="`/links/category/ui-ux`" class="nav-link">
@@ -133,13 +133,13 @@ import DevLinks from "~/components/logo/DevLinks.vue";
   font-size: 1.3rem;
 }
 .intro-text-responsive {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .card-title-responsive {
   font-size: 0.9rem;
 }
 .card-text-responsive {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
 }
 
 .card-bg {
@@ -188,7 +188,7 @@ import DevLinks from "~/components/logo/DevLinks.vue";
   }
 }
 
-@media (max-width: 1093px) {
+@media (max-width: 768px) {
   .container {
     .py-5 {
       padding: 0 !important;

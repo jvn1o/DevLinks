@@ -36,7 +36,7 @@ const deleteConfirmClick = () => {
       <img :src="item.image" class="card-img-top img-non-filter" :alt="item.title"/>
     </div>
 
-    <div class="card-body d-flex flex-column">
+    <div class="card-body d-flex flex-column justify-content-center">
       <h5 class="card-title fs-5 text-truncate fw-bold mb-3" :title="item.title">
         {{ item.title }}
       </h5>
