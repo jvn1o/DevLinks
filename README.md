@@ -1,4 +1,4 @@
-# ![image description](./assets/image/icon/DevLinks.svg) DevLinks
+# ![image description](./frontend/devlinks/assets/image/icon/DevLinks.svg) DevLinks
 
 **DevLinks**는 개발자들에게 유용한 사이트들의 링크를 한 곳에 모아 저장하고, 추천하며, 리뷰 및 토론할 수 있는 웹 커뮤니티입니다. 
 공신력 있는 개발 문서, AI 도구, 학습 자료 등 다양한 웹 페이지를 공유하고 효율적인 사용법을 함께 논의할 수 있는 공간을 제공합니다.
