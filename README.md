@@ -59,20 +59,20 @@ DevLinks는 이러한 페이지를 기억하고 쉽게 접근할 수 있도록 �
 
 ## 📂 프로젝트 구조 (요약)
 
-📁 frontend/ # Nuxt 기반 프론트엔드
-└─ composables/ # 공통 JS 로직 재사용
-└─ components/ # UI 구성 요소
-└─ layouts/ # 레이아웃 컴포넌트
-└─ pages/ # 라우트 단위 구성
+- 📁 frontend/ # Nuxt 기반 프론트엔드
+- └─ composables/ # 공통 JS 로직 재사용
+- └─ components/ # UI 구성 요소
+- └─ layouts/ # 레이아웃 컴포넌트
+- └─ pages/ # 라우트 단위 구성
 
-📁 backend/ # Spring Boot 기반 백엔드
-└─ controller/ # REST API 컨트롤러
-└─ service/ # 비즈니스 로직
-└─ entity/ # JPA 엔티티
-└─ repository/ # 데이터 접근 계층
+- 📁 backend/ # Spring Boot 기반 백엔드
+- └─ controller/ # REST API 컨트롤러
+- └─ service/ # 비즈니스 로직
+- └─ entity/ # JPA 엔티티
+- └─ repository/ # 데이터 접근 계층
 
-📁 database/
-└─ oracle-schema.sql
+- 📁 database/
+- └─ oracle-schema.sql
 
 ---
 
